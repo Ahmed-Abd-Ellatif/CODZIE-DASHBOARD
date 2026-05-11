@@ -1,0 +1,61 @@
+{
+  "HOME": {
+    "CODZIE": "CODZIE",
+    "TITLE": "Home",
+    "DESCRIPTION": "Welcome to my dashboard!",
+    "DASHBOARD": "Dashboard",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "ACTIVE": "Active"
+  },
+  "NAVBAR": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "CONTACT": "Contact",
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout"
+  },
+  "SIDEBAR": {
+    "PROJECT_NAME": "ARG Dashboard",
+    "DASHBOARD": "Dashboard",
+    "DASHBOARD_LIGHT": "Dashboard Light",
+    "DASHBOARD_DARK": "Dashboard Dark",
+    "KANBAN": "Kanban",
+    "CLIENTS": "Clients",
+    "PROJECT_DETAILS": "Project Details",
+    "MESSAGES": "Messages",
+    "LATEST_ACTIVITY": "Latest Activity",
+    "MY_PROJECTS": "My Projects",
+    "PROJECT_ALPHA": "Project Alpha",
+    "PROJECT_BETA": "Project Beta",
+    "PROJECT_GAMMA": "Project Gamma",
+    "SETTINGS": "Settings",
+    "LOGOUT": "Logout"
+  },
+  "USER": {
+    "NAME": "Ahmed Abdellatif",
+    "ROLE": "Admin",
+    "EMAIL": "admin@example.com"
+  },
+
+  "LOGIN": {
+    "WELCOME_BACK": "Welcome Back!",
+    "HINT": "Sign in with your work email to open the dashboard.",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "SECURE_ACCESS": "Secure access for authorized staff",
+    "SIGN_IN": "Sign in",
+    "DESCRIPTION": "Manage clients, finances, and daily operations from one calm, modern workspace.",
+    "Clients": "Clients",
+    "Finance": "Finance",
+    "Analytics": "Analytics",
+    "YOUR_PLATFORM": "YOUR PLATFORM"
+  },
+  "VALIDATIONS": {
+    "REQUIRED": "This field is required",
+    "INVALID_EMAIL": "Please enter a valid email address",
+    "ENTER_PASSWORD": "Enter your password"
+  },
+
+  "FOOTER_COPYRIGHT": "All Rights Reserved for CODZIE © "
+}

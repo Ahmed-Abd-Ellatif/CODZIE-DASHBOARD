@@ -1,0 +1,59 @@
+{
+  "HOME": {
+    "CODZIE": "كودزي",
+    "TITLE": "الصفحة الرئيسية",
+    "DESCRIPTION": "مرحبًا بك في لوحة التحكم الخاصة بي!",
+    "DASHBOARD": "لوحة التحكم",
+    "NAME": "الاسم",
+    "EMAIL": "البريد الإلكتروني",
+    "ACTIVE": "نشط"
+  },
+  "NAVBAR": {
+    "HOME": "الرئيسية",
+    "ABOUT": "حول",
+    "CONTACT": "اتصل بنا",
+    "PROFILE": "الملف الشخصي",
+    "LOGOUT": "تسجيل الخروج"
+  },
+  "SIDEBAR": {
+    "PROJECT_NAME": "لوحة التحكم",
+    "DASHBOARD": "لوحة التحكم",
+    "DASHBOARD_LIGHT": "لوحة فاتحة",
+    "DASHBOARD_DARK": "لوحة داكنة",
+    "KANBAN": "كانبان",
+    "CLIENTS": "العملاء",
+    "PROJECT_DETAILS": "تفاصيل المشروع",
+    "MESSAGES": "الرسائل",
+    "LATEST_ACTIVITY": "آخر النشاطات",
+    "MY_PROJECTS": "مشاريعي",
+    "PROJECT_ALPHA": "المشروع ألفا",
+    "PROJECT_BETA": "المشروع بيتا",
+    "PROJECT_GAMMA": "المشروع جاما",
+    "SETTINGS": "الإعدادات",
+    "LOGOUT": "تسجيل الخروج"
+  },
+  "USER": {
+    "NAME": "أحمد عبد اللطيف",
+    "ROLE": "مدير",
+    "EMAIL": "admin@example.com"
+  },
+  "LOGIN": {
+    "WELCOME_BACK": "مرحبًا بعودتك!",
+    "HINT": "قم بتسجيل الدخول باستخدام بريدك الإلكتروني لفتح لوحة التحكم.",
+    "EMAIL": "البريد الإلكتروني",
+    "PASSWORD": "كلمة المرور",
+    "SECURE_ACCESS": "وصول آمن للموظفين المصرح لهم",
+    "SIGN_IN": "تسجيل الدخول",
+    "DESCRIPTION": "إدارة العملاء والمالية والعمليات اليومية من مساحة عمل هادئة وحديثة.",
+    "Clients": "العملاء",
+    "Finance": "المالية",
+    "Analytics": "التحليلات",
+    "YOUR_PLATFORM": "المنصة الخاصة بك"
+  },
+  "VALIDATIONS": {
+    "REQUIRED": "هذا الحقل مطلوب",
+    "INVALID_EMAIL": "يرجى إدخال بريد إلكتروني صالح",
+    "ENTER_PASSWORD": "أدخل كلمة المرور الخاصة بك"
+  },
+  "FOOTER_COPYRIGHT": "جميع الحقوق محفوظة لشركة CODZIE © "
+}

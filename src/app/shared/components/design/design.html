@@ -1,0 +1,142 @@
+<app-breadcrumb [pageTitle]="'HOME.DASHBOARD' | translate" />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Buttons -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">BUTTONS</h2>
+  <button class="btn btn-primary">Start Learning</button>
+  <button class="btn btn-secondary">Enroll Now</button>
+  <button class="btn btn-outline">Preview</button>
+  <button class="btn">Cancel</button>
+  <button class="btn btn-danger">Remove</button>
+  <button class="btn btn-warning">Highlight</button>
+  <button class="btn btn-small">Small</button>
+  <button class="btn">Default</button>
+  <button class="btn btn-large">Large</button>
+  <button class="btn btn-pill">Pill Button</button>
+  <button class="btn btn-loading">Loading</button>
+  <button class="btn btn-disabled" disabled>Disabled</button>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ALERTS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">ALERTS</h2>
+  @if (type) {
+    <app-alerts [type]="type" [title]="title" [message]="message" />
+  }
+
+  <button class="btn btn-secondary" (click)="ShowSuccess()">Success</button>
+  <button class="btn btn-warning" (click)="ShowWarning()">Warning</button>
+  <button class="btn btn-danger" (click)="ShowError()">Error</button>
+  <button class="btn btn-primary" (click)="ShowInfo()">Info</button>
+</div>
+
+<!-- ============================= -->
+<!-- SWEET ALERTS -->
+<!-- ============================= -->
+@if (showSweetAlert) {
+  <app-sweet-alerts
+    [alertType]="alertType"
+    [alertMessage]="alertMessage"
+    (alertEvent)="showSweetAlertFn($event)"
+  />
+}
+
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">SWEET ALERTS</h2>
+  <button class="btn btn-secondary" (click)="showAlert('success')">Success</button>
+  <button class="btn btn-warning" (click)="showAlert('warning')">Warning</button>
+  <button class="btn btn-danger" (click)="showAlert('error')">Error</button>
+  <button class="btn btn-primary" (click)="showAlert('info')">Info</button>
+  <button class="btn btn-danger" (click)="showAlert('confirm')">Confirm</button>
+</div>
+
+<!-- ============================= -->
+<!-- TOASTS -->
+<!-- ============================= -->
+<div class="card">
+  <app-toast />
+  <h2 class="text-neutral-500 mb-4">TOASTS</h2>
+  <button class="btn btn-secondary" (click)="successFn()">Show Success Toast</button>
+  <button class="btn btn-danger" (click)="errorFn()">Show Error Toast</button>
+  <button class="btn btn-info" (click)="infoFn()">Show Info Toast</button>
+  <button class="btn btn-warning" (click)="warningFn()">Show Warning Toast</button>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- BADGES -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">BADGES</h2>
+  <span class="badge badge-new">New</span>
+  <span class="badge badge-completed">Completed</span>
+  <span class="badge badge-inprogress">In Progress</span>
+  <span class="badge badge-overdue">Overdue</span>
+  <span class="badge badge-draft">Draft</span>
+  <span class="badge badge-featured">Featured</span>
+</div>
+
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">FORM ELEMENTS</h2>
+  <label class="required input-label">Full Name</label>
+  <input class="input" placeholder="Enter your name" />
+  <label class="required input-label">Full Name</label>
+  <input class="input input-error" value="Something wrong" />
+  <span class="input-message">This field is required</span>
+  <input class="input input-disabled" value="Something wrong" />
+  <label class="required input-label">Full Name</label>
+  <textarea class="textarea textarea-optional" placeholder="Write a description..."></textarea>
+  <span class="input-hint">This is an optional field</span>
+
+  <label class="input-label">Category</label>
+  <div class="select-wrapper">
+    <select class="select">
+      <option value="" selected disabled>Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+  </div>
+
+  <label class="input-label">Status (Error)</label>
+  <div class="select-wrapper">
+    <select class="select select-error">
+      <option value="" selected disabled>Select an option</option>
+      <option value="1">Option 1</option>
+    </select>
+  </div>
+
+  <label class="input-label">Disabled</label>
+  <div class="select-wrapper">
+    <select class="select" disabled>
+      <option value="1">Cannot change this</option>
+    </select>
+  </div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- TABLE -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">TABLE (with actions)</h2>
+  <app-table
+    [data]="SAMPLE_DATA"
+    [columns]="columns"
+    [actions]="tableActions"
+    [headerButtons]="topButtons"
+  />
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- TABLE (no actions) -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <h2 class="text-neutral-500 mb-4">TABLE (view only)</h2>
+  <app-table
+    [data]="SAMPLE_DATA"
+    [columns]="columns"
+    [actions]="tableActions"
+    [headerButtons]="topButtons"
+  />
+</div>

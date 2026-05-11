@@ -1,0 +1,21 @@
+.icon {
+  width: 88px;
+}
+.sweet-alert-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10003;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sweet-alert {
+  /* text-align: center; */
+  width: 435px;
+}

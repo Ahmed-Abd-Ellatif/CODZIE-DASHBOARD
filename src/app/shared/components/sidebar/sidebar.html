@@ -1,0 +1,104 @@
+<aside class="sidebar" [class.open]="layout.isSidebarOpen()">
+  <!-- ── Logo ── -->
+  <div class="sidebar-logo">
+    <div class="sidebar-logo-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+      </svg>
+    </div>
+    <span class="sidebar-logo-text">{{ 'SIDEBAR.PROJECT_NAME' | translate }}</span>
+  </div>
+
+  <hr class="sidebar-sep" />
+
+  <!-- ── Navigation ── -->
+  <nav class="sidebar-nav">
+    <!-- Dashboard (dropdown) -->
+    <button
+      class="sidebar-link"
+      type="button"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
+        <path
+          d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+        />
+      </svg>
+      <span class="flex-1 text-start">{{ 'SIDEBAR.DASHBOARD' | translate }}</span>
+    </button>
+    <!-- My Projects (dropdown) -->
+    <div>
+      <button
+        class="sidebar-link"
+        [class.active]="openSection() === 'projects'"
+        (click)="toggleSection('projects')"
+        type="button"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
+          <path
+            d="M20 6h-2.18c.07-.44.18-.88.18-1.35C18 2.53 16.5 1 14.65 1c-1.02 0-1.96.54-2.61 1.35L12 2.68l-.04-.33C11.35 1.54 10.41 1 9.35 1 7.5 1 6 2.53 6 4.65c0 .47.11.91.18 1.35H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5.35-3.65c.74 0 1.35.61 1.35 1.3 0 .74-.6 1.35-1.35 1.35-.74 0-1.35-.6-1.35-1.35 0-.69.61-1.3 1.35-1.3zM9.35 3.65c.74 0 1.35.61 1.35 1.3 0 .74-.6 1.35-1.35 1.35-.74 0-1.35-.6-1.35-1.35 0-.69.61-1.3 1.35-1.3zM20 19H4V8h16v11z"
+          />
+        </svg>
+        <span class="flex-1 text-start">{{ 'SIDEBAR.MY_PROJECTS' | translate }}</span>
+        <svg
+          class="sidebar-chevron"
+          [class.open]="openSection() === 'projects'"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+
+      @if (openSection() === 'projects') {
+        <div class="sidebar-submenu">
+          <a class="sidebar-sub-link" href="#">{{ 'SIDEBAR.PROJECT_ALPHA' | translate }}</a>
+          <a class="sidebar-sub-link" href="#">{{ 'SIDEBAR.PROJECT_BETA' | translate }}</a>
+          <a class="sidebar-sub-link" href="#">{{ 'SIDEBAR.PROJECT_GAMMA' | translate }}</a>
+        </div>
+      }
+    </div>
+
+    <!-- Settings (simple link) -->
+    <button class="sidebar-link" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
+        <path
+          d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+        />
+      </svg>
+      <span class="flex-1 text-start">{{ 'SIDEBAR.SETTINGS' | translate }}</span>
+    </button>
+
+    <button
+      class="sidebar-link"
+      type="button"
+      routerLink="/design-system"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
+        <path
+          d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+        />
+      </svg>
+      <span class="flex-1 text-start">Design System</span>
+    </button>
+  </nav>
+
+  <!-- ── Logout ── -->
+  <div class="sidebar-footer">
+    <hr class="sidebar-sep" />
+    <button class="sidebar-logout-btn" (click)="logout()" type="button" routerLink="login">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
+        <path
+          d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"
+        />
+      </svg>
+      <span>{{ 'SIDEBAR.LOGOUT' | translate }}</span>
+    </button>
+  </div>
+</aside>

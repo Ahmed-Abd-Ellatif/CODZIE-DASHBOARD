@@ -1,0 +1,7 @@
+footer {
+  border-top: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+}
+:host-context(body.dark-mode) footer {
+  border-top-color: var(--border-main);
+}

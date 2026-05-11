@@ -1,0 +1,163 @@
+<div class="login-wrapper">
+  <!-- ===== Left Panel ===== -->
+  <div class="login-left">
+    <!-- Top Controls -->
+    <div class="login-top-controls">
+      <button
+        class="control-btn"
+        (click)="toggleLang()"
+        [attr.aria-label]="currentLang() === 'en' ? 'العربية' : 'English'"
+      >
+        {{ currentLang() === 'en' ? 'AR' : 'EN' }}
+      </button>
+      <div class="control-divider"></div>
+      <button class="control-btn" (click)="toggleTheme()" aria-label="Toggle theme">
+        <i [class]="isDark() ? 'fa-solid fa-sun' : 'fa-solid fa-moon'"></i>
+      </button>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-card">
+      <!-- Brand -->
+      <div class="brand-header">
+        <div class="brand-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+        <span class="brand-name">{{ 'HOME.CODZIE' | translate }}</span>
+      </div>
+
+      <h1 class="login-title">{{ 'LOGIN.WELCOME_BACK' | translate }}</h1>
+      <p class="login-subtitle">{{ 'LOGIN.HINT' | translate }}</p>
+
+      <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
+        <!-- Email Field -->
+        <div class="form-group">
+          <label class="form-label" for="email">{{ 'LOGIN.EMAIL' | translate }}</label>
+          <div class="input-wrapper">
+            <i class="fa-regular fa-envelope input-icon"></i>
+            <input
+              formControlName="email"
+              id="email"
+              type="email"
+              name="email"
+              class="form-input"
+              [ngClass]="{
+                'input-error':
+                  LoginFormControls.email.invalid &&
+                  (LoginFormControls.email.touched || LoginFormControls.email.dirty),
+              }"
+              placeholder="you@organization.edu"
+              autocomplete="email"
+              required
+            />
+            <br />
+          </div>
+          <!-- VALIDATIONS -->
+          @if (
+            LoginFormControls.email.invalid &&
+            (LoginFormControls.email.touched || LoginFormControls.email.dirty)
+          ) {
+            <small class="text-red-600">
+              @if (LoginFormControls.email.errors?.['required']) {
+                <i class="fa-regular fa-circle-xmark"></i> {{ 'VALIDATIONS.REQUIRED' | translate }}
+              }
+              @if (LoginFormControls.email.errors?.['email']) {
+                <i class="fa-regular fa-circle-xmark"></i>
+                {{ 'VALIDATIONS.INVALID_EMAIL' | translate }}
+              }
+            </small>
+          }
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label class="form-label" for="password">{{ 'LOGIN.PASSWORD' | translate }}</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock input-icon"></i>
+            <input
+              formControlName="password"
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              class="form-input"
+              [ngClass]="{
+                'input-error':
+                  LoginFormControls.password.invalid &&
+                  (LoginFormControls.password.touched || LoginFormControls.password.dirty),
+              }"
+              placeholder="{{ 'VALIDATIONS.ENTER_PASSWORD' | translate }}"
+              autocomplete="current-password"
+            />
+            <button
+              type="button"
+              class="eye-toggle"
+              (click)="togglePassword()"
+              aria-label="Toggle password visibility"
+            >
+              <i [class]="showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+            </button>
+          </div>
+          <!-- VALIDATIONS -->
+
+          @if (
+            LoginFormControls.password.invalid &&
+            (LoginFormControls.password.touched || LoginFormControls.password.dirty)
+          ) {
+            <small class="text-red-600"
+              ><i class="fa-regular fa-circle-xmark"></i>
+              {{ 'VALIDATIONS.REQUIRED' | translate }}</small
+            >
+          }
+        </div>
+
+        <!-- Submit -->
+        <button [disabled]="loginForm.invalid" type="submit" class="signin-btn" routerLink="/">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          {{ 'LOGIN.SIGN_IN' | translate }}
+        </button>
+      </form>
+
+      <p class="secure-text">
+        <i class="fa-solid fa-shield-halved"></i>
+        {{ 'LOGIN.SECURE_ACCESS' | translate }}
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== Right Panel (hidden on tablet & mobile) ===== -->
+  <div class="login-right" aria-hidden="true">
+    <div class="right-glow right-glow--1"></div>
+    <div class="right-glow right-glow--2"></div>
+    <div class="right-glow right-glow--3"></div>
+
+    <div class="platform-content">
+      <div class="platform-app-icon">
+        <i class="fa-solid fa-layer-group"></i>
+        <span class="platform-app-badge">
+          <i class="fa-solid fa-bell"></i>
+        </span>
+      </div>
+
+      <p class="platform-eyebrow">{{ 'LOGIN.YOUR_PLATFORM' | translate }}</p>
+      <h2 class="platform-name">{{ 'HOME.CODZIE' | translate }}</h2>
+      <p class="platform-desc">
+        {{ 'LOGIN.DESCRIPTION' | translate }}
+      </p>
+
+      <div class="platform-features">
+        <div class="feature-pill">
+          <i class="fa-solid fa-users"></i>
+          <span>{{ 'LOGIN.Clients' | translate }}</span>
+        </div>
+        <div class="feature-pill">
+          <i class="fa-solid fa-coins"></i>
+          <span>{{ 'LOGIN.Finance' | translate }}</span>
+        </div>
+        <div class="feature-pill">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>{{ 'LOGIN.Analytics' | translate }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

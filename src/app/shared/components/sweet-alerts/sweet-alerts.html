@@ -1,0 +1,41 @@
+<div class="sweet-alert-container">
+  <div class="sweet-alert card m-2">
+    <div class="icon mb-9 mx-auto">
+      @let iconPath =
+        'icons/alert-' + (alertType() === 'confirm' ? 'delete' : alertType() || 'info') + '.svg';
+      <img [src]="iconPath" [alt]="alertType()" />
+    </div>
+
+    <p class="message text-neutral-800 text-center mb-9">{{ alertMessage() }}</p>
+
+    <div class="buttons text-center">
+      @switch (alertType()) {
+        @case ('success') {
+          <button (click)="onAlertEvent(true)" class="btn btn-secondary">Success</button>
+        }
+
+        @case ('error') {
+          <button (click)="onAlertEvent(true)" class="btn btn-danger">Try again please</button>
+        }
+
+        @case ('warning') {
+          <button (click)="onAlertEvent(false)" class="btn btn-warning-outline">Cancel</button>
+          <button (click)="onAlertEvent(true)" class="btn btn-warning">Ok</button>
+        }
+
+        @case ('confirm') {
+          <button (click)="onAlertEvent(false)" class="btn btn-danger-outline">Cancel</button>
+          <button (click)="onAlertEvent(true)" class="btn btn-danger">Confirm</button>
+        }
+        @case ('info') {
+          <button (click)="onAlertEvent(false)" class="btn btn-outline">Cancel</button>
+          <button (click)="onAlertEvent(true)" class="btn btn-primary">Ok</button>
+        }
+
+        @default {
+          <button (click)="onAlertEvent(true)" class="btn btn-primary">Ok</button>
+        }
+      }
+    </div>
+  </div>
+</div>

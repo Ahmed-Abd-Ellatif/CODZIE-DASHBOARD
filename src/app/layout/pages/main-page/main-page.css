@@ -1,0 +1,63 @@
+/* ── App Layout ──────────────────────────────────── */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--neutral-100);
+}
+
+:host-context(body.dark-mode) .app-layout {
+  background: var(--neutral-800);
+}
+
+/* ── Main area (navbar + content) ──────────────────── */
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  /* shifts right when sidebar opens on desktop */
+  margin-inline-start: 0;
+  transition: margin-inline-start var(--duration-slow) var(--ease-inout);
+}
+
+@media (min-width: 1024px) {
+  .app-layout.sidebar-open .main-area {
+    margin-inline-start: 260px;
+  }
+}
+
+/* ── Scrollable content ─────────────────────────── */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-6);
+}
+
+/* ── Mobile overlay ─────────────────────────────── */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+  animation: fadeIn 0.2s var(--ease-out);
+}
+
+/* Hide overlay on desktop (sidebar is in-flow there) */
+@media (min-width: 1024px) {
+  .sidebar-overlay {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

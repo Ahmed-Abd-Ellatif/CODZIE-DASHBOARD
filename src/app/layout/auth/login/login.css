@@ -1,0 +1,508 @@
+/* ============================================
+   LOGIN WRAPPER
+   ============================================ */
+
+.login-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: var(--color-neutral-100);
+}
+
+/* ============================================
+   LEFT PANEL
+   ============================================ */
+
+.login-left {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8);
+  min-width: 0;
+}
+
+/* ============================================
+   TOP CONTROLS (Lang + Theme)
+   ============================================ */
+
+.login-top-controls {
+  position: absolute;
+  top: var(--spacing-5);
+  inset-inline-end: var(--spacing-5);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-1) var(--spacing-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 30px;
+  padding: 0 var(--spacing-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  color: var(--color-neutral-600);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out);
+}
+
+.control-btn:hover {
+  color: var(--color-primary-600);
+  background: var(--color-primary-100);
+}
+
+.control-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--color-neutral-200);
+  margin: 0 var(--spacing-1);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   LOGIN CARD
+   ============================================ */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-10) var(--spacing-10);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ============================================
+   BRAND HEADER
+   ============================================ */
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-6);
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-600);
+  color: #fff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+}
+
+.brand-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-600);
+}
+
+/* ============================================
+   HEADINGS
+   ============================================ */
+
+.login-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-neutral-900);
+  margin: 0 0 var(--spacing-2) 0;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-neutral-500);
+  margin: 0 0 var(--spacing-8) 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-neutral-700);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon inside input — auto-flips in RTL via logical property */
+.input-icon {
+  position: absolute;
+  inset-inline-start: var(--spacing-4);
+  color: var(--color-neutral-400);
+  font-size: 0.875rem;
+  pointer-events: none;
+  transition: color var(--duration-base) var(--ease-out);
+  z-index: 1;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.72rem var(--spacing-4);
+  padding-inline-start: calc(var(--spacing-4) + 1.25rem + var(--spacing-3));
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
+  font-family: var(--font-main);
+  color: var(--color-neutral-800);
+  background: var(--color-neutral-100);
+  outline: none;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out);
+}
+
+.form-input::placeholder {
+  color: var(--color-neutral-400);
+}
+
+.form-input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  background: var(--color-neutral-50);
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--color-primary-500);
+}
+
+/* Eye toggle — auto-flips in RTL via logical property */
+.eye-toggle {
+  position: absolute;
+  inset-inline-end: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-neutral-400);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+/* Password field: extra padding-inline-end for the eye toggle — auto-flips in RTL */
+.input-wrapper .form-input:not([type='email']) {
+  padding-inline-end: calc(var(--spacing-3) + 28px + var(--spacing-2));
+}
+
+.eye-toggle:hover {
+  color: var(--color-primary-500);
+}
+
+/* ============================================
+   SIGN IN BUTTON
+   ============================================ */
+
+.signin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: 0.8rem var(--spacing-4);
+  background: var(--color-primary-600);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  margin-top: var(--spacing-2);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.35);
+  transition:
+    background var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.signin-btn:hover {
+  background: var(--color-primary-700);
+  box-shadow: 0 6px 22px rgba(79, 70, 229, 0.45);
+  transform: translateY(-1px);
+}
+
+.signin-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+/* ============================================
+   SECURE TEXT
+   ============================================ */
+
+.secure-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  font-size: 0.8rem;
+  color: var(--color-neutral-400);
+  margin-top: var(--spacing-6);
+  margin-bottom: 0;
+}
+
+.secure-link {
+  color: var(--color-primary-500);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.secure-link:hover {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+}
+
+/* ============================================
+   RIGHT PANEL
+   ============================================ */
+
+.login-right {
+  flex: 0 0 38%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 35%, #6366f1 60%, #0f766e 100%);
+}
+
+/* Decorative glow circles */
+.right-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.right-glow--1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  top: -120px;
+  right: -100px;
+}
+
+.right-glow--2 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  bottom: -80px;
+  left: -60px;
+}
+
+.right-glow--3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.25) 0%, transparent 70%);
+  top: 40%;
+  left: 20%;
+}
+
+.platform-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--spacing-10);
+  color: #fff;
+}
+
+/* Platform icon */
+.platform-app-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-2xl);
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: var(--spacing-8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.platform-app-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 26px;
+  height: 26px;
+  background: #f59e0b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.platform-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: var(--spacing-3);
+}
+
+.platform-name {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.platform-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+  max-width: 300px;
+  margin: 0 auto var(--spacing-10);
+}
+
+/* Feature pills */
+.platform-features {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-2) var(--spacing-5);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  transition: background var(--duration-base) var(--ease-out);
+}
+
+.feature-pill:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.feature-pill i {
+  font-size: 0.82rem;
+}
+
+/* ============================================
+   DARK MODE  (uses :host-context — Angular
+   scoped styles can detect parent class)
+   The color-neutral-* vars auto-flip from
+   prototype.css dark-mode overrides.
+   Only hard-coded values need overrides.
+   ============================================ */
+
+:host-context(body.dark-mode) .login-card {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-neutral-200);
+}
+
+:host-context(body.dark-mode) .form-input:focus {
+  background: var(--color-neutral-200);
+}
+
+:host-context(body.dark-mode) .signin-btn {
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE — hide right panel on tablet/mobile
+   ============================================ */
+
+/* Tablet: <= 1024px */
+@media (max-width: 1024px) {
+  .login-right {
+    display: none;
+  }
+
+  .login-left {
+    flex: 1;
+  }
+}
+
+/* Mobile: <= 480px */
+@media (max-width: 480px) {
+  .login-left {
+    padding: var(--spacing-5) var(--spacing-4);
+    padding-top: var(--spacing-16);
+    align-items: flex-start;
+  }
+
+  .login-card {
+    padding: var(--spacing-8) var(--spacing-6);
+    border-radius: var(--radius-xl);
+  }
+
+  .login-title {
+    font-size: 1.6rem;
+  }
+
+  .login-top-controls {
+    top: var(--spacing-4);
+    inset-inline-end: var(--spacing-4);
+  }
+}
