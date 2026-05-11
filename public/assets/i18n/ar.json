@@ -1,4 +1,20 @@
 {
+  "DASHBOARD": {
+    "TITLE": "لوحة التحكم",
+    "DAILY_PROFIT": "الربح اليومي",
+    "MONTHLY_PROFIT": "الربح الشهري",
+    "NUMBERS_OF_USERS": "عدد المستخدمين",
+    "EXPECTED_NET_INCOME": "صافي الدخل المتوقع",
+    "CURRENCY": "ج.م",
+    "USER_ROLES_DISTRIBUTION": "توزيع أدوار المستخدمين",
+    "REVENUE_STREAM": "تدفق الإيرادات – الفعلي مقابل المتوقع (ج.م)",
+    "NEW_USERS_PER_MONTH": "المستخدمون الجدد شهريًا",
+    "CENTERS": "المراكز",
+    "TEACHERS": "المعلمين",
+    "EXPECTED": "متوقع",
+    "ACTUAL": "فعلي",
+    "USERS": "المستخدمين"
+  },
   "HOME": {
     "CODZIE": "كودزي",
     "TITLE": "الصفحة الرئيسية",

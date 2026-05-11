@@ -1,0 +1,93 @@
+<div class="chart-card">
+  <div class="chart-header">
+    <h3 class="chart-title">{{ title }}</h3>
+  </div>
+
+  <div class="donut-body">
+    <!-- SVG Donut -->
+    <div class="donut-svg-wrap">
+      <svg [attr.viewBox]="'0 0 ' + size + ' ' + size" class="donut-svg">
+        <!-- Background track -->
+        <circle
+          [attr.cx]="cx"
+          [attr.cy]="cy"
+          [attr.r]="r"
+          fill="none"
+          class="donut-track"
+          [attr.stroke-width]="r - innerR"
+        />
+        <!-- Slices -->
+        @for (slice of slices; track slice.label) {
+          <circle
+            [attr.cx]="cx"
+            [attr.cy]="cy"
+            [attr.r]="r"
+            fill="none"
+            [attr.stroke]="slice.color"
+            [attr.stroke-width]="r - innerR"
+            [attr.stroke-dasharray]="slice.dasharray"
+            stroke-dashoffset="0"
+            [attr.transform]="'rotate(' + slice.rotation + ' ' + cx + ' ' + cy + ')'"
+            class="donut-slice"
+            (mouseenter)="showSliceTooltip(slice)"
+            (mouseleave)="hideTooltip()"
+          />
+        }
+        <!-- Center text -->
+        <text [attr.x]="cx" [attr.y]="cy - 6" text-anchor="middle" class="center-total">
+          {{ total }}
+        </text>
+        <text [attr.x]="cy" [attr.y]="cy + 14" text-anchor="middle" class="center-label">
+          {{ 'DASHBOARD.USERS' | translate }}
+        </text>
+
+        <!-- Tooltip -->
+        @if (tooltip()) {
+          <g class="chart-tooltip-group">
+            <rect
+              [attr.x]="tooltipX(tooltip()!.x)"
+              [attr.y]="tooltipY(tooltip()!.y)"
+              width="100"
+              height="36"
+              rx="6"
+              class="tooltip-bg"
+            />
+            <text
+              [attr.x]="tooltipX(tooltip()!.x) + 50"
+              [attr.y]="tooltipY(tooltip()!.y) + 14"
+              text-anchor="middle"
+              class="tooltip-label"
+            >
+              {{ tooltip()!.label }}
+            </text>
+            <text
+              [attr.x]="tooltipX(tooltip()!.x) + 50"
+              [attr.y]="tooltipY(tooltip()!.y) + 27"
+              text-anchor="middle"
+              class="tooltip-value"
+              [attr.fill]="tooltip()!.color"
+            >
+              {{ tooltip()!.value }} ({{ tooltip()!.pct }}%)
+            </text>
+          </g>
+        }
+      </svg>
+    </div>
+
+    <!-- Legend -->
+    <div class="donut-legend">
+      @for (slice of slices; track slice.label) {
+        <div class="donut-legend-item">
+          <span class="donut-legend-dot" [style.background]="slice.color"></span>
+          <div class="donut-legend-text">
+            <span class="donut-legend-label">{{ slice.label }}</span>
+            <span class="donut-legend-value"
+              >{{ slice.value }}
+              <span class="donut-legend-pct">({{ percent(slice.value) }}%)</span></span
+            >
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

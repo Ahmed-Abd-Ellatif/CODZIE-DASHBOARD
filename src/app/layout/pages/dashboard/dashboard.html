@@ -1,0 +1,103 @@
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * BREADCRUMB -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-breadcrumb [pageTitle]="'DASHBOARD.TITLE' | translate" />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * STAT CARDS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+  <!-- Card 1 – Orange -->
+  <div class="stat-card stat-card--orange">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="stat-icon stat-icon--orange">
+        <i class="fas fa-wallet"></i>
+      </div>
+
+      <span class="stat-title">{{ 'DASHBOARD.DAILY_PROFIT' | translate }}</span>
+    </div>
+    <p class="stat-amount">500 {{ 'DASHBOARD.CURRENCY' | translate }}</p>
+    <div class="flex items-center gap-1">
+      <span class="stat-change">10%</span>
+      <i class="fas fa-arrow-up stat-change" style="font-size: 11px"></i>
+      <span class="stat-change">+5 This Month</span>
+    </div>
+  </div>
+
+  <!-- Card 2 – Blue -->
+  <div class="stat-card stat-card--blue">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="stat-icon stat-icon--blue">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <span class="stat-title">{{ 'DASHBOARD.MONTHLY_PROFIT' | translate }}</span>
+    </div>
+    <p class="stat-amount">500 {{ 'DASHBOARD.CURRENCY' | translate }}</p>
+    <div class="flex items-center gap-1">
+      <span class="stat-change">10%</span>
+      <i class="fas fa-arrow-up stat-change" style="font-size: 11px"></i>
+      <span class="stat-change">+5 This Month</span>
+    </div>
+  </div>
+
+  <!-- Card 3 – Purple -->
+  <div class="stat-card stat-card--purple">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="stat-icon stat-icon--purple">
+        <i class="fas fa-users"></i>
+      </div>
+      <span class="stat-title">{{ 'DASHBOARD.NUMBERS_OF_USERS' | translate }}</span>
+    </div>
+    <p class="stat-amount">500 {{ 'DASHBOARD.CURRENCY' | translate }}</p>
+    <div class="flex items-center gap-1">
+      <span class="stat-change">10%</span>
+      <i class="fas fa-arrow-up stat-change" style="font-size: 11px"></i>
+      <span class="stat-change">+5 This Month</span>
+    </div>
+  </div>
+
+  <!-- Card 4 – Teal -->
+  <div class="stat-card stat-card--teal">
+    <div class="flex items-center gap-3 mb-5">
+      <div class="stat-icon stat-icon--teal">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <span class="stat-title">{{ 'DASHBOARD.EXPECTED_NET_INCOME' | translate }}</span>
+    </div>
+    <p class="stat-amount">500 {{ 'DASHBOARD.CURRENCY' | translate }}</p>
+    <div class="flex items-center gap-1">
+      <span class="stat-change">10%</span>
+      <i class="fas fa-arrow-up stat-change" style="font-size: 11px"></i>
+      <span class="stat-change">+5 This Month</span>
+    </div>
+  </div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * CHARTS ROW 1: Bar + Donut -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-4 xl:items-stretch">
+  <div class="flex flex-col h-full">
+    <app-bar-chart
+      class="flex-1"
+      title="{{ 'DASHBOARD.REVENUE_STREAM' | translate }}"
+      [data]="barChartData"
+    />
+  </div>
+  <div class="flex flex-col h-full">
+    <app-donut-chart
+      class="flex-1"
+      title="{{ 'DASHBOARD.USER_ROLES_DISTRIBUTION' | translate }}"
+      [data]="donutChartData"
+    />
+  </div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * CHARTS ROW 2: Line Chart -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="mb-4">
+  <app-line-chart
+    title="{{ 'DASHBOARD.NEW_USERS_PER_MONTH' | translate }}"
+    [data]="lineChartData"
+  />
+</div>

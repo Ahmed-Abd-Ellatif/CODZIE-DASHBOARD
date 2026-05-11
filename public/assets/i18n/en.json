@@ -1,4 +1,20 @@
 {
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "DAILY_PROFIT": "Daily Profit",
+    "MONTHLY_PROFIT": "Monthly Profit",
+    "NUMBERS_OF_USERS": "Numbers of Users",
+    "EXPECTED_NET_INCOME": "Expected Net Income",
+    "CURRENCY": "EGP",
+    "USER_ROLES_DISTRIBUTION": "User Roles Distribution",
+    "REVENUE_STREAM": "Revenue Stream – Actual vs Expected (EGP)",
+    "NEW_USERS_PER_MONTH": "New Users per Month",
+    "CENTERS": "Centers",
+    "TEACHERS": "Teachers",
+    "EXPECTED": "Expected",
+    "ACTUAL": "Actual",
+    "USERS": "Users"
+  },
   "HOME": {
     "CODZIE": "CODZIE",
     "TITLE": "Home",

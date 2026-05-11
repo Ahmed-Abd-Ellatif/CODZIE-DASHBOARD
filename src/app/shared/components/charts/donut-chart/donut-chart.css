@@ -1,0 +1,153 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.chart-card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+:host-context(body.dark-mode) .chart-card {
+  background: #1e293b;
+  border-color: var(--neutral-700);
+}
+
+.chart-header {
+  margin-bottom: var(--space-4);
+}
+.chart-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+:host-context(body.dark-mode) .chart-title {
+  color: var(--neutral-100);
+}
+
+.donut-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.donut-svg-wrap {
+  width: 100%;
+  max-width: 280px;
+  flex-shrink: 0;
+  direction: ltr;
+}
+.donut-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.donut-track {
+  stroke: var(--neutral-100);
+}
+:host-context(body.dark-mode) .donut-track {
+  stroke: #334155;
+}
+
+.donut-slice {
+  transition:
+    opacity 0.15s,
+    stroke-width 0.15s;
+  cursor: pointer;
+}
+.donut-slice:hover {
+  opacity: 0.82;
+  stroke-width: 32;
+}
+
+.center-total {
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--neutral-800);
+  font-family: inherit;
+}
+:host-context(body.dark-mode) .center-total {
+  fill: #f1f5f9;
+}
+
+.center-label {
+  font-size: 11px;
+  fill: var(--neutral-400);
+  font-family: inherit;
+}
+
+/* Legend */
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.donut-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.donut-legend-text {
+  display: flex;
+  flex-direction: column;
+}
+.donut-legend-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--neutral-700);
+}
+:host-context(body.dark-mode) .donut-legend-label {
+  color: var(--neutral-200);
+}
+
+.donut-legend-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--neutral-900);
+}
+:host-context(body.dark-mode) .donut-legend-value {
+  color: var(--neutral-100);
+}
+
+.donut-legend-pct {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--neutral-400);
+}
+
+/* Tooltip */
+.tooltip-bg {
+  fill: #1e293b;
+  opacity: 0.93;
+}
+:host-context(body.dark-mode) .tooltip-bg {
+  fill: #0f172a;
+}
+.tooltip-label {
+  font-size: 10px;
+  fill: #94a3b8;
+  font-family: inherit;
+}
+.tooltip-value {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+}
+.chart-tooltip-group {
+  pointer-events: none;
+}

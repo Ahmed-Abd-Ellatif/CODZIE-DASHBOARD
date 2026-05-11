@@ -1,0 +1,145 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.chart-card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+:host-context(body.dark-mode) .chart-card {
+  background: #1e293b;
+  border-color: var(--neutral-700);
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chart-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+:host-context(body.dark-mode) .chart-title {
+  color: var(--neutral-100);
+}
+
+.chart-legend {
+  display: flex;
+  gap: var(--space-4);
+  /* respects RTL via flex direction */
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--neutral-500);
+}
+:host-context(body.dark-mode) .legend-item {
+  color: var(--neutral-400);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+.legend-dot--actual {
+  background: #6366f1;
+}
+.legend-dot--expected {
+  background: #14b8a6;
+}
+
+.chart-body {
+  width: 100%;
+  overflow: hidden;
+  direction: ltr;
+  flex: 1;
+  min-height: 0;
+}
+.bar-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SVG elements */
+.grid-line {
+  stroke: var(--neutral-200);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+:host-context(body.dark-mode) .grid-line {
+  stroke: #334155;
+}
+
+.axis-line {
+  stroke: var(--neutral-300);
+  stroke-width: 1;
+}
+:host-context(body.dark-mode) .axis-line {
+  stroke: #475569;
+}
+
+.axis-label {
+  font-size: 11px;
+  fill: var(--neutral-400);
+  font-family: inherit;
+}
+:host-context(body.dark-mode) .axis-label {
+  fill: #64748b;
+}
+
+.bar--actual {
+  fill: #6366f1;
+}
+.bar--expected {
+  fill: #14b8a6;
+}
+
+.bar {
+  transition:
+    opacity 0.15s,
+    filter 0.15s;
+  cursor: pointer;
+}
+.bar:hover {
+  opacity: 0.85;
+  filter: brightness(1.15);
+}
+
+/* Tooltip */
+.tooltip-bg {
+  fill: #1e293b;
+  opacity: 0.93;
+}
+:host-context(body.dark-mode) .tooltip-bg {
+  fill: #0f172a;
+}
+.tooltip-label {
+  font-size: 10px;
+  fill: #94a3b8;
+  font-family: inherit;
+}
+.tooltip-value {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+}
+.chart-tooltip-group {
+  pointer-events: none;
+}
