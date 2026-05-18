@@ -131,11 +131,23 @@ export class Table {
     } else {
       const btn = event.currentTarget as HTMLElement;
       const rect = btn.getBoundingClientRect();
+
+      const menuWidth = 200;
+      const gap = 6;
+
+      // Position beside the button: prefer left side, fallback to right
+      const spaceOnLeft = rect.left - gap;
+      const left =
+        spaceOnLeft >= menuWidth
+          ? rect.left - menuWidth - gap
+          : rect.right + gap;
+
+      // Align top with button; clamp so menu doesn't overflow viewport bottom
+      const estimatedMenuHeight = 240;
+      const top = Math.min(rect.top, window.innerHeight - estimatedMenuHeight - 8);
+
       this.activeRowIndex.set(index);
-      this.dropdownPos.set({
-        top: rect.bottom + 4,
-        left: Math.max(4, rect.right - 200),
-      });
+      this.dropdownPos.set({ top, left });
       // capture:true → catches scroll from ANY container (overflow divs, not just window)
       document.addEventListener('scroll', this._scrollClose, true);
     }
