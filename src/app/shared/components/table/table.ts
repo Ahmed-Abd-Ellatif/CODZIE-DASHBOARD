@@ -17,6 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class Table {
   // ── Inputs ──────────────────────────────────────────
+  tableName = input<string>('');
   data = input.required<any[]>();
   columns = input.required<TableColumn[]>();
   actions = input<TableAction[]>([]);
