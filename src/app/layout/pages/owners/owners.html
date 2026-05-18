@@ -35,8 +35,9 @@
 <!-- TABLE -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <div class="card">
-  <h2 class="text-neutral-500 mb-4">TABLE (with actions)</h2>
+
   <app-table
+  [tableName]="'OWNERS.TITLE' | translate"
     [data]="SAMPLE_DATA"
     [columns]="columns"
     [actions]="tableActions"

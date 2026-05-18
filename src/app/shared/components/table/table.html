@@ -2,9 +2,13 @@
 <!-- Reusable Table Component                                          -->
 <!-- ================================================================ -->
 <div class="table-wrapper">
+  @if(tableName()){
+
+    <h3 class="text-primary-500">{{tableName()}} <span class="badge badge-new ">Total : {{ data().length }} </span></h3>
+  }
   <!-- Top Action Bar (above the bordered card) -->
   @if (visibleHeaderButtons().length > 0) {
-    <div class="table-topbar bg-transparent">
+    <div class="table-topbar ms-auto">
       @for (btn of visibleHeaderButtons(); track $index) {
         <button type="button" [class]="'table-topbar-btn ' + btn.colorClass" (click)="btn.action()">
           @if (btn.icon) {
