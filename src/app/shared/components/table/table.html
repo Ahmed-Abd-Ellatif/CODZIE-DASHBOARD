@@ -4,7 +4,7 @@
 <div class="table-wrapper">
   <!-- Top Action Bar (above the bordered card) -->
   @if (visibleHeaderButtons().length > 0) {
-    <div class="table-topbar">
+    <div class="table-topbar bg-transparent">
       @for (btn of visibleHeaderButtons(); track $index) {
         <button type="button" [class]="'table-topbar-btn ' + btn.colorClass" (click)="btn.action()">
           @if (btn.icon) {

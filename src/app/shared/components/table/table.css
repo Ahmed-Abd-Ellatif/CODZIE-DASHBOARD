@@ -26,8 +26,7 @@
   align-items: center;
   gap: var(--spacing-2);
   padding: var(--spacing-3) var(--spacing-4);
-  /* no border, no grey background */
-  background: #ffffff;
+ 
 }
 
 .table-topbar-btn {
@@ -502,16 +501,7 @@
   border-color: var(--border-main, #334155);
 }
 
-/* Top bar */
-:host-context(body.dark-mode) .table-topbar {
-  background: var(--neutral-900, #0f172a);
-}
 
-:host-context(body.dark-mode) .table-topbar-btn.tbl-neutral {
-  background: var(--neutral-700, #334155);
-  color: var(--neutral-200, #e2e8f0);
-  border-color: var(--neutral-600, #475569);
-}
 
 /* Head */
 :host-context(body.dark-mode) .tbl-head {

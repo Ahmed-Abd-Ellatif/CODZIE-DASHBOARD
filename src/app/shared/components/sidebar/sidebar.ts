@@ -16,16 +16,31 @@ export class Sidebar {
   layout = inject(LayoutService);
   private router = inject(Router);
 
-  openSection = signal<string | null>('dashboard');
+  openSection = signal<string | null>(null);
 
   constructor() {
-    // Close sidebar on mobile after every navigation
+    // Initialize dropdown state based on current URL (e.g. on page refresh)
+    const initialUrl = this.router.url;
+    if (initialUrl.startsWith('/owners')) {
+      this.openSection.set('projects');
+    }
+
+    // React to every navigation: auto-open/close dropdowns based on active route
     this.router.events
       .pipe(
         filter((e) => e instanceof NavigationEnd),
         takeUntilDestroyed(),
       )
-      .subscribe(() => {
+      .subscribe((e) => {
+        const url = (e as NavigationEnd).urlAfterRedirects;
+
+        if (url.startsWith('/owners')) {
+          this.openSection.set('projects');
+        } else {
+          this.openSection.set(null);
+        }
+
+        // Close sidebar on mobile after every navigation
         if (typeof window !== 'undefined' && window.innerWidth < 1024) {
           this.layout.closeSidebar();
         }
@@ -33,6 +48,14 @@ export class Sidebar {
   }
 
   toggleSection(name: string) {
+    const activeRoutes: Record<string, string> = {
+      projects: '/owners',
+    };
+    // Don't allow closing if a child route is currently active
+    const childPath = activeRoutes[name];
+    if (childPath && this.router.url.startsWith(childPath)) {
+      return;
+    }
     this.openSection.update((v) => (v === name ? null : name));
   }
 

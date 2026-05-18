@@ -34,17 +34,10 @@
   "SIDEBAR": {
     "PROJECT_NAME": "لوحة التحكم",
     "DASHBOARD": "لوحة التحكم",
-    "DASHBOARD_LIGHT": "لوحة فاتحة",
-    "DASHBOARD_DARK": "لوحة داكنة",
-    "KANBAN": "كانبان",
-    "CLIENTS": "العملاء",
-    "PROJECT_DETAILS": "تفاصيل المشروع",
-    "MESSAGES": "الرسائل",
-    "LATEST_ACTIVITY": "آخر النشاطات",
-    "MY_PROJECTS": "مشاريعي",
-    "PROJECT_ALPHA": "المشروع ألفا",
-    "PROJECT_BETA": "المشروع بيتا",
-    "PROJECT_GAMMA": "المشروع جاما",
+    "OWNERS": "الملاك",
+    "OWNERS_LIST": "قائمة الملاك",
+    "OWNERS_ARCHIVE": "أرشيف الملاك",
+    "OWNERS_ADD": "إضافة مالك",
     "SETTINGS": "الإعدادات",
     "LOGOUT": "تسجيل الخروج"
   },
@@ -52,6 +45,9 @@
     "NAME": "أحمد عبد اللطيف",
     "ROLE": "مدير",
     "EMAIL": "admin@example.com"
+  },
+   "OWNERS":{
+    "TITLE":"الملاك"
   },
   "LOGIN": {
     "WELCOME_BACK": "مرحبًا بعودتك!",

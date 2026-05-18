@@ -32,19 +32,12 @@
     "LOGOUT": "Logout"
   },
   "SIDEBAR": {
-    "PROJECT_NAME": "ARG Dashboard",
+    "PROJECT_NAME": "CODZIE",
     "DASHBOARD": "Dashboard",
-    "DASHBOARD_LIGHT": "Dashboard Light",
-    "DASHBOARD_DARK": "Dashboard Dark",
-    "KANBAN": "Kanban",
-    "CLIENTS": "Clients",
-    "PROJECT_DETAILS": "Project Details",
-    "MESSAGES": "Messages",
-    "LATEST_ACTIVITY": "Latest Activity",
-    "MY_PROJECTS": "My Projects",
-    "PROJECT_ALPHA": "Project Alpha",
-    "PROJECT_BETA": "Project Beta",
-    "PROJECT_GAMMA": "Project Gamma",
+    "OWNERS": "Owners",
+    "OWNERS_LIST": "Owners List",
+    "OWNERS_ARCHIVE": "Owners Archive",
+    "OWNERS_ADD": "Add Owner",
     "SETTINGS": "Settings",
     "LOGOUT": "Logout"
   },
@@ -52,6 +45,10 @@
     "NAME": "Ahmed Abdellatif",
     "ROLE": "Admin",
     "EMAIL": "admin@example.com"
+  },
+  "OWNERS":{
+    "TITLE":"Owners"
+    
   },
 
   "LOGIN": {

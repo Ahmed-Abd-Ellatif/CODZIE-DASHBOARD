@@ -6,7 +6,7 @@
         <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
       </svg>
     </div>
-    <span class="sidebar-logo-text">{{ 'HOME.CODZIE' | translate }}</span>
+    <span class="sidebar-logo-text">{{ 'SIDEBAR.PROJECT_NAME' | translate }}</span>
   </div>
 
   <hr class="sidebar-sep" />
@@ -41,7 +41,7 @@
             d="M20 6h-2.18c.07-.44.18-.88.18-1.35C18 2.53 16.5 1 14.65 1c-1.02 0-1.96.54-2.61 1.35L12 2.68l-.04-.33C11.35 1.54 10.41 1 9.35 1 7.5 1 6 2.53 6 4.65c0 .47.11.91.18 1.35H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-5.35-3.65c.74 0 1.35.61 1.35 1.3 0 .74-.6 1.35-1.35 1.35-.74 0-1.35-.6-1.35-1.35 0-.69.61-1.3 1.35-1.3zM9.35 3.65c.74 0 1.35.61 1.35 1.3 0 .74-.6 1.35-1.35 1.35-.74 0-1.35-.6-1.35-1.35 0-.69.61-1.3 1.35-1.3zM20 19H4V8h16v11z"
           />
         </svg>
-        <span class="flex-1 text-start">{{ 'SIDEBAR.MY_PROJECTS' | translate }}</span>
+        <span class="flex-1 text-start" routerLinkActive="active">{{ 'SIDEBAR.OWNERS' | translate }}</span>
         <svg
           class="sidebar-chevron"
           [class.open]="openSection() === 'projects'"
@@ -56,9 +56,9 @@
 
       @if (openSection() === 'projects') {
         <div class="sidebar-submenu">
-          <a class="sidebar-sub-link" href="#">{{ 'SIDEBAR.PROJECT_ALPHA' | translate }}</a>
-          <a class="sidebar-sub-link" href="#">{{ 'SIDEBAR.PROJECT_BETA' | translate }}</a>
-          <a class="sidebar-sub-link" href="#">{{ 'SIDEBAR.PROJECT_GAMMA' | translate }}</a>
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/list">{{ 'SIDEBAR.OWNERS_LIST' | translate }}</a>
+          <a class="sidebar-sub-link" routerLink="/owners/add">{{ 'SIDEBAR.OWNERS_ADD' | translate }}</a>
+          <a class="sidebar-sub-link" routerLink="/owners/archive">{{ 'SIDEBAR.OWNERS_ARCHIVE' | translate }}</a>
         </div>
       }
     </div>
