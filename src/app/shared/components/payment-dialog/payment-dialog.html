@@ -1,0 +1,61 @@
+<div class="payment-dialog-container">
+  <div class="payment-dialog card">
+    <h2 class="mb-6 text-neutral-900 font-bold text-lg">Paying expenses</h2>
+    <form [formGroup]="paymentForm" (class="space-y-6" ) (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-group col-12">
+          <label for="ownerName" class="input-label">{{ 'OWNERS.NAME' | translate }}</label>
+          <input
+            formControlName="ownerName"
+            type="text"
+            readonly
+            id="ownerName"
+            class="input"
+            placeholder="Enter owner name"
+          />
+        </div>
+        <div class="input-group col-6">
+          <label for="cost" class="input-label">{{ 'OWNERS.COST' | translate }} </label>
+          <input
+            formControlName="cost"
+            type="number"
+            id="cost"
+            class="input"
+            placeholder="Enter cost"
+          />
+        </div>
+        <div class="input-group col-6">
+          <label for="amount" class="input-label">{{ 'OWNERS.REMAINING' | translate }}</label>
+          <input
+            formControlName="remaining"
+            type="number"
+            id="amount"
+            class="input"
+            placeholder="Enter remaining amount"
+          />
+        </div>
+        <div class="input-group col-12">
+          <label for="admin" class="input-label">{{ 'OWNERS.RECIPIENT' | translate }}</label>
+          <input formControlName="RecipientName" type="text" readonly id="admin" class="input" />
+        </div>
+        <div class="input-group col-6">
+          <label for="month" class="input-label">{{ 'GENERAL.MONTH' | translate }}</label>
+          <input formControlName="month" type="number" id="month" class="input" />
+        </div>
+        <div class="input-group col-6">
+          <label for="paymentDate" class="input-label">{{ 'GENERAL.YEAR' | translate }}</label>
+          <input formControlName="year" type="number" id="paymentDate" class="input" />
+        </div>
+      </div>
+
+      <div class="text-end">
+        <button class="btn btn-outline mr-2" type="button" (click)="onClose()">
+          {{ 'GENERAL.CANCEL' | translate }}
+        </button>
+        <button class="btn btn-primary" type="submit">
+          {{ 'GENERAL.CONFIRM_PAYMENT' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

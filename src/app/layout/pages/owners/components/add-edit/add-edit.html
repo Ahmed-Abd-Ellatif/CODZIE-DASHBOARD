@@ -1,0 +1,92 @@
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * BREADCRUMB -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-breadcrumb
+  [pageTitle]="isEditMode ? ('OWNERS.EDIT_OWNER' | translate) : ('OWNERS.ADD_OWNER' | translate)"
+/>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * OWNER PRIMARY DETAILS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <p class="mb-5 font-bold text-neutral-900 text-lg">
+    {{ 'OWNERS.BASIC_INFORMATION' | translate }}
+  </p>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'OWNERS.FULL_NAME' | translate }}</label>
+      <input class="input" placeholder="{{ 'OWNERS.FULL_NAME' | translate }}" />
+    </div>
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'OWNERS.EMAIL' | translate }}</label>
+      <input type="email" class="input" placeholder="{{ 'OWNERS.EMAIL' | translate }}" />
+    </div>
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'OWNERS.SYSTEM' | translate }}</label>
+      <div class="select-wrapper">
+        <select class="select">
+          <option value="" selected disabled>{{ 'OWNERS.SYSTEM_OPTIONS' | translate }}</option>
+          <option value="1">{{ 'OWNERS.TEACHER' | translate }}</option>
+          <option value="2">{{ 'OWNERS.CENTER' | translate }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'OWNERS.COST' | translate }}</label>
+      <input
+        class="input"
+        type="text"
+        pattern="^[0-9]*$"
+        placeholder="{{ 'OWNERS.COST' | translate }}"
+      />
+    </div>
+    <div class="col-12">
+      <label class="input-label">{{ 'OWNERS.URL' | translate }}</label>
+      <input type="url" value="www.example.com/ahmed-abdellatif-123456789" class="input" disabled />
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <p class="mb-5 font-bold text-neutral-900 text-lg">
+    {{ 'OWNERS.ADDITIONAL_INFORMATION' | translate }}
+  </p>
+  <div class="col-12 col-md-6 mb-3">
+    <label class="input-label">{{ 'OWNERS.PAYMENT_SCHEDULE' | translate }}</label>
+    <button
+      type="button"
+      [class]="paymentSchedule === 'monthly' ? 'btn btn-primary' : 'btn btn-outline'"
+      (click)="selectedPaymentSchedule('monthly')"
+    >
+      {{ 'OWNERS.MONTHLY' | translate }}
+    </button>
+    <button
+      type="button"
+      [class]="paymentSchedule === 'yearly' ? 'btn btn-primary' : 'btn btn-outline'"
+      (click)="selectedPaymentSchedule('yearly')"
+    >
+      {{ 'OWNERS.YEARLY' | translate }}
+    </button>
+    <button
+      type="button"
+      [class]="paymentSchedule === 'noPayment' ? 'btn btn-primary' : 'btn btn-outline'"
+      (click)="selectedPaymentSchedule('noPayment')"
+    >
+      {{ 'OWNERS.NO_PAYMENT' | translate }}
+    </button>
+  </div>
+  <div class="col-12 col-md-6">
+    <label class="input-label">{{ 'OWNERS.SCHEDULED_FEES' | translate }}</label>
+    <input
+      class="input"
+      placeholder="{{ 'OWNERS.SCHEDULED_FEES' | translate }}"
+      [disabled]="paymentSchedule === 'noPayment'"
+    />
+  </div>
+</div>
+<div class="text-end">
+  <button class="btn btn-outline" routerLink="/owners/list">
+    {{ 'GENERAL.CANCEL' | translate }}
+  </button>
+  <button class="btn btn-primary">{{ 'GENERAL.SAVE' | translate }}</button>
+</div>

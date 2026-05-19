@@ -1,4 +1,11 @@
 {
+  "GENERAL": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "CONFIRM_PAYMENT": "Confirm Payment",
+    "MONTH": "Month",
+    "YEAR": "Year"
+  },
   "DASHBOARD": {
     "TITLE": "Dashboard",
     "DAILY_PROFIT": "Daily Profit",
@@ -46,9 +53,33 @@
     "ROLE": "Admin",
     "EMAIL": "admin@example.com"
   },
-  "OWNERS":{
-    "TITLE":"Owners"
-    
+  "OWNERS": {
+    "TITLE": "Owners",
+    "CODE": "Owner Code",
+    "NAME": "Owner Name",
+    "EMAIL": "Email",
+    "URL": "Owner URL",
+    "JOIN_DATE": "Join Date",
+    "COST": "Cost",
+    "REMAINING": "Remaining",
+    "RECIPIENT": "Recipient",
+    "STATUS": "Status",
+    "ADD_OWNER": "Add Owner",
+    "EDIT_OWNER": "Edit Owner",
+    "VIEW_OWNER": "View Owner",
+    "DELETE_OWNER": "Delete Owner",
+    "BASIC_INFORMATION": "Basic Information",
+    "FULL_NAME": "Full Name",
+    "SYSTEM": "System",
+    "SYSTEM_OPTIONS": "System Options",
+    "TEACHER": "Teacher",
+    "CENTER": "Center",
+    "ADDITIONAL_INFORMATION": "Additional Information",
+    "PAYMENT_SCHEDULE": "Payment schedule",
+    "MONTHLY": "Monthly",
+    "YEARLY": "Yearly",
+    "NO_PAYMENT": "No Payment",
+    "SCHEDULED_FEES": "Scheduled fees"
   },
 
   "LOGIN": {

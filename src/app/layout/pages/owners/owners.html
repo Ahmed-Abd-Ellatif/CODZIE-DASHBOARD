@@ -19,28 +19,33 @@
       </div>
     </div>
     <div class="select-wrapper col-12 col-md-3">
-    <select class="select">
-      <option value="" selected disabled>Pay Opthions</option>
-      <option value="1">Pay</option>
-      <option value="2">Not Pay</option>
-    </select>
+      <select class="select">
+        <option value="" selected disabled>Pay Opthions</option>
+        <option value="1">Pay</option>
+        <option value="2">Not Pay</option>
+      </select>
+    </div>
   </div>
-  </div>
-  <div 
-    class="text-end">
-      <button class="btn btn-primary ">Filter</button>
+  <div class="text-end">
+    <button class="btn btn-primary">Filter</button>
   </div>
 </div>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- TABLE -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <div class="card">
-
   <app-table
-  [tableName]="'OWNERS.TITLE' | translate"
+    [tableName]="'OWNERS.TITLE' | translate"
     [data]="SAMPLE_DATA"
     [columns]="columns"
     [actions]="tableActions"
     [headerButtons]="topButtons"
   />
 </div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- PAYMENT DIALOG -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+@if (paymentDialogVisible()) {
+  <app-payment-dialog [ownerData]="selectOwner" (close)="closePaymentDialog()" />
+}

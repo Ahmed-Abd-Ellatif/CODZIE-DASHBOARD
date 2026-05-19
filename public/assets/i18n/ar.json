@@ -1,4 +1,11 @@
 {
+  "GENERAL": {
+    "SAVE": "حفظ",
+    "CANCEL": "إلغاء",
+    "CONFIRM_PAYMENT": "تأكيد الدفع",
+    "MONTH": "الشهر",
+    "YEAR": "السنة"
+  },
   "DASHBOARD": {
     "TITLE": "لوحة التحكم",
     "DAILY_PROFIT": "الربح اليومي",
@@ -46,8 +53,34 @@
     "ROLE": "مدير",
     "EMAIL": "admin@example.com"
   },
-   "OWNERS":{
-    "TITLE":"الملاك"
+  "OWNERS": {
+    "TITLE": "الملاك",
+    "CODE": "كود المالك",
+    "NAME": "اسم المالك",
+    "EMAIL": "البريد الإلكتروني للمالك",
+    "URL": "رابط المالك",
+    "JOIN_DATE": "تاريخ الانضمام",
+    "COST": "التكلفة",
+    "REMAINING": "المتبقي",
+    "RECIPIENT": "المستلم",
+
+    "STATUS": "الحالة",
+    "ADD_OWNER": "إضافة مالك",
+    "EDIT_OWNER": "تعديل المالك",
+    "VIEW_OWNER": "عرض ملف المالك",
+    "DELETE_OWNER": "حذف المالك",
+    "BASIC_INFORMATION": "البيانات الأساسية",
+    "FULL_NAME": "الاسم الكامل",
+    "SYSTEM": "النظام",
+    "SYSTEM_OPTIONS": "خيارات النظام",
+    "TEACHER": "المعلم",
+    "CENTER": "المركز",
+    "ADDITIONAL_INFORMATION": "البيانات الإضافية ",
+    "PAYMENT_SCHEDULE": " طريقة دفع المصاريف",
+    "MONTHLY": "بالشهر",
+    "YEARLY": "بالسنة",
+    "NO_PAYMENT": "لا يدفع",
+    "SCHEDULED_FEES": "قيمة المصروفات المقررة"
   },
   "LOGIN": {
     "WELCOME_BACK": "مرحبًا بعودتك!",

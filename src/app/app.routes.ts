@@ -14,6 +14,16 @@ export const routes: Routes = [
         loadComponent: () => import('./layout/pages/owners/owners').then((m) => m.Owners),
       },
       {
+        path: 'owners/add',
+        loadComponent: () =>
+          import('./layout/pages/owners/components/add-edit/add-edit').then((m) => m.AddEdit),
+      },
+      {
+        path: 'owners/edit/:id',
+        loadComponent: () =>
+          import('./layout/pages/owners/components/add-edit/add-edit').then((m) => m.AddEdit),
+      },
+      {
         path: 'design-system',
         loadComponent: () => import('./shared/components/design/design').then((m) => m.Design),
       },
