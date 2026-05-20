@@ -28,18 +28,18 @@
     <div>
       <button
         class="sidebar-link"
-        [class.active]="openSection() === 'projects'"
-        (click)="toggleSection('projects')"
+        [class.active]="openSection() === 'owners'"
+        (click)="toggleSection('owners')"
         type="button"
       >
         <i class="fa-solid fa-users-gear"></i>
         <span class="flex-1 text-start" routerLinkActive="active">{{
           'SIDEBAR.OWNERS' | translate
         }}</span>
-        <i class="fa-solid fa-chevron-down sidebar-chevron" [class.open]="openSection() === 'projects'"></i>
+        <i class="fa-solid fa-chevron-down sidebar-chevron" [class.open]="openSection() === 'owners'"></i>
       </button>
 
-      @if (openSection() === 'projects') {
+      @if (openSection() === 'owners') {
         <div class="sidebar-submenu">
           <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/list">{{ 'SIDEBAR.OWNERS_LIST' | translate }}</a>
           <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/add">{{ 'SIDEBAR.OWNERS_ADD' | translate }}</a>
@@ -47,6 +47,7 @@
         </div>
       }
     </div>
+   
 
     <!-- Settings (simple link) -->
     <button class="sidebar-link" type="button">

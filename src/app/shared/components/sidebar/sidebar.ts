@@ -22,7 +22,7 @@ export class Sidebar {
     // Initialize dropdown state based on current URL (e.g. on page refresh)
     const initialUrl = this.router.url;
     if (initialUrl.startsWith('/owners')) {
-      this.openSection.set('projects');
+      this.openSection.set('owners');
     }
 
     // React to every navigation: auto-open/close dropdowns based on active route
@@ -35,7 +35,7 @@ export class Sidebar {
         const url = (e as NavigationEnd).urlAfterRedirects;
 
         if (url.startsWith('/owners')) {
-          this.openSection.set('projects');
+          this.openSection.set('owners');
         } else {
           this.openSection.set(null);
         }
