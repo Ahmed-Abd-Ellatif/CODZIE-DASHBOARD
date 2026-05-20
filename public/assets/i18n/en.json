@@ -73,6 +73,7 @@
     "VIEW_OWNER": "View Owner",
     "DELETE_OWNER": "Delete Owner",
     "PAY_COST": "Pay Cost",
+    "RESET_PASSWORD": "Reset Password",
     "BLOCK_OWNER": "Block",
     "UNBLOCK_OWNER": "UnBlock",
     "BLOCK_CONFIRM": "Do you want to block owner {{name}}?",

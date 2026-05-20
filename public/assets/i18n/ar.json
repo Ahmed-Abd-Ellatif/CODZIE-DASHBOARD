@@ -74,6 +74,8 @@
     "VIEW_OWNER": "عرض ملف المالك",
     "DELETE_OWNER": "حذف المالك",
     "PAY_COST": "دفع التكلفة",
+    "RESET_PASSWORD": "إعادة تعيين كلمة المرور",
+
     "BLOCK_OWNER": "حظر",
     "UNBLOCK_OWNER": "إلغاء الحظر",
     "BLOCK_CONFIRM": "هل تريد حظر المالك {{name}}؟",

@@ -128,21 +128,26 @@ export class Owners {
   tableActions: TableAction[] = [
     {
       label: 'OWNERS.EDIT_OWNER',
-      icon: 'icons/edit.svg',
+      icon: 'edit',
       callback: (row) => this._router.navigate(['/owners/edit', row.id]),
     },
 
     {
       label: 'OWNERS.VIEW_OWNER',
-      icon: 'icons/view.svg',
+      icon: 'eye',
       callback: (row) => this._router.navigate(['/owners/profile', row.id]),
       // show: (row) => row.status === 'active',
       // disabled: (row) => row.status === 'active',
     },
+    {
+      label: 'OWNERS.RESET_PASSWORD',
+      icon: 'key',
+      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
+    },
 
     {
       label: 'OWNERS.DELETE_OWNER',
-      icon: 'icons/delete.svg',
+      icon: 'trash-can',
       callback: (row) => confirm('هل أنت متأكد من حذف ' + row.name + '؟'),
       danger: true,
     },

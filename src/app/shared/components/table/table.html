@@ -173,11 +173,7 @@
                       (click)="toggleDropdown(i, $event)"
                       aria-label="Row actions"
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <circle cx="12" cy="5" r="1.8" />
-                        <circle cx="12" cy="12" r="1.8" />
-                        <circle cx="12" cy="19" r="1.8" />
-                      </svg>
+                     <i class="fas fa-ellipsis"></i>
                     </button>
 
                     @if (activeRowIndex() === i && dropdownPos()) {
@@ -188,6 +184,7 @@
                         (click)="$event.stopPropagation()"
                       >
                         @for (action of visibleActions(row); track $index) {
+                        
                           <button
                             type="button"
                             class="action-menu-item"
@@ -196,29 +193,10 @@
                             [disabled]="isActionDisabled(action, row)"
                             (click)="action.callback(row); closeDropdown()"
                           >
-                            @if (action.icon) {
-                              <span class="action-icon-wrap">
-                                @if (isIconUrl(action.icon)) {
-                                  <img
-                                    class="action-icon"
-                                    [src]="action.icon"
-                                    width="16"
-                                    height="16"
-                                    alt=""
-                                  />
-                                } @else {
-                                  <svg
-                                    class="action-icon"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                  >
-                                    <path [attr.d]="action.icon" />
-                                  </svg>
-                                }
-                              </span>
-                            }
+                          
+                              
+                            <i [class]="['fas', 'fa-' + action.icon, action.danger ? 'text-danger' : 'text-primary-500']"></i>
+                      
                             {{ action.label | translate }}
                           </button>
                         }

@@ -15,7 +15,7 @@
 			<p class="owner-subtitle">{{ 'OWNERS.PROFILE_SUBTITLE' | translate }}</p>
 
 			<div class="action-buttons">
-				<button class="btn btn-primary-custom" type="button" (click)="openPaymentDialog()">
+				<button class="btn btn-primary" type="button" (click)="openPaymentDialog()">
 					<i class="fas fa-money-bill-wave"></i>
 					<span>{{ 'OWNERS.PAY_COST' | translate }}</span>
 				</button>
@@ -35,6 +35,10 @@
 				<button class="btn btn-danger-custom" type="button" (click)="deleteOwner()">
 					<i class="fas fa-trash-can"></i>
 					<span>{{ 'OWNERS.DELETE_OWNER' | translate }}</span>
+				</button>
+				<button class="btn btn-success-custom" type="button" >
+					<i class="fas fa-key"></i>
+					<span>{{ 'OWNERS.RESET_PASSWORD' | translate }}</span>
 				</button>
 			</div>
 		</div>
