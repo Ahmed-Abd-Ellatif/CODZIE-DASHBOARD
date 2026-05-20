@@ -7,8 +7,7 @@
   height: 60px;
   flex-shrink: 0;
   background: #ffffff;
-  border-bottom: 1px solid var(--neutral-200);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 2px solid var(--neutral-200);
   position: sticky;
   top: 0;
   z-index: 30;
@@ -155,7 +154,6 @@
   background: #ffffff;
   border: 1px solid var(--neutral-200);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
   overflow: hidden;
   z-index: 100;
   animation: dropdownIn 0.15s var(--ease-out);

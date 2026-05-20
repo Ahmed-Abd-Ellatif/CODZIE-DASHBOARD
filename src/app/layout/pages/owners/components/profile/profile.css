@@ -28,7 +28,6 @@
 	border-radius: 50%;
 	object-fit: cover;
 	border: 4px solid var(--neutral-50);
-	box-shadow: var(--shadow-lg);
 }
 
 .owner-status-pill {
@@ -41,7 +40,6 @@
 	font-weight: 700;
 	padding: 4px 10px;
 	border-radius: var(--radius-full);
-	box-shadow: var(--shadow-sm);
 }
 
 .owner-status-pill--blocked {
@@ -134,7 +132,6 @@
 	border: 1px solid var(--neutral-200);
 	border-radius: var(--radius-lg);
 	background: linear-gradient(160deg, var(--neutral-50), var(--neutral-100));
-	box-shadow: var(--shadow-xs);
 }
 
 .kpi-item span {
@@ -164,7 +161,6 @@
 	border: 1px solid var(--neutral-200);
 	border-radius: var(--radius-xl);
 	background: var(--neutral-50);
-	box-shadow: var(--shadow-xs);
 }
 
 .detail-row {

@@ -29,7 +29,7 @@ interface PaymentHistory {
 
 @Component({
   selector: 'app-profile',
-  imports: [CommonModule, Breadcrumb, PaymentDialog, SharedTable, TranslatePipe],
+  imports: [CommonModule, PaymentDialog, SharedTable, TranslatePipe],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
@@ -52,8 +52,8 @@ export class Profile {
     languages: ['OWNERS.LANG_ARABIC', 'OWNERS.LANG_ENGLISH'],
     cost: 500,
     image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
-    joinDate: new Date('2024-01-15'),
+      'https://www.silcharmunicipality.in/wp-content/uploads/2021/02/male-face.jpg',
+    joinDate: new Date('2025-08-15'),
     status: 'active',
   };
 
@@ -68,7 +68,7 @@ export class Profile {
       key: 'amount',
       label: 'OWNERS.PAYMENT_AMOUNT',
       type: 'currency',
-      currencyCode: 'USD',
+      currencyCode: 'EGP',
       sortable: true,
       align: 'center',
     },
