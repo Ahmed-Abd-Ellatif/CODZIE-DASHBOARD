@@ -1,0 +1,124 @@
+<!-- <app-breadcrumb [pageTitle]="'OWNERS.PROFILE_TITLE' | translate" /> -->
+
+<section class="owner-profile-card card">
+	<div class="owner-hero">
+		<div class="owner-avatar-wrap">
+			<img [src]="owner.image" [alt]="owner.name" class="owner-image" />
+			<span class="owner-status-pill" [class.owner-status-pill--blocked]="isBlocked()">
+				{{ (isBlocked() ? 'OWNERS.BLOCKED' : 'OWNERS.ACTIVE') | translate }}
+			</span>
+		</div>
+
+		<div class="owner-hero__content">
+			<p class="owner-tag">{{ 'OWNERS.PROFILE_TITLE' | translate }}</p>
+			<h2>{{ owner.name }}</h2>
+			<p class="owner-subtitle">{{ 'OWNERS.PROFILE_SUBTITLE' | translate }}</p>
+
+			<div class="action-buttons">
+				<button class="btn btn-primary-custom" type="button" (click)="openPaymentDialog()">
+					<i class="fas fa-money-bill-wave"></i>
+					<span>{{ 'OWNERS.PAY_COST' | translate }}</span>
+				</button>
+				<button class="btn btn-outline" type="button" (click)="editOwner()">
+					<i class="fas fa-user-pen"></i>
+					<span>{{ 'OWNERS.EDIT_OWNER' | translate }}</span>
+				</button>
+				<button
+					class="btn"
+					[class]="isBlocked() ? 'btn btn-success-custom' : 'btn btn-warning-custom'"
+					type="button"
+					(click)="toggleBlockStatus()"
+				>
+					<i [class]="isBlocked() ? 'fas fa-lock-open' : 'fas fa-ban'"></i>
+					<span>{{ (isBlocked() ? 'OWNERS.UNBLOCK_OWNER' : 'OWNERS.BLOCK_OWNER') | translate }}</span>
+				</button>
+				<button class="btn btn-danger-custom" type="button" (click)="deleteOwner()">
+					<i class="fas fa-trash-can"></i>
+					<span>{{ 'OWNERS.DELETE_OWNER' | translate }}</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="owner-primary-panel">
+		<div class="owner-kpis">
+			<div class="kpi-item">
+				<span>{{ 'OWNERS.CODE' | translate }}</span>
+				<strong>#{{ owner.id }}</strong>
+			</div>
+			<div class="kpi-item">
+				<span>{{ 'OWNERS.TYPE' | translate }}</span>
+				<strong>{{ ownerTypeLabelKey | translate }}</strong>
+			</div>
+			<div class="kpi-item kpi-item--cost">
+				<span>{{ 'OWNERS.COST' | translate }}</span>
+				<strong>{{ owner.cost }} {{ 'GENERAL.CURRENCY' | translate }}</strong>
+			</div>
+		</div>
+
+		<div class="owner-details-list">
+			<div class="detail-row">
+				<span class="detail-label"><i class="fas fa-user"></i>{{ 'OWNERS.NAME' | translate }}</span>
+				<span class="detail-value">{{ owner.name }}</span>
+			</div>
+			<div class="detail-row">
+				<span class="detail-label"><i class="fas fa-phone"></i>{{ 'OWNERS.PHONE' | translate }}</span>
+				<span class="detail-value">{{ owner.phone }}</span>
+			</div>
+			<div class="detail-row">
+				<span class="detail-label"><i class="fas fa-envelope"></i>{{ 'OWNERS.EMAIL' | translate }}</span>
+				<span class="detail-value">{{ owner.email }}</span>
+			</div>
+			<div class="detail-row">
+				<span class="detail-label"><i class="fas fa-link"></i>{{ 'OWNERS.WEBSITE' | translate }}</span>
+				<div class="website-actions">
+					<a class="info-link" [href]="owner.url" target="_blank" rel="noreferrer">{{ 'OWNERS.VISIT_WEBSITE' | translate }}</a>
+					<button type="button" class="copy-link-btn" (click)="copyWebsiteUrl()">
+						<i class="fas fa-copy"></i>
+						<span>{{ (copiedWebsite() ? 'OWNERS.COPIED' : 'OWNERS.COPY_LINK') | translate }}</span>
+					</button>
+				</div>
+			</div>
+			<div class="detail-row">
+				<span class="detail-label"><i class="fas fa-calendar"></i>{{ 'OWNERS.CREATED_AT' | translate }}</span>
+				<span class="detail-value">{{ owner.joinDate | date: 'mediumDate' }}</span>
+			</div>
+			<div class="detail-row detail-row--membership">
+				<span class="detail-label"><i class="fas fa-hourglass-end"></i>{{ 'OWNERS.MEMBERSHIP_DURATION' | translate }}</span>
+				<div class="membership-duration">
+					@if (getMembershipDuration().years > 0) {
+						<span class="duration-badge duration-badge--years">
+							{{ getMembershipDuration().years }} {{ getMembershipDuration().years === 1 ? ('OWNERS.YEAR' | translate) : ('OWNERS.YEARS' | translate) }}
+						</span>
+					}
+					@if (getMembershipDuration().months > 0) {
+						<span class="duration-badge duration-badge--months">
+							{{ getMembershipDuration().months }} {{ getMembershipDuration().months === 1 ? ('OWNERS.MONTH' | translate) : ('OWNERS.MONTHS' | translate) }}
+						</span>
+					}
+					@if (getMembershipDuration().years === 0 && getMembershipDuration().months === 0) {
+						<span class="duration-badge duration-badge--new">{{ 'OWNERS.NEW_MEMBER' | translate }}</span>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="card payments-card">
+	<div class="payments-head">
+		<h3>{{ 'OWNERS.PAYMENT_HISTORY_TITLE' | translate }}</h3>
+		<p>{{ 'OWNERS.PAYMENT_HISTORY_SUBTITLE' | translate }}</p>
+	</div>
+
+	<app-table
+		[tableName]="'OWNERS.PAYMENT_HISTORY_TABLE' | translate"
+		[data]="paymentHistory"
+		[columns]="paymentColumns"
+		[config]="{ emptyMessage: ('OWNERS.NO_PAYMENT_HISTORY' | translate), pageSizeOptions: [5, 10, 25] }"
+	></app-table>
+</section>
+
+@if (paymentDialogVisible()) {
+	<app-payment-dialog [ownerData]="owner" (close)="closePaymentDialog()" />
+}

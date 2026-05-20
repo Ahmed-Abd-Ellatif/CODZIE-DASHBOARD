@@ -135,7 +135,7 @@ export class Owners {
     {
       label: 'OWNERS.VIEW_OWNER',
       icon: 'icons/view.svg',
-      callback: (row) => console.log('View:', row),
+      callback: (row) => this._router.navigate(['/owners/profile', row.id]),
       // show: (row) => row.status === 'active',
       // disabled: (row) => row.status === 'active',
     },

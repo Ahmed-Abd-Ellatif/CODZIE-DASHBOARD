@@ -236,7 +236,8 @@
       </table>
     </div>
 
-    <div class="tbl-pagination">
+   @if (totalPages() > 1) {
+     <div class="tbl-pagination">
       <span class="pagination-info">
         @if (sortedData().length === 0) {
           No results
@@ -317,5 +318,6 @@
         </button>
       </div>
     </div>
+   }
   </div>
 </div>

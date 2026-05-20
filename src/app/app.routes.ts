@@ -24,6 +24,11 @@ export const routes: Routes = [
           import('./layout/pages/owners/components/add-edit/add-edit').then((m) => m.AddEdit),
       },
       {
+        path: 'owners/profile/:id',
+        loadComponent: () =>
+          import('./layout/pages/owners/components/profile/profile').then((m) => m.Profile),
+      },
+      {
         path: 'design-system',
         loadComponent: () => import('./shared/components/design/design').then((m) => m.Design),
       },
