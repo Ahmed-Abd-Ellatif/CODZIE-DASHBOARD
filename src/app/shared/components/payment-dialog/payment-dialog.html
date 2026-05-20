@@ -1,6 +1,6 @@
 <div class="payment-dialog-container">
   <div class="payment-dialog card">
-    <h2 class="mb-6 text-neutral-900 font-bold text-lg">{{"OWNER.PAY_COST" | translate}}</h2>
+    <h2 class="mb-6 text-neutral-900 font-bold text-lg">{{"OWNERS.PAY_COST" | translate}}</h2>
     <form [formGroup]="paymentForm" (class="space-y-6" ) (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="input-group col-12">
@@ -10,8 +10,9 @@
             type="text"
             readonly
             id="ownerName"
-            class="input"
+            class="input input-disabled"
             placeholder="Enter owner name"
+            
           />
         </div>
         <div class="input-group col-6">
@@ -36,7 +37,7 @@
         </div>
         <div class="input-group col-12">
           <label for="admin" class="input-label">{{ 'OWNERS.RECIPIENT' | translate }}</label>
-          <input formControlName="RecipientName" type="text" readonly id="admin" class="input" />
+          <input formControlName="RecipientName" type="text" readonly id="admin" class="input input-disabled" />
         </div>
         <div class="input-group col-6">
           <label for="month" class="input-label">{{ 'GENERAL.MONTH' | translate }}</label>
@@ -48,7 +49,7 @@
         </div>
       </div>
 
-      <div class="text-end">
+      <div class="text-end mt-3">
         <button class="btn btn-outline mr-2" type="button" (click)="onClose()">
           {{ 'GENERAL.CANCEL' | translate }}
         </button>
