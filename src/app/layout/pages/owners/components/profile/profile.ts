@@ -19,6 +19,7 @@ interface OwnerProfile {
   image: string;
   joinDate: Date;
   status: 'active' | 'blocked';
+  subscriptionType: 'monthly' | 'yearly';
 }
 
 interface PaymentHistory {
@@ -51,10 +52,10 @@ export class Profile {
     ownerType: 'teacher',
     languages: ['OWNERS.LANG_ARABIC', 'OWNERS.LANG_ENGLISH'],
     cost: 500,
-    image:
-      'https://www.silcharmunicipality.in/wp-content/uploads/2021/02/male-face.jpg',
+    image: 'https://www.silcharmunicipality.in/wp-content/uploads/2021/02/male-face.jpg',
     joinDate: new Date('2025-08-15'),
     status: 'active',
+    subscriptionType: 'yearly',
   };
 
   paymentHistory: PaymentHistory[] = [
@@ -154,12 +155,13 @@ export class Profile {
   }
 
   deleteOwner(): void {
-    const confirmed = confirm(this.translate.instant('OWNERS.DELETE_CONFIRM', { name: this.owner.name }));
+    const confirmed = confirm(
+      this.translate.instant('OWNERS.DELETE_CONFIRM', { name: this.owner.name }),
+    );
     if (!confirmed) {
       return;
     }
 
     this.router.navigate(['/owners/list']);
   }
-
 }

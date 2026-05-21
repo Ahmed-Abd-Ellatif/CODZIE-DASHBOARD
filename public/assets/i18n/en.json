@@ -113,7 +113,8 @@
     "NO_PAYMENT": "No Payment",
     "SCHEDULED_FEES": "Scheduled fees",
     "VISIT_WEBSITE": "Visit Website",
-    "CREATED_AT": "Created At"
+    "CREATED_AT": "Created At",
+    "SUBSCRIPTION_TYPE": "Subscription Type"
   },
 
   "LOGIN": {

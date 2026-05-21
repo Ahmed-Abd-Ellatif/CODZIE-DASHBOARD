@@ -115,8 +115,8 @@
     "NO_PAYMENT": "لا يدفع",
     "SCHEDULED_FEES": "قيمة المصروفات المقررة",
     "VISIT_WEBSITE": "زيارة الموقع",
-      "CREATED_AT": "تاريخ الإنضمام"
-
+    "CREATED_AT": "تاريخ الإنضمام",
+    "SUBSCRIPTION_TYPE": "نوع الاشتراك"
   },
   "LOGIN": {
     "WELCOME_BACK": "مرحبًا بعودتك!",
