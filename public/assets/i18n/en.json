@@ -64,6 +64,7 @@
     "PHONE": "Phone",
     "URL": "Owner URL",
     "JOIN_DATE": "Join Date",
+    "JOIN_DATE_PLACEHOLDER": "Select join date",
     "COST": "Cost",
     "REMAINING": "Remaining",
     "RECIPIENT": "Recipient",
@@ -114,7 +115,10 @@
     "SCHEDULED_FEES": "Scheduled fees",
     "VISIT_WEBSITE": "Visit Website",
     "CREATED_AT": "Created At",
-    "SUBSCRIPTION_TYPE": "Subscription Type"
+    "SUBSCRIPTION_TYPE": "Subscription Type",
+    "PAY_OPTIONS_PLACEHOLDER": "Pay Options",
+    "PAY": "Pay",
+    "NOT_PAY": "Not Pay"
   },
 
   "LOGIN": {

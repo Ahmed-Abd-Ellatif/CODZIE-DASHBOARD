@@ -103,7 +103,6 @@
 
 /* ── Separator ──────────────────────────────────── */
 
-
 /* ── Navigation ─────────────────────────────────── */
 .sidebar-nav {
   flex: 1;
@@ -194,19 +193,17 @@
   transform: rotate(180deg);
 }
 /* Submenu */
-/* Submenu */
+
 .sidebar-submenu {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding-inline-start: var(--spacing-8);
   padding-block: var(--spacing-2);
   animation: submenuIn 0.22s var(--ease-out);
   background: none;
   border-radius: var(--radius-sm);
   margin: 6px 0;
-  border-left: 3px solid rgba(99, 102, 241, 0.15);
-  padding-inline-start: calc(var(--spacing-8) - 2px);
+  padding-inline-start: calc(var(--spacing-3));
 }
 
 @keyframes submenuIn {
@@ -312,7 +309,7 @@
 /* ── Footer / Logout ────────────────────────────── */
 .sidebar-footer {
   flex-shrink: 0;
-  padding: var(--spacing-3) ;
+  padding: var(--spacing-3);
   /* border-top: 2px solid var(--neutral-200); */
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.04) 0%, rgba(20, 184, 166, 0.02) 100%);
   position: relative;

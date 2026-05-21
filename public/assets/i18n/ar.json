@@ -64,6 +64,7 @@
     "PHONE": "رقم الهاتف",
     "URL": "رابط المالك",
     "JOIN_DATE": "تاريخ الانضمام",
+    "JOIN_DATE_PLACEHOLDER": "اختر تاريخ الانضمام",
     "COST": "التكلفة",
     "REMAINING": "المتبقي",
     "RECIPIENT": "المستلم",
@@ -116,7 +117,10 @@
     "SCHEDULED_FEES": "قيمة المصروفات المقررة",
     "VISIT_WEBSITE": "زيارة الموقع",
     "CREATED_AT": "تاريخ الإنضمام",
-    "SUBSCRIPTION_TYPE": "نوع الاشتراك"
+    "SUBSCRIPTION_TYPE": "نوع الاشتراك",
+    "PAY_OPTIONS_PLACEHOLDER": "خيارات الدفع",
+    "PAY": "يدفع",
+    "NOT_PAY": "لا يدفع"
   },
   "LOGIN": {
     "WELCOME_BACK": "مرحبًا بعودتك!",

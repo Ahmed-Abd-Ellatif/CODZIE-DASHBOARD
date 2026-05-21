@@ -37,6 +37,8 @@ export interface TableAction {
   show?: boolean | ((row: any) => boolean);
   /** Renders action in red (danger style) */
   danger?: boolean;
+  /** Renders action in green (success style) */
+  success?: boolean;
   /** Disables the action — static boolean OR per-row predicate */
   disabled?: boolean | ((row: any) => boolean);
 }

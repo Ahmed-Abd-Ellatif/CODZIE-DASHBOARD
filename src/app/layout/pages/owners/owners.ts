@@ -10,15 +10,28 @@ import {
 import { Table } from '../../../shared/components/table/table';
 import { Router } from '@angular/router';
 import { PaymentDialog } from '../../../shared/components/payment-dialog/payment-dialog';
+import { DatepickerDirective } from '../../../shared/directives/datepicker/datepicker.directive';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-owners',
-  imports: [CommonModule, Breadcrumb, TranslatePipe, Table, PaymentDialog],
+  imports: [
+    CommonModule,
+    Breadcrumb,
+    TranslatePipe,
+    Table,
+    PaymentDialog,
+    DatepickerDirective,
+    ReactiveFormsModule,
+    NgSelectModule,
+  ],
   templateUrl: './owners.html',
   styleUrl: './owners.css',
 })
 export class Owners {
   _router = inject(Router);
+  _fb = inject(FormBuilder);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // SWEET ALERTS
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,6 +59,7 @@ export class Owners {
       cost: 500,
       status: 'active',
       url: 'https://example.com/owners/1',
+      pay: 'Pay',
     },
     {
       id: 2,
@@ -53,8 +67,9 @@ export class Owners {
       email: 'sara@example.com',
       joinDate: new Date('2024-03-10'),
       cost: 800,
-      status: 'pending',
+      status: 'active',
       url: 'https://example.com/owners/2',
+      pay: 'Not Pay',
     },
     {
       id: 3,
@@ -62,8 +77,9 @@ export class Owners {
       email: 'mahmod@example.com',
       joinDate: new Date('2023-11-20'),
       cost: 500,
-      status: 'expired',
+      status: 'active',
       url: 'https://example.com/owners/3',
+      pay: 'Pay',
     },
     {
       id: 4,
@@ -71,8 +87,9 @@ export class Owners {
       email: 'laila@example.com',
       joinDate: new Date('2024-05-01'),
       cost: 800,
-      status: 'active',
+      status: 'blocked',
       url: 'https://example.com/owners/4',
+      pay: 'Not Pay',
     },
   ];
   // Draw Columns
@@ -81,7 +98,40 @@ export class Owners {
     { key: 'name', label: 'OWNERS.TITLE', sortable: true, align: 'center' },
     { key: 'email', label: 'OWNERS.EMAIL', sortable: true, align: 'center' },
     { key: 'url', label: 'OWNERS.URL' },
+    {
+      key: 'pay',
+      label: 'OWNERS.PAY',
+      sortable: true,
+      type: 'badge',
+      align: 'center',
+      badgeConfig: (val: string, row: any) => {
+        switch (val) {
+          case 'Pay':
+            return {
+              colorClass: 'tbl-badge--success',
+              label: 'OWNERS.PAY',
+              onClick: (r) => {
+                this.selectOwner = r;
+                this.openPaymentDialog();
+              },
+            };
+
+          case 'Not Pay':
+            return {
+              colorClass: 'tbl-badge--danger',
+              label: 'OWNERS.NOT_PAY',
+              onClick: (r) => {
+                this.selectOwner = r;
+                this.openPaymentDialog();
+              },
+            };
+          default:
+            return { colorClass: 'tbl-badge--neutral', label: val };
+        }
+      },
+    },
     { key: 'cost', label: 'OWNERS.COST', type: 'currency', sortable: true, align: 'center' },
+
     {
       key: 'status',
       label: 'OWNERS.STATUS',
@@ -92,25 +142,17 @@ export class Owners {
           case 'active':
             return {
               colorClass: 'tbl-badge--success',
-              label: 'HOME.ACTIVE',
+              label: 'OWNERS.ACTIVE',
               onClick: (r) => {
                 this.selectOwner = r;
                 this.openPaymentDialog();
               },
             };
-          case 'pending':
-            return {
-              colorClass: 'tbl-badge--warning',
-              label: 'قيد الانتظار',
-              onClick: (r) => {
-                this.selectOwner = r;
-                this.openPaymentDialog();
-              },
-            };
-          case 'expired':
+
+          case 'blocked':
             return {
               colorClass: 'tbl-badge--danger',
-              label: 'منتهي',
+              label: 'OWNERS.BLOCKED',
               onClick: (r) => {
                 this.selectOwner = r;
                 this.openPaymentDialog();
@@ -144,6 +186,20 @@ export class Owners {
       icon: 'key',
       callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
     },
+    {
+      label: 'OWNERS.BLOCK_OWNER',
+      icon: 'ban',
+      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
+      show: (row) => row.status === 'active',
+      danger: true,
+    },
+    {
+      label: 'OWNERS.UNBLOCK_OWNER',
+      icon: 'lock-open',
+      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
+      show: (row) => row.status === 'blocked',
+      success: true,
+    },
 
     {
       label: 'OWNERS.DELETE_OWNER',
@@ -161,4 +217,32 @@ export class Owners {
       action: () => this._router.navigate(['/owners/add']),
     },
   ];
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // FORM
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  payOptions = [
+    { value: '1', labelKey: 'Pay' },
+    { value: '2', labelKey: 'Not Pay' },
+  ];
+
+  filterForm = this._fb.group({
+    code: [null],
+    name: [null],
+    date: [null as { from: string; to: string } | null],
+    typePay: [null],
+  });
+
+  applyFilters() {
+    const { code, name, date, typePay } = this.filterForm.value;
+    const filters = {
+      code,
+      name,
+      typePay,
+      from: date?.from ?? null,
+      to: date?.to ?? null,
+    };
+    console.log(this.filterForm.value);
+    console.log(filters);
+  }
 }

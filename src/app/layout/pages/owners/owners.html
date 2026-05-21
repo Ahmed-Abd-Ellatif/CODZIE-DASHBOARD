@@ -6,29 +6,47 @@
 <!-- * FILTERS -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <div class="card">
-  <div class="row">
-    <div class="col-12 col-md-3">
-      <input class="input" placeholder="Owner Code" />
-    </div>
-    <div class="col-12 col-md-3">
-      <input class="input" placeholder="Owner Name" />
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="date-wrapper">
-        <input type="date" class="input date-input" />
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <input formControlName="code" class="input" placeholder="Owner Code" />
+      </div>
+      <div class="col-12 col-md-3">
+        <input formControlName="name" class="input" placeholder="Owner Name" />
+      </div>
+      <!-- ~~~~~~~~~~~~~~~~~~~ -->
+      <!-- * DATE -->
+      <!-- ~~~~~~~~~~~~~~~~~~~ -->
+      <div class="col-12 col-md-3">
+        <div class="datepicker-wrapper">
+          <i class="fas fa-calendar-days datepicker-icon"></i>
+          <input
+            formControlName="date"
+            appDatepicker
+            class="input datepicker-input"
+            [placeholder]="'OWNERS.JOIN_DATE_PLACEHOLDER' | translate"
+            [mode]="'range'"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <ng-select
+          formControlName="typePay"
+          [items]="payOptions"
+          bindValue="value"
+          bindLabel="labelKey"
+          [placeholder]="'OWNERS.PAY_OPTIONS_PLACEHOLDER' | translate"
+          [clearable]="true"
+          [searchable]="false"
+          [multiple]="true"
+        >
+        </ng-select>
       </div>
     </div>
-    <div class="select-wrapper col-12 col-md-3">
-      <select class="select">
-        <option value="" selected disabled>Pay Opthions</option>
-        <option value="1">Pay</option>
-        <option value="2">Not Pay</option>
-      </select>
+    <div class="text-end">
+      <button type="submit" class="btn btn-primary">Filter</button>
     </div>
-  </div>
-  <div class="text-end">
-    <button class="btn btn-primary">Filter</button>
-  </div>
+  </form>
 </div>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- TABLE -->

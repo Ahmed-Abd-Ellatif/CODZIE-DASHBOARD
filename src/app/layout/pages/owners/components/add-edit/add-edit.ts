@@ -17,6 +17,7 @@ export class AddEdit {
   isEditMode: boolean = false;
   ownerId: string | null = null;
   paymentSchedule: 'monthly' | 'yearly' | 'noPayment' = 'monthly';
+
   selectedPaymentSchedule(schedule: 'monthly' | 'yearly' | 'noPayment') {
     this.paymentSchedule = schedule;
   }

@@ -2,9 +2,10 @@
 <!-- Reusable Table Component                                          -->
 <!-- ================================================================ -->
 <div class="table-wrapper">
-  @if(tableName()){
-
-    <h3 class="text-primary-500">{{tableName()}} <span class="badge badge-new ">Total : {{ data().length }} </span></h3>
+  @if (tableName()) {
+    <h3 class="text-primary-500">
+      {{ tableName() }} <span class="badge badge-new">Total : {{ data().length }} </span>
+    </h3>
   }
   <!-- Top Action Bar (above the bordered card) -->
   @if (visibleHeaderButtons().length > 0) {
@@ -173,7 +174,7 @@
                       (click)="toggleDropdown(i, $event)"
                       aria-label="Row actions"
                     >
-                     <i class="fas fa-ellipsis"></i>
+                      <i class="fas fa-ellipsis"></i>
                     </button>
 
                     @if (activeRowIndex() === i && dropdownPos()) {
@@ -184,19 +185,27 @@
                         (click)="$event.stopPropagation()"
                       >
                         @for (action of visibleActions(row); track $index) {
-                        
                           <button
                             type="button"
                             class="action-menu-item"
                             [class.action-menu-item--danger]="action.danger"
+                            [class.action-menu-item--success]="action.success"
                             [class.action-menu-item--disabled]="isActionDisabled(action, row)"
                             [disabled]="isActionDisabled(action, row)"
                             (click)="action.callback(row); closeDropdown()"
                           >
-                          
-                              
-                            <i [class]="['fas', 'fa-' + action.icon, action.danger ? 'text-danger' : 'text-primary-500']"></i>
-                      
+                            <i
+                              [class]="[
+                                'fas',
+                                'fa-' + action.icon,
+                                action.danger
+                                  ? 'text-danger'
+                                  : action.success
+                                    ? 'text-success'
+                                    : 'text-primary-500',
+                              ]"
+                            ></i>
+
                             {{ action.label | translate }}
                           </button>
                         }
@@ -214,88 +223,88 @@
       </table>
     </div>
 
-   @if (totalPages() > 1) {
-     <div class="tbl-pagination">
-      <span class="pagination-info">
-        @if (sortedData().length === 0) {
-          No results
-        } @else {
-          {{ showingStart() }} &ndash; {{ showingEnd() }}
-          <span class="pagination-info-total">of {{ sortedData().length }}</span>
-        }
-      </span>
-
-      <div class="pagination-controls">
-        <!-- Page size select -->
-        <div class="page-size-wrapper">
-          <select class="page-size-select" (change)="setPageSize($event)">
-            @for (size of resolvedConfig().pageSizeOptions; track size) {
-              <option [value]="size" [selected]="size === pageSize()">{{ size }} / page</option>
-            }
-          </select>
-        </div>
-
-        <!-- Prev -->
-        <button
-          type="button"
-          class="page-btn page-btn--nav"
-          [disabled]="currentPage() === 1"
-          (click)="goToPage(currentPage() - 1)"
-          aria-label="Previous page"
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-
-        <!-- Page numbers -->
-        @for (page of pageNumbers(); track $index) {
-          @if (page === '...') {
-            <span class="page-ellipsis">&hellip;</span>
+    @if (totalPages() > 1) {
+      <div class="tbl-pagination">
+        <span class="pagination-info">
+          @if (sortedData().length === 0) {
+            No results
           } @else {
-            <button
-              type="button"
-              class="page-btn"
-              [class.page-btn--active]="page === currentPage()"
-              (click)="goToPage(page)"
-            >
-              {{ page }}
-            </button>
+            {{ showingStart() }} &ndash; {{ showingEnd() }}
+            <span class="pagination-info-total">of {{ sortedData().length }}</span>
           }
-        }
+        </span>
 
-        <!-- Next -->
-        <button
-          type="button"
-          class="page-btn page-btn--nav"
-          [disabled]="currentPage() === totalPages()"
-          (click)="goToPage(currentPage() + 1)"
-          aria-label="Next page"
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+        <div class="pagination-controls">
+          <!-- Page size select -->
+          <div class="page-size-wrapper">
+            <select class="page-size-select" (change)="setPageSize($event)">
+              @for (size of resolvedConfig().pageSizeOptions; track size) {
+                <option [value]="size" [selected]="size === pageSize()">{{ size }} / page</option>
+              }
+            </select>
+          </div>
+
+          <!-- Prev -->
+          <button
+            type="button"
+            class="page-btn page-btn--nav"
+            [disabled]="currentPage() === 1"
+            (click)="goToPage(currentPage() - 1)"
+            aria-label="Previous page"
           >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <!-- Page numbers -->
+          @for (page of pageNumbers(); track $index) {
+            @if (page === '...') {
+              <span class="page-ellipsis">&hellip;</span>
+            } @else {
+              <button
+                type="button"
+                class="page-btn"
+                [class.page-btn--active]="page === currentPage()"
+                (click)="goToPage(page)"
+              >
+                {{ page }}
+              </button>
+            }
+          }
+
+          <!-- Next -->
+          <button
+            type="button"
+            class="page-btn page-btn--nav"
+            [disabled]="currentPage() === totalPages()"
+            (click)="goToPage(currentPage() + 1)"
+            aria-label="Next page"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
-   }
+    }
   </div>
 </div>
