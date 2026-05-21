@@ -3,7 +3,11 @@
 <section class="owner-profile-card card">
   <div class="owner-hero">
     <div class="owner-avatar-wrap">
-      <img [src]="owner.image" [alt]="owner.name" class="owner-image" />
+      <img
+        [src]="owner.image ?? 'assets/images/avatar-owner.jpg'"
+        [alt]="owner.name"
+        class="owner-image"
+      />
       <span class="owner-status-pill" [class.owner-status-pill--blocked]="isBlocked()">
         {{ (isBlocked() ? 'OWNERS.BLOCKED' : 'OWNERS.ACTIVE') | translate }}
       </span>

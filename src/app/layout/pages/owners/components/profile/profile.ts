@@ -16,7 +16,7 @@ interface OwnerProfile {
   ownerType: 'teacher' | 'center';
   languages: Array<'OWNERS.LANG_ARABIC' | 'OWNERS.LANG_ENGLISH'>;
   cost: number;
-  image: string;
+  image?: string;
   joinDate: Date;
   status: 'active' | 'blocked';
   subscriptionType: 'monthly' | 'yearly';
@@ -52,7 +52,7 @@ export class Profile {
     ownerType: 'teacher',
     languages: ['OWNERS.LANG_ARABIC', 'OWNERS.LANG_ENGLISH'],
     cost: 500,
-    image: 'https://www.silcharmunicipality.in/wp-content/uploads/2021/02/male-face.jpg',
+    // image: 'https://www.silcharmunicipality.in/wp-content/uploads/2021/02/male-face.jpg',
     joinDate: new Date('2025-08-15'),
     status: 'active',
     subscriptionType: 'yearly',
