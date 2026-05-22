@@ -1,11 +1,14 @@
 {
   "GENERAL": {
+    "EDUFINEX": "إديوفينكس",
     "SAVE": "حفظ",
     "CANCEL": "إلغاء",
     "CONFIRM_PAYMENT": "تأكيد الدفع",
     "MONTH": "الشهر",
     "YEAR": "السنة",
-    "CURRENCY": "ج.م"
+    "CURRENCY": "ج.م",
+    "FILTER": "تصفية",
+    "RESET": "إعادة تعيين"
   },
   "DASHBOARD": {
     "TITLE": "لوحة التحكم",
@@ -24,7 +27,6 @@
     "USERS": "المستخدمين"
   },
   "HOME": {
-    "CODZIE": "كودزي",
     "TITLE": "الصفحة الرئيسية",
     "DESCRIPTION": "مرحبًا بك في لوحة التحكم الخاصة بي!",
     "DASHBOARD": "لوحة التحكم",
@@ -40,7 +42,7 @@
     "LOGOUT": "تسجيل الخروج"
   },
   "SIDEBAR": {
-    "PROJECT_NAME": "لوحة التحكم",
+    "PROJECT_NAME": "إديوفينكس",
     "DASHBOARD": "لوحة التحكم",
     "OWNERS": "الملاك",
     "OWNERS_LIST": "قائمة الملاك",
@@ -154,5 +156,5 @@
     "OF_TOTAL": "من الإجمالي",
     "ADD_TICKET": "إضافة تذكرة جديدة"
   },
-  "FOOTER_COPYRIGHT": "جميع الحقوق محفوظة لشركة CODZIE © "
+  "FOOTER_COPYRIGHT": "جميع الحقوق محفوظة لشركة كودزي © "
 }

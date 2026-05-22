@@ -1,11 +1,14 @@
 {
   "GENERAL": {
+    "EDUFINEX": "EDUFINEX",
     "SAVE": "Save",
     "CANCEL": "Cancel",
     "CONFIRM_PAYMENT": "Confirm Payment",
     "MONTH": "Month",
     "YEAR": "Year",
-    "CURRENCY": "EGP"
+    "CURRENCY": "EGP",
+    "FILTER": "Filter",
+    "RESET": "Reset"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard",
@@ -24,7 +27,6 @@
     "USERS": "Users"
   },
   "HOME": {
-    "CODZIE": "CODZIE",
     "TITLE": "Home",
     "DESCRIPTION": "Welcome to my dashboard!",
     "DASHBOARD": "Dashboard",
@@ -40,7 +42,7 @@
     "LOGOUT": "Logout"
   },
   "SIDEBAR": {
-    "PROJECT_NAME": "CODZIE",
+    "PROJECT_NAME": "EDUFINEX",
     "DASHBOARD": "Dashboard",
     "OWNERS": "Owners",
     "OWNERS_LIST": "Owners List",
