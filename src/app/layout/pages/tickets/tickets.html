@@ -151,3 +151,10 @@
     [headerButtons]="topButtons"
   />
 </div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- TICKET DETAILS DIALOG -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+@if (selectedTicket) {
+  <app-ticket-details-dialog [ticket]="selectedTicket" (close)="closeTicketDetails()" />
+}

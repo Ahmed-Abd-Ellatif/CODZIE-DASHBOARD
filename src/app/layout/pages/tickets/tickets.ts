@@ -11,6 +11,10 @@ import {
   TableAction,
   TableColumn,
 } from '../../../shared/components/table/models/table.interface';
+import {
+  TicketDetailsDialog,
+  TicketData,
+} from './components/ticket-details-dialog/ticket-details-dialog';
 
 @Component({
   selector: 'app-tickets',
@@ -22,12 +26,26 @@ import {
     ReactiveFormsModule,
     NgSelectModule,
     Table,
+    TicketDetailsDialog,
   ],
   templateUrl: './tickets.html',
   styleUrl: './tickets.css',
 })
 export class Tickets {
   _fb = inject(FormBuilder);
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // TICKET DETAILS DIALOG
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  selectedTicket: TicketData | null = null;
+
+  openTicketDetails(row: TicketData) {
+    this.selectedTicket = row;
+  }
+
+  closeTicketDetails() {
+    this.selectedTicket = null;
+  }
   filterForm = this._fb.group({
     ticketNumber: [''],
     name: [''],
@@ -69,6 +87,19 @@ export class Tickets {
       createdDate: new Date('2024-02-20'),
       description:
         'عند محاولة تسجيل الدخول، تظهر رسالة خطأ تفيد بأن بيانات الاعتماد غير صحيحة، رغم أنها صحيحة.',
+      attachments: ['screenshot-error.png', 'log-file.txt'],
+      notes: [
+        {
+          author: 'سارة خالد',
+          date: new Date('2024-02-21'),
+          text: 'تم مراجعة البيانات وتأكيد وجود المشكلة.',
+        },
+        {
+          author: 'محمد علي',
+          date: new Date('2024-02-22'),
+          text: 'جاري التحقيق مع فريق الدعم التقني.',
+        },
+      ],
     },
     {
       id: 'TCKT-002',
@@ -79,6 +110,14 @@ export class Tickets {
       createdDate: new Date('2024-02-20'),
       description:
         'عند محاولة تسجيل الدخول، تظهر رسالة خطأ تفيد بأن بيانات الاعتماد غير صحيحة، رغم أنها صحيحة.',
+      attachments: [],
+      notes: [
+        {
+          author: 'فريق الدعم',
+          date: new Date('2024-02-21'),
+          text: 'تم حل المشكلة وإغلاق التذكرة.',
+        },
+      ],
     },
     {
       id: 'TCKT-003',
@@ -89,6 +128,8 @@ export class Tickets {
       createdDate: new Date('2024-02-20'),
       description:
         'عند محاولة تسجيل الدخول، تظهر رسالة خطأ تفيد بأن بيانات الاعتماد غير صحيحة، رغم أنها صحيحة.',
+      attachments: ['report.pdf'],
+      notes: [],
     },
   ];
   // Draw Columns
@@ -185,41 +226,20 @@ export class Tickets {
 
   //  Actions Dropdown
   tableActions: TableAction[] = [
-    {
-      label: 'OWNERS.EDIT_OWNER',
-      icon: 'edit',
-      callback: (row) => {},
-    },
+    // {
+    //   label: 'OWNERS.EDIT_OWNER',
+    //   icon: 'edit',
+    //   callback: (row) => {},
+    // },
 
     {
-      label: 'OWNERS.VIEW_OWNER',
+      label: 'عرض التفاصيل',
       icon: 'eye',
-      callback: (row) => {},
-      // show: (row) => row.status === 'active',
-      // disabled: (row) => row.status === 'active',
-    },
-    {
-      label: 'OWNERS.RESET_PASSWORD',
-      icon: 'key',
-      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
-    },
-    {
-      label: 'OWNERS.BLOCK_OWNER',
-      icon: 'ban',
-      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
-      show: (row) => row.status === 'active',
-      danger: true,
-    },
-    {
-      label: 'OWNERS.UNBLOCK_OWNER',
-      icon: 'lock-open',
-      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
-      show: (row) => row.status === 'blocked',
-      success: true,
+      callback: (row) => this.openTicketDetails(row),
     },
 
     {
-      label: 'OWNERS.DELETE_OWNER',
+      label: 'حذف التذكرة',
       icon: 'trash-can',
       callback: (row) => confirm('هل أنت متأكد من حذف ' + row.name + '؟'),
       danger: true,
