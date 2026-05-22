@@ -153,9 +153,8 @@ export class Table {
 
     // Step 2: after Angular renders the menu, compute position and start tracking scroll
     requestAnimationFrame(async () => {
-      const menu = this._anchorBtn!
-        .closest('.action-cell')
-        ?.querySelector<HTMLElement>('.action-menu');
+      const menu =
+        this._anchorBtn!.closest('.action-cell')?.querySelector<HTMLElement>('.action-menu');
       if (!menu) return;
       this._menuEl = menu;
 
