@@ -29,19 +29,30 @@ import {
 export class Tickets {
   _fb = inject(FormBuilder);
   filterForm = this._fb.group({
-    code: [''],
+    ticketNumber: [''],
     name: [''],
     date: [''],
-    typePay: [''],
+    priority: [''],
+    status: [''],
   });
 
-  payOptions = [
-    { value: 'cash', labelKey: 'OWNERS.PAY_OPTIONS_CASH' },
-    { value: 'credit', labelKey: 'OWNERS.PAY_OPTIONS_CREDIT' },
+  statusList = [
+    { id: 1, value: 'Open' },
+    { id: 2, value: 'Pending' },
+    { id: 3, value: 'Closed' },
+  ];
+  priorityList = [
+    { id: 1, value: 'High' },
+    { id: 2, value: 'Medium' },
+    { id: 3, value: 'Low' },
   ];
 
   applyFilters() {
     // Implement filter logic here
+  }
+  resetFilters() {
+    this.filterForm.reset();
+    // Implement reset logic here
   }
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

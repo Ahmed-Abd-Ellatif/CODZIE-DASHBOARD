@@ -80,17 +80,17 @@
   <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
     <div class="row">
       <div class="col-12 col-md-3">
-        <input formControlName="code" class="input" placeholder="Search For Ticket" />
+        <input formControlName="name" class="input" placeholder="Search For Ticket" />
       </div>
       <div class="col-12 col-md-3">
-        <input formControlName="code" class="input" placeholder="Ticket Number" />
+        <input formControlName="ticketNumber" class="input" placeholder="Ticket Number" />
       </div>
       <div class="col-12 col-md-3">
         <ng-select
-          formControlName="typePay"
-          [items]="payOptions"
-          bindValue="value"
-          bindLabel="labelKey"
+          formControlName="priority"
+          [items]="priorityList"
+          bindValue="id"
+          bindLabel="value"
           [placeholder]="'Priority'"
           [clearable]="true"
           [searchable]="false"
@@ -100,10 +100,10 @@
       </div>
       <div class="col-12 col-md-3">
         <ng-select
-          formControlName="typePay"
-          [items]="payOptions"
-          bindValue="value"
-          bindLabel="labelKey"
+          formControlName="status"
+          [items]="statusList"
+          bindValue="id"
+          bindLabel="value"
           [placeholder]="'Status'"
           [clearable]="true"
           [searchable]="false"
@@ -129,7 +129,7 @@
       </div>
     </div>
     <div class="text-end">
-      <button type="submit" class="btn btn-dark-outline">
+      <button (click)="resetFilters()" type="button" class="btn btn-dark-outline">
         <i class="fas fa-undo fa-xs me-1"></i> Reset
       </button>
       <button type="submit" class="btn btn-dark">
