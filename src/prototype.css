@@ -165,7 +165,7 @@
   --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ── Form field tokens ─────────────────────────── */
-  --field-height: 40px;
+  --field-height: 42px;
   --field-px: var(--spacing-4);
   --field-font-size: 14px;
   --field-radius: var(--radius-sm);
