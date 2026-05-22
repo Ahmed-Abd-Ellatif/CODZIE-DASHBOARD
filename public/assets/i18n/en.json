@@ -47,7 +47,8 @@
     "OWNERS_ARCHIVE": "Owners Archive",
     "OWNERS_ADD": "Add Owner",
     "SETTINGS": "Settings",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "TICKETS": "Tickets"
   },
   "USER": {
     "NAME": "Ahmed Abdellatif",
@@ -140,5 +141,18 @@
     "ENTER_PASSWORD": "Enter your password"
   },
 
+  "TICKETS": {
+    "TITLE": "Tickets",
+    "ALL": "All Tickets",
+    "ALL_DESC": "Total registered tickets",
+    "OPEN": "Open Tickets",
+    "OPEN_DESC": "Needs to be handled",
+    "PENDING": "Pending Tickets",
+    "PENDING_DESC": "Awaiting response",
+    "CLOSED": "Closed Tickets",
+    "CLOSED_DESC": "Successfully resolved",
+    "OF_TOTAL": "of total",
+    "ADD_TICKET": "Add New Ticket"
+  },
   "FOOTER_COPYRIGHT": "All Rights Reserved for CODZIE © "
 }

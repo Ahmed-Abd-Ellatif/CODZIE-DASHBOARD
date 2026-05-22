@@ -12,28 +12,7 @@
     <div class="table-topbar ms-auto">
       @for (btn of visibleHeaderButtons(); track $index) {
         <button type="button" [class]="'table-topbar-btn ' + btn.colorClass" (click)="btn.action()">
-          @if (btn.icon) {
-            @if (isIconUrl(btn.icon)) {
-              <img
-                class="btn-icon-img"
-                [src]="btn.icon"
-                width="16"
-                height="16"
-                alt=""
-                aria-hidden="true"
-              />
-            } @else {
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path [attr.d]="btn.icon" />
-              </svg>
-            }
-          }
+          <i [class]="'fas fa-' + btn.icon"></i>
           {{ btn.label | translate }}
         </button>
       }

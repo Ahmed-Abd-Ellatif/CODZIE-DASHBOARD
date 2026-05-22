@@ -29,6 +29,10 @@ export const routes: Routes = [
           import('./layout/pages/owners/components/profile/profile').then((m) => m.Profile),
       },
       {
+        path: 'tickets/list',
+        loadComponent: () => import('./layout/pages/tickets/tickets').then((m) => m.Tickets),
+      },
+      {
         path: 'design-system',
         loadComponent: () => import('./shared/components/design/design').then((m) => m.Design),
       },

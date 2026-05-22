@@ -9,8 +9,6 @@
     <span class="sidebar-logo-text">{{ 'SIDEBAR.PROJECT_NAME' | translate }}</span>
   </div>
 
-
-
   <!-- ── Navigation ── -->
   <nav class="sidebar-nav">
     <!-- Dashboard (dropdown) -->
@@ -36,23 +34,41 @@
         <span class="flex-1 text-start" routerLinkActive="active">{{
           'SIDEBAR.OWNERS' | translate
         }}</span>
-        <i class="fa-solid fa-chevron-down sidebar-chevron" [class.open]="openSection() === 'owners'"></i>
+        <i
+          class="fa-solid fa-chevron-down sidebar-chevron"
+          [class.open]="openSection() === 'owners'"
+        ></i>
       </button>
 
       @if (openSection() === 'owners') {
         <div class="sidebar-submenu">
-          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/list">{{ 'SIDEBAR.OWNERS_LIST' | translate }}</a>
-          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/add">{{ 'SIDEBAR.OWNERS_ADD' | translate }}</a>
-          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/archive">{{ 'SIDEBAR.OWNERS_ARCHIVE' | translate }}</a>
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/list">{{
+            'SIDEBAR.OWNERS_LIST' | translate
+          }}</a>
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/add">{{
+            'SIDEBAR.OWNERS_ADD' | translate
+          }}</a>
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/archive">{{
+            'SIDEBAR.OWNERS_ARCHIVE' | translate
+          }}</a>
         </div>
       }
     </div>
-   
 
     <!-- Settings (simple link) -->
     <button class="sidebar-link" type="button">
       <i class="fa-solid fa-gear"></i>
       <span class="flex-1 text-start">{{ 'SIDEBAR.SETTINGS' | translate }}</span>
+    </button>
+    <button
+      class="sidebar-link"
+      type="button"
+      routerLink="/tickets/list"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="fa-solid fa-ticket"></i>
+      <span class="flex-1 text-start">{{ 'SIDEBAR.TICKETS' | translate }}</span>
     </button>
 
     <button

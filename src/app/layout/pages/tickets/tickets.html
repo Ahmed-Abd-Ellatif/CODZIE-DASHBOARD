@@ -1,0 +1,153 @@
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * BREADCRUMB -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-breadcrumb [pageTitle]="'TICKETS.TITLE' | translate" />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * TICKET STATS CARDS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+  <!-- Card 1 – All Tickets (Blue) -->
+  <div class="tkt-stat-card tkt-stat-card--blue">
+    <div class="tkt-stat-left">
+      <div class="tkt-stat-top">
+        <div class="tkt-stat-icon tkt-stat-icon--blue">
+          <i class="fas fa-ticket"></i>
+        </div>
+        <span class="tkt-stat-label">{{ 'TICKETS.ALL' | translate }}</span>
+      </div>
+      <div class="tkt-stat-footer">
+        <span class="tkt-stat-desc">{{ 'TICKETS.ALL_DESC' | translate }}</span>
+      </div>
+    </div>
+    <p class="tkt-stat-count">{{ ticketStats.total }}</p>
+  </div>
+
+  <!-- Card 2 – Open Tickets (Red) -->
+  <div class="tkt-stat-card tkt-stat-card--red">
+    <div class="tkt-stat-left">
+      <div class="tkt-stat-top">
+        <div class="tkt-stat-icon tkt-stat-icon--red">
+          <i class="fas fa-folder-open"></i>
+        </div>
+        <span class="tkt-stat-label">{{ 'TICKETS.OPEN' | translate }}</span>
+      </div>
+      <div class="tkt-stat-footer">
+        <span class="tkt-stat-badge tkt-stat-badge--red">{{ ticketStats.openPct }}%</span>
+        <span class="tkt-stat-desc">{{ 'TICKETS.OF_TOTAL' | translate }}</span>
+      </div>
+    </div>
+    <p class="tkt-stat-count">{{ ticketStats.open }}</p>
+  </div>
+
+  <!-- Card 3 – Pending Tickets (Amber) -->
+  <div class="tkt-stat-card tkt-stat-card--amber">
+    <div class="tkt-stat-left">
+      <div class="tkt-stat-top">
+        <div class="tkt-stat-icon tkt-stat-icon--amber">
+          <i class="fas fa-clock"></i>
+        </div>
+        <span class="tkt-stat-label">{{ 'TICKETS.PENDING' | translate }}</span>
+      </div>
+      <div class="tkt-stat-footer">
+        <span class="tkt-stat-badge tkt-stat-badge--amber">{{ ticketStats.pendingPct }}%</span>
+        <span class="tkt-stat-desc">{{ 'TICKETS.OF_TOTAL' | translate }}</span>
+      </div>
+    </div>
+    <p class="tkt-stat-count">{{ ticketStats.pending }}</p>
+  </div>
+
+  <!-- Card 4 – Closed Tickets (Green) -->
+  <div class="tkt-stat-card tkt-stat-card--green">
+    <div class="tkt-stat-left">
+      <div class="tkt-stat-top">
+        <div class="tkt-stat-icon tkt-stat-icon--green">
+          <i class="fas fa-circle-check"></i>
+        </div>
+        <span class="tkt-stat-label">{{ 'TICKETS.CLOSED' | translate }}</span>
+      </div>
+      <div class="tkt-stat-footer">
+        <span class="tkt-stat-badge tkt-stat-badge--green">{{ ticketStats.closedPct }}%</span>
+        <span class="tkt-stat-desc">{{ 'TICKETS.OF_TOTAL' | translate }}</span>
+      </div>
+    </div>
+    <p class="tkt-stat-count">{{ ticketStats.closed }}</p>
+  </div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * FILTERS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <input formControlName="code" class="input" placeholder="Search For Ticket" />
+      </div>
+      <div class="col-12 col-md-3">
+        <input formControlName="code" class="input" placeholder="Ticket Number" />
+      </div>
+      <div class="col-12 col-md-3">
+        <ng-select
+          formControlName="typePay"
+          [items]="payOptions"
+          bindValue="value"
+          bindLabel="labelKey"
+          [placeholder]="'Priority'"
+          [clearable]="true"
+          [searchable]="false"
+          [multiple]="true"
+        >
+        </ng-select>
+      </div>
+      <div class="col-12 col-md-3">
+        <ng-select
+          formControlName="typePay"
+          [items]="payOptions"
+          bindValue="value"
+          bindLabel="labelKey"
+          [placeholder]="'Status'"
+          [clearable]="true"
+          [searchable]="false"
+          [multiple]="true"
+        >
+        </ng-select>
+      </div>
+
+      <!-- ~~~~~~~~~~~~~~~~~~~ -->
+      <!-- * DATE -->
+      <!-- ~~~~~~~~~~~~~~~~~~~ -->
+      <div class="col-12 col-md-3">
+        <div class="datepicker-wrapper">
+          <i class="fas fa-calendar-days datepicker-icon"></i>
+          <input
+            formControlName="date"
+            appDatepicker
+            class="input datepicker-input"
+            [placeholder]="'OWNERS.JOIN_DATE_PLACEHOLDER' | translate"
+            [mode]="'range'"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="text-end">
+      <button type="submit" class="btn btn-dark-outline">
+        <i class="fas fa-undo fa-xs me-1"></i> Reset
+      </button>
+      <button type="submit" class="btn btn-dark">
+        <i class="fas fa-filter fa-xs me-1"></i> Filter
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- TABLE -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <app-table
+    [tableName]="'TICKETS.TITLE' | translate"
+    [data]="SAMPLE_DATA"
+    [columns]="columns"
+    [actions]="tableActions"
+    [headerButtons]="topButtons"
+  />
+</div>

@@ -163,6 +163,15 @@
   --duration-slower: 500ms;
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Form field tokens ─────────────────────────── */
+  --field-height: 40px;
+  --field-px: var(--spacing-4);
+  --field-font-size: 14px;
+  --field-radius: var(--radius-sm);
+  --field-border-width: 1.5px;
+  --field-border-color: var(--neutral-300);
+  --field-mb: 1rem;
 }
 
 html[lang='ar'] {
@@ -434,13 +443,13 @@ body.dark-mode {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 400;
   border: none;
   outline: none;
   cursor: pointer;
   padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-  font-size: 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
   transition:
     background var(--duration-fast),
     color var(--duration-fast),
@@ -503,6 +512,44 @@ body.dark-mode {
 }
 .btn-warning:hover {
   background: var(--warning-dark);
+}
+.btn-dark {
+  background: var(--neutral-800);
+  color: #fff;
+  border: 1px solid var(--neutral-800);
+}
+.btn-dark:hover {
+  background: var(--neutral-900);
+  border-color: var(--neutral-900);
+}
+.btn-dark-outline {
+  background: transparent;
+  color: var(--neutral-800);
+  border: 1px solid var(--neutral-700);
+}
+.btn-dark-outline:hover {
+  background: var(--neutral-100);
+  color: var(--neutral-900);
+  border-color: var(--neutral-800);
+}
+/* dark mode overrides */
+body.dark-mode .btn-dark {
+  background: var(--neutral-200);
+  color: var(--neutral-900);
+  border-color: var(--neutral-200);
+}
+body.dark-mode .btn-dark:hover {
+  background: var(--neutral-100);
+  border-color: var(--neutral-100);
+}
+body.dark-mode .btn-dark-outline {
+  color: var(--neutral-200);
+  border-color: var(--neutral-500);
+}
+body.dark-mode .btn-dark-outline:hover {
+  background: var(--neutral-700);
+  color: var(--neutral-50);
+  border-color: var(--neutral-400);
 }
 .btn-pill {
   border-radius: var(--radius-full);
@@ -771,19 +818,28 @@ body.dark-mode .input-label {
 .input,
 .textarea {
   width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border: 1.5px solid var(--neutral-300);
-  border-radius: var(--radius-md);
+  padding: 0 var(--field-px);
+  border: var(--field-border-width) solid var(--field-border-color);
+  border-radius: var(--field-radius);
   background: #fff;
   color: var(--neutral-900);
-  font-size: 14px;
+  font-size: var(--field-font-size);
   transition:
     border-color var(--duration-fast),
     box-shadow var(--duration-fast);
   outline: none;
   box-shadow: none;
   resize: none;
-  margin-bottom: 1rem;
+  margin-bottom: var(--field-mb);
+}
+/* single-line inputs get fixed height */
+.input {
+  height: var(--field-height);
+}
+/* textarea grows freely */
+.textarea {
+  height: auto;
+  padding: var(--space-3) var(--field-px);
 }
 label {
   font-size: 14px;
@@ -965,18 +1021,20 @@ body.dark-mode input[type='time'].date-input {
 }
 .select {
   width: 100%;
-  padding: var(--space-3) var(--space-4);
-  padding-inline-end: calc(var(--space-4) * 2 + 10px);
-  border: 1.5px solid var(--neutral-300);
-  border-radius: var(--radius-md);
+  height: var(--field-height);
+  padding: 0 var(--field-px);
+  padding-inline-end: calc(var(--field-px) * 2 + 10px);
+  border: var(--field-border-width) solid var(--field-border-color);
+  border-radius: var(--field-radius);
   background: #fff;
   color: var(--neutral-900);
-  font-size: 14px;
+  font-size: var(--field-font-size);
   font-family: inherit;
   appearance: none;
   -webkit-appearance: none;
   outline: none;
   cursor: pointer;
+  margin-bottom: var(--field-mb);
   transition:
     border-color var(--duration-fast),
     box-shadow var(--duration-fast),
@@ -2194,13 +2252,16 @@ body.dark-mode .flatpickr-months .flatpickr-next-month:hover {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 /* ── Container ── */
+.ng-select {
+  margin-bottom: var(--field-mb);
+}
 .ng-select .ng-select-container {
-  min-height: 42px;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-md);
+  min-height: var(--field-height);
+  border: var(--field-border-width) solid var(--field-border-color);
+  border-radius: var(--field-radius);
   background: #fff;
-  color: var(--neutral-800);
-  font-size: 0.875rem;
+  color: var(--neutral-900);
+  font-size: var(--field-font-size);
   box-shadow: none;
   display: flex;
   align-items: center;
@@ -2215,7 +2276,7 @@ body.dark-mode .flatpickr-months .flatpickr-next-month:hover {
   outline: none;
 }
 .ng-select .ng-select-container .ng-value-container {
-  padding-inline-start: 12px;
+  padding-inline-start: var(--field-px);
   padding-inline-end: 8px;
   align-items: center;
   flex: 1;
