@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.css',
 })
 export class Login {
+  currentYear = new Date().getFullYear();
   //  ~~~~~~~~~~~~~~~~~~~~~~~~~
   // * CONSTRUCTOR
   //  ~~~~~~~~~~~~~~~~~~~~~~~~~
