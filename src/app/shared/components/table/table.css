@@ -287,8 +287,15 @@
   box-shadow: var(--shadow-lg);
   z-index: 9999;
   overflow: hidden;
-  animation: menuIn 0.14s var(--ease-out);
   padding: 4px 0;
+  /* hidden until Floating UI computes the position */
+  visibility: hidden;
+}
+
+/* visible + animated only after position is ready */
+.action-menu[data-ready] {
+  visibility: visible;
+  animation: menuIn 0.14s var(--ease-out);
 }
 
 @keyframes menuIn {
@@ -307,7 +314,7 @@
   align-items: center;
   gap: var(--spacing-2);
   width: 100%;
-  padding: 7px 12px;
+  padding: 5px 12px;
   border: none;
   background: none;
   cursor: pointer;

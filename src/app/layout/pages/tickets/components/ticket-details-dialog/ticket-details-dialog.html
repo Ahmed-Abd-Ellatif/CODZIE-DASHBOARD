@@ -36,27 +36,27 @@
 
       <div class="tkt-dialog-info-item">
         <span class="tkt-dialog-info-label">
-          <i class="fas fa-circle-info tkt-dialog-info-icon"></i>الحالة
-        </span>
-        <span class="tbl-badge" [ngClass]="statusClass(ticket().status)">
-          {{ statusLabel(ticket().status) }}
-        </span>
-      </div>
-
-      <div class="tkt-dialog-info-item">
-        <span class="tkt-dialog-info-label">
-          <i class="fas fa-flag tkt-dialog-info-icon"></i>الأولوية
-        </span>
-        <span class="tbl-badge" [ngClass]="priorityClass(ticket().priority)">
-          {{ priorityLabel(ticket().priority) }}
-        </span>
-      </div>
-
-      <div class="tkt-dialog-info-item">
-        <span class="tkt-dialog-info-label">
           <i class="fas fa-calendar-days tkt-dialog-info-icon"></i>تاريخ الإنشاء
         </span>
         <span class="tkt-dialog-info-value">{{ ticket().createdDate | date: 'dd/MM/yyyy' }}</span>
+      </div>
+
+      <div class="tkt-dialog-info-item">
+        <p class="tkt-dialog-info-label">
+          <i class="fas fa-circle-info tkt-dialog-info-icon"></i>الحالة
+          <span class="tbl-badge" [ngClass]="statusClass(ticket().status)">
+            {{ statusLabel(ticket().status) }}
+          </span>
+        </p>
+      </div>
+
+      <div class="tkt-dialog-info-item">
+        <p class="tkt-dialog-info-label">
+          <i class="fas fa-flag tkt-dialog-info-icon"></i>الأولوية
+          <span class="tbl-badge" [ngClass]="priorityClass(ticket().priority)">
+            {{ priorityLabel(ticket().priority) }}
+          </span>
+        </p>
       </div>
     </div>
 

@@ -237,7 +237,39 @@ export class Tickets {
       icon: 'eye',
       callback: (row) => this.openTicketDetails(row),
     },
+    {
+      label: 'تعيين موظف',
+      icon: 'user-plus',
+      callback: (row) => this.openTicketDetails(row),
+    },
+    {
+      label: 'تغير الحالة',
+      icon: 'arrows-rotate',
+      callback: (row) => this.openTicketDetails(row),
+    },
+    {
+      label: 'تغير الأولوية',
+      icon: 'flag',
+      callback: (row) => this.openTicketDetails(row),
+    },
+    {
+      label: 'إضافة ملاحظة',
+      icon: 'note-sticky',
+      callback: (row) => this.openTicketDetails(row),
+    },
 
+    {
+      label: 'إغلاق التذكرة',
+      icon: 'check',
+      callback: (row) => confirm('هل أنت متأكد من حذف ' + row.name + '؟'),
+      success: true,
+    },
+    {
+      label: ' إعادة فتح التذكرة',
+      icon: 'redo',
+      callback: (row) => confirm('هل أنت متأكد من إعادة فتح ' + row.name + '؟'),
+      danger: true,
+    },
     {
       label: 'حذف التذكرة',
       icon: 'trash-can',

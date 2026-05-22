@@ -8,6 +8,7 @@ import {
 } from './models/table.interface';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
+import { computePosition, flip, shift, offset } from '@floating-ui/dom';
 
 @Component({
   selector: 'app-table',
@@ -122,42 +123,55 @@ export class Table {
   }
 
   // ── Actions dropdown ─────────────────────────────────
-  /** Bound reference so we can remove the exact same listener later */
-  private readonly _scrollClose = () => this.closeDropdown();
+
+  private _anchorBtn: HTMLElement | null = null;
+  private _menuEl: HTMLElement | null = null;
+
+  private readonly _scrollUpdate = () => this._reposition();
+
+  private async _reposition() {
+    if (!this._anchorBtn || !this._menuEl) return;
+    const { x, y } = await computePosition(this._anchorBtn, this._menuEl, {
+      strategy: 'fixed',
+      placement: 'bottom-end',
+      middleware: [offset(6), flip(), shift({ padding: 8 })],
+    });
+    this.dropdownPos.set({ top: y, left: x });
+  }
 
   toggleDropdown(index: number, event: MouseEvent) {
     event.stopPropagation();
     if (this.activeRowIndex() === index) {
       this.closeDropdown();
-    } else {
-      const btn = event.currentTarget as HTMLElement;
-      const rect = btn.getBoundingClientRect();
-
-      const menuWidth = 200;
-      const gap = 6;
-
-      // Position beside the button: prefer left side, fallback to right
-      const spaceOnLeft = rect.left - gap;
-      const left =
-        spaceOnLeft >= menuWidth
-          ? rect.left - menuWidth - gap
-          : rect.right + gap;
-
-      // Align top with button; clamp so menu doesn't overflow viewport bottom
-      const estimatedMenuHeight = 240;
-      const top = Math.min(rect.top, window.innerHeight - estimatedMenuHeight - 8);
-
-      this.activeRowIndex.set(index);
-      this.dropdownPos.set({ top, left });
-      // capture:true → catches scroll from ANY container (overflow divs, not just window)
-      document.addEventListener('scroll', this._scrollClose, true);
+      return;
     }
+
+    // Step 1: render the menu off-screen (no animation yet)
+    this.activeRowIndex.set(index);
+    this.dropdownPos.set(null);
+    this._anchorBtn = event.currentTarget as HTMLElement;
+
+    // Step 2: after Angular renders the menu, compute position and start tracking scroll
+    requestAnimationFrame(async () => {
+      const menu = this._anchorBtn!
+        .closest('.action-cell')
+        ?.querySelector<HTMLElement>('.action-menu');
+      if (!menu) return;
+      this._menuEl = menu;
+
+      await this._reposition();
+
+      // Re-position on scroll so the menu stays anchored to the button
+      document.addEventListener('scroll', this._scrollUpdate, { capture: true, passive: true });
+    });
   }
 
   closeDropdown() {
     this.activeRowIndex.set(null);
     this.dropdownPos.set(null);
-    document.removeEventListener('scroll', this._scrollClose, true);
+    this._anchorBtn = null;
+    this._menuEl = null;
+    document.removeEventListener('scroll', this._scrollUpdate, true);
   }
 
   isActionDisabled(action: TableAction, row: any): boolean {
