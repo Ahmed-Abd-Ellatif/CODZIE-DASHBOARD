@@ -11,7 +11,7 @@
   @if (visibleHeaderButtons().length > 0) {
     <div class="table-topbar ms-auto">
       @for (btn of visibleHeaderButtons(); track $index) {
-        <button type="button" [class]="'table-topbar-btn ' + btn.colorClass" (click)="btn.action()">
+        <button type="button" [class]="'btn ' + btn.colorClass" (click)="btn.action()">
           <i [class]="'fas fa-' + btn.icon"></i>
           {{ btn.label | translate }}
         </button>
@@ -67,7 +67,7 @@
             }
 
             @if (actions().length > 0) {
-              <th class="tbl-th tbl-th--actions"></th>
+              <th class="tbl-th tbl-th--actions">{{ 'GENERAL.ACTIONS' | translate }}</th>
             }
           </tr>
         </thead>

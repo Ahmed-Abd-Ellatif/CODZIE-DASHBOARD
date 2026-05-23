@@ -443,6 +443,7 @@ body.dark-mode {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   font-weight: 400;
   border: none;
   outline: none;
@@ -457,7 +458,6 @@ body.dark-mode {
   box-shadow: var(--shadow-xs);
   background: var(--primary-500);
   color: #fff;
-  margin-right: var(--space-2);
 }
 .btn-primary {
   background: var(--primary-500);
@@ -512,6 +512,21 @@ body.dark-mode {
 }
 .btn-warning:hover {
   background: var(--warning-dark);
+}
+.btn-success {
+  background: var(--success-main);
+  color: #fff;
+}
+.btn-success:hover {
+  background: var(--success-dark);
+}
+.btn-success-outline {
+  background: transparent;
+  color: var(--success-main);
+  border: 1px solid var(--success-main);
+}
+.btn-success-outline:hover {
+  background: var(--success-light);
 }
 .btn-dark {
   background: var(--neutral-800);

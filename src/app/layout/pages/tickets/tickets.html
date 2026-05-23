@@ -76,68 +76,12 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- * FILTERS -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<div class="card">
-  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
-    <div class="row">
-      <div class="col-12 col-md-3">
-        <input formControlName="name" class="input" placeholder="Search For Ticket" />
-      </div>
-      <div class="col-12 col-md-3">
-        <input formControlName="ticketNumber" class="input" placeholder="Ticket Number" />
-      </div>
-      <div class="col-12 col-md-3">
-        <ng-select
-          formControlName="priority"
-          [items]="priorityList"
-          bindValue="id"
-          bindLabel="value"
-          [placeholder]="'Priority'"
-          [clearable]="true"
-          [searchable]="false"
-          [multiple]="true"
-        >
-        </ng-select>
-      </div>
-      <div class="col-12 col-md-3">
-        <ng-select
-          formControlName="status"
-          [items]="statusList"
-          bindValue="id"
-          bindLabel="value"
-          [placeholder]="'Status'"
-          [clearable]="true"
-          [searchable]="false"
-          [multiple]="true"
-        >
-        </ng-select>
-      </div>
 
-      <!-- ~~~~~~~~~~~~~~~~~~~ -->
-      <!-- * DATE -->
-      <!-- ~~~~~~~~~~~~~~~~~~~ -->
-      <div class="col-12 col-md-3">
-        <div class="datepicker-wrapper">
-          <i class="fas fa-calendar-days datepicker-icon"></i>
-          <input
-            formControlName="date"
-            appDatepicker
-            class="input datepicker-input"
-            [placeholder]="'OWNERS.JOIN_DATE_PLACEHOLDER' | translate"
-            [mode]="'range'"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="text-end">
-      <button (click)="resetFilters()" type="button" class="btn btn-dark-outline">
-        <i class="fas fa-undo fa-xs me-1"></i> {{ 'GENERAL.RESET' | translate }}
-      </button>
-      <button type="submit" class="btn btn-dark">
-        <i class="fas fa-filter fa-xs me-1"></i> {{ 'GENERAL.FILTER' | translate }}
-      </button>
-    </div>
-  </form>
-</div>
+<app-filter
+  [fields]="filterFields"
+  (filterSubmit)="onFilterSubmit($event)"
+  (filterReset)="onFilterReset()"
+/>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- TABLE -->

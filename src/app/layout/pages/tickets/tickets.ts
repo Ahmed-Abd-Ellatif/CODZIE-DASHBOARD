@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Breadcrumb } from '../../../shared/components/breadcrumb/breadcrumb';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DatepickerDirective } from '../../../shared/directives/datepicker/datepicker.directive';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Table } from '../../../shared/components/table/table';
 import {
@@ -13,18 +12,11 @@ import {
   TableColumn,
 } from '../../../shared/components/table/models/table.interface';
 import { TicketData, AttachmentItem } from './components/ticket-details/ticket-details';
+import { Filter, FilterField } from '../../../shared/components/filter/filter';
 
 @Component({
   selector: 'app-tickets',
-  imports: [
-    CommonModule,
-    Breadcrumb,
-    TranslatePipe,
-    DatepickerDirective,
-    ReactiveFormsModule,
-    NgSelectModule,
-    Table,
-  ],
+  imports: [CommonModule, Breadcrumb, TranslatePipe, Table, Filter],
   templateUrl: './tickets.html',
   styleUrl: './tickets.css',
 })
@@ -44,9 +36,9 @@ export class Tickets {
   });
 
   statusList = [
-    { id: 1, value: 'Open' },
-    { id: 2, value: 'Pending' },
-    { id: 3, value: 'Closed' },
+    { id: 'new', value: 'New' },
+    { id: 'in-progress', value: 'In Progress' },
+    { id: 'complete', value: 'Complete' },
   ];
   priorityList = [
     { id: 1, value: 'High' },
@@ -71,7 +63,7 @@ export class Tickets {
       id: 'TCKT-001',
       name: 'أحمد محمد',
       subject: 'مشكلة في تسجيل الدخول',
-      status: 'open',
+      status: 'new',
       priority: 'high',
       createdDate: new Date('2024-02-20'),
       description:
@@ -97,7 +89,7 @@ export class Tickets {
       id: 'TCKT-002',
       name: 'خالد أحمد',
       subject: 'مشكلة في تسجيل الدخول',
-      status: 'closed',
+      status: 'complete',
       priority: 'low',
       createdDate: new Date('2024-02-20'),
       description:
@@ -115,7 +107,7 @@ export class Tickets {
       id: 'TCKT-003',
       name: 'خالد أحمد',
       subject: 'مشكلة في  تسجيل الدخول',
-      status: 'pending',
+      status: 'in-progress',
       priority: 'medium',
       createdDate: new Date('2024-02-20'),
       description:
@@ -140,29 +132,29 @@ export class Tickets {
       align: 'center',
       badgeConfig: (val: string, row: any) => {
         switch (val) {
-          case 'open':
+          case 'new':
             return {
               colorClass: 'tbl-badge--danger',
-              label: 'OPEN',
+              label: 'TICKETS.STATUS_NEW',
               // onClick: (r) => {
               //   this.selectOwner = r;
               //   this.openPaymentDialog();
               // },
             };
 
-          case 'pending':
+          case 'in-progress':
             return {
               colorClass: 'tbl-badge--warning',
-              label: 'PENDING',
+              label: 'TICKETS.STATUS_IN_PROGRESS',
               // onClick: (r) => {
               //   this.selectOwner = r;
               //   this.openPaymentDialog();
               // },
             };
-          case 'closed':
+          case 'complete':
             return {
               colorClass: 'tbl-badge--success',
-              label: 'CLOSED',
+              label: 'TICKETS.STATUS_COMPLETE',
               // onClick: (r) => {
               //   this.selectOwner = r;
               //   this.openPaymentDialog();
@@ -276,7 +268,7 @@ export class Tickets {
     {
       label: 'TICKETS.ADD_TICKET',
       icon: 'plus',
-      colorClass: 'tbl-primary',
+      colorClass: 'btn-primary',
       action: () => {},
     },
   ];
@@ -286,9 +278,9 @@ export class Tickets {
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   get ticketStats() {
     const total = this.SAMPLE_DATA.length;
-    const open = this.SAMPLE_DATA.filter((t) => t.status === 'open').length;
-    const pending = this.SAMPLE_DATA.filter((t) => t.status === 'pending').length;
-    const closed = this.SAMPLE_DATA.filter((t) => t.status === 'closed').length;
+    const open = this.SAMPLE_DATA.filter((t) => t.status === 'new').length;
+    const pending = this.SAMPLE_DATA.filter((t) => t.status === 'in-progress').length;
+    const closed = this.SAMPLE_DATA.filter((t) => t.status === 'complete').length;
     const pct = (n: number) => (total ? Math.round((n / total) * 100) : 0);
     return {
       total,
@@ -299,5 +291,50 @@ export class Tickets {
       pendingPct: pct(pending),
       closedPct: pct(closed),
     };
+  }
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // FILTER
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  filterFields: FilterField[] = [
+    {
+      key: 'search',
+      type: 'text',
+      placeholder: 'TICKETS.SEARCH_TICKET',
+    },
+
+    {
+      key: 'status',
+      type: 'select',
+      placeholder: 'TICKETS.STATUS',
+      items: this.statusList,
+      bindValue: 'id',
+      bindLabel: 'value',
+      multiple: true,
+    },
+    {
+      key: 'priority',
+      type: 'select',
+      placeholder: 'TICKETS.PROPERTY',
+      items: this.priorityList,
+      bindValue: 'id',
+      bindLabel: 'value',
+      multiple: true,
+    },
+
+    {
+      key: 'date',
+      type: 'date',
+      placeholder: 'TICKETS.SELECT_DATE',
+      dateMode: 'range',
+    },
+  ];
+
+  onFilterSubmit(values: Record<string, any>): void {
+    console.log('Filter values:', values);
+  }
+
+  onFilterReset(): void {
+    console.log('Filter reset');
   }
 }

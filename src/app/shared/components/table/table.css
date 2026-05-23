@@ -28,63 +28,6 @@
   padding: var(--spacing-3) var(--spacing-4);
 }
 
-.table-topbar-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-4);
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-  font-weight: 500;
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
-  transition:
-    filter var(--duration-fast) var(--ease-inout),
-    transform var(--duration-fast) var(--ease-inout);
-}
-
-.table-topbar-btn:hover {
-  filter: brightness(0.9);
-}
-
-.table-topbar-btn:active {
-  transform: scale(0.96);
-}
-
-/* Icon inside topbar button (image format) */
-.btn-icon-img {
-  display: block;
-  object-fit: contain;
-}
-
-/* Color variants for header buttons */
-.table-topbar-btn.tbl-primary {
-  background: var(--primary-600);
-  color: #ffffff;
-}
-
-.table-topbar-btn.tbl-success {
-  background: var(--success-main);
-  color: #ffffff;
-}
-
-.table-topbar-btn.tbl-danger {
-  background: var(--error-main);
-  color: #ffffff;
-}
-
-.table-topbar-btn.tbl-warning {
-  background: var(--warning-main);
-  color: #ffffff;
-}
-
-.table-topbar-btn.tbl-neutral {
-  background: var(--neutral-100);
-  color: var(--neutral-700);
-  border: 1px solid var(--neutral-300);
-}
-
 /* ── Scroll wrapper ───────────────────────────────────────────── */
 .table-scroll {
   overflow-x: auto;

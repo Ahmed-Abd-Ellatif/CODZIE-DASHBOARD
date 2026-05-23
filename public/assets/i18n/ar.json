@@ -8,7 +8,8 @@
     "YEAR": "السنة",
     "CURRENCY": "ج.م",
     "FILTER": "تصفية",
-    "RESET": "إعادة تعيين"
+    "RESET": "إعادة تعيين",
+    "ACTIONS": "الإجراءات"
   },
   "DASHBOARD": {
     "TITLE": "لوحة التحكم",
@@ -122,8 +123,9 @@
     "CREATED_AT": "تاريخ الإنضمام",
     "SUBSCRIPTION_TYPE": "نوع الاشتراك",
     "PAY_OPTIONS_PLACEHOLDER": "خيارات الدفع",
-    "PAY": "يدفع",
-    "NOT_PAY": "لا يدفع"
+    "PAY": "تم الدفع",
+    "NOT_PAY": "لم يتم الدفع",
+    "SEARCH_OF_OWNERS": "البحث عن الملاك"
   },
   "LOGIN": {
     "WELCOME_BACK": "مرحبًا بعودتك!",
@@ -147,14 +149,21 @@
     "TITLE": "التذاكر",
     "ALL": "جميع التذاكر",
     "ALL_DESC": "إجمالي التذاكر المسجلة",
-    "OPEN": "التذاكر المفتوحة",
-    "OPEN_DESC": "تحتاج إلى معالجة",
-    "PENDING": "قيد الانتظار",
-    "PENDING_DESC": "في انتظار الرد",
-    "CLOSED": "التذاكر المغلقة",
+    "OPEN": "تذاكر جديدة",
+    "OPEN_DESC": "في انتظار التعيين",
+    "PENDING": "قيد التنفيذ",
+    "PENDING_DESC": "يجري العمل عليها",
+    "CLOSED": "مكتملة",
     "CLOSED_DESC": "تم الحل بنجاح",
+    "STATUS_NEW": "جديد",
+    "STATUS_IN_PROGRESS": "قيد التنفيذ",
+    "STATUS_COMPLETE": "مكتمل",
     "OF_TOTAL": "من الإجمالي",
-    "ADD_TICKET": "إضافة تذكرة جديدة"
+    "ADD_TICKET": "إضافة تذكرة جديدة",
+    "PROPERTY": "الأولية",
+    "STATUS": "الحالة",
+    "SEARCH_TICKET": "ابحث عن تذكرة",
+    "SELECT_DATE": "اختر التاريخ"
   },
   "FOOTER_COPYRIGHT": "جميع الحقوق محفوظة لشركة كودزي © "
 }

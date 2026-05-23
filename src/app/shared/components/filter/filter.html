@@ -1,0 +1,61 @@
+<div class="card">
+  @if (form) {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- ── Fields Row ─────────────────────────────── -->
+      <div class="row gy-3">
+        @for (field of fields; track field.key) {
+          <div [class]="field.colClass ?? 'col-12 col-md-3'">
+            <!-- TEXT input -->
+            @if (field.type === 'text') {
+              <input
+                [formControlName]="field.key"
+                class="input"
+                [placeholder]="field.placeholder ? (field.placeholder | translate) : ''"
+              />
+            }
+
+            <!-- DATE picker -->
+            @else if (field.type === 'date') {
+              <div class="datepicker-wrapper">
+                <i class="fas fa-calendar-days datepicker-icon"></i>
+                <input
+                  [formControlName]="field.key"
+                  appDatepicker
+                  class="input datepicker-input"
+                  [placeholder]="field.placeholder ? (field.placeholder | translate) : ''"
+                  [mode]="field.dateMode ?? 'range'"
+                />
+              </div>
+            }
+
+            <!-- SELECT dropdown -->
+            @else if (field.type === 'select') {
+              <ng-select
+                [formControlName]="field.key"
+                [items]="field.items ?? []"
+                [bindValue]="field.bindValue ?? 'value'"
+                [bindLabel]="field.bindLabel ?? 'label'"
+                [placeholder]="field.placeholder ? (field.placeholder | translate) : ''"
+                [clearable]="true"
+                [searchable]="field.searchable ?? false"
+                [multiple]="field.multiple ?? false"
+              />
+            }
+          </div>
+        }
+      </div>
+
+      <!-- ── Action Buttons ─────────────────────────── -->
+      <div class="filter-actions">
+        <button type="button" class="btn btn-dark-outline" (click)="onReset()">
+          <i class="fas fa-undo fa-xs"></i>
+          {{ 'GENERAL.RESET' | translate }}
+        </button>
+        <button type="submit" class="btn btn-dark">
+          <i class="fas fa-filter fa-xs"></i>
+          {{ 'GENERAL.FILTER' | translate }}
+        </button>
+      </div>
+    </form>
+  }
+</div>

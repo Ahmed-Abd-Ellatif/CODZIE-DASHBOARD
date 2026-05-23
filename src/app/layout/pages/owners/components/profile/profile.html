@@ -29,7 +29,7 @@
         </button>
         <button
           class="btn"
-          [class]="isBlocked() ? 'btn btn-success-custom' : 'btn btn-warning-custom'"
+          [class]="isBlocked() ? 'btn btn-success' : 'btn btn-warning'"
           type="button"
           (click)="toggleBlockStatus()"
         >
@@ -38,11 +38,11 @@
             (isBlocked() ? 'OWNERS.UNBLOCK_OWNER' : 'OWNERS.BLOCK_OWNER') | translate
           }}</span>
         </button>
-        <button class="btn btn-danger-custom" type="button" (click)="deleteOwner()">
+        <button class="btn btn-danger" type="button" (click)="deleteOwner()">
           <i class="fas fa-trash-can"></i>
           <span>{{ 'OWNERS.DELETE_OWNER' | translate }}</span>
         </button>
-        <button class="btn btn-success-custom" type="button">
+        <button class="btn btn-success" type="button">
           <i class="fas fa-key"></i>
           <span>{{ 'OWNERS.RESET_PASSWORD' | translate }}</span>
         </button>

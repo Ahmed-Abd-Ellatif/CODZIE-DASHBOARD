@@ -8,7 +8,8 @@
     "YEAR": "Year",
     "CURRENCY": "EGP",
     "FILTER": "Filter",
-    "RESET": "Reset"
+    "RESET": "Reset",
+    "ACTIONS": "Actions"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard",
@@ -121,7 +122,8 @@
     "SUBSCRIPTION_TYPE": "Subscription Type",
     "PAY_OPTIONS_PLACEHOLDER": "Pay Options",
     "PAY": "Pay",
-    "NOT_PAY": "Not Pay"
+    "NOT_PAY": "Not Pay",
+    "SEARCH_OF_OWNERS": "Search for owners"
   },
 
   "LOGIN": {
@@ -147,14 +149,21 @@
     "TITLE": "Tickets",
     "ALL": "All Tickets",
     "ALL_DESC": "Total registered tickets",
-    "OPEN": "Open Tickets",
-    "OPEN_DESC": "Needs to be handled",
-    "PENDING": "Pending Tickets",
-    "PENDING_DESC": "Awaiting response",
-    "CLOSED": "Closed Tickets",
+    "OPEN": "New Tickets",
+    "OPEN_DESC": "Waiting for assignment",
+    "PENDING": "In Progress",
+    "PENDING_DESC": "Being worked on",
+    "CLOSED": "Complete",
     "CLOSED_DESC": "Successfully resolved",
+    "STATUS_NEW": "New",
+    "STATUS_IN_PROGRESS": "In Progress",
+    "STATUS_COMPLETE": "Complete",
     "OF_TOTAL": "of total",
-    "ADD_TICKET": "Add New Ticket"
+    "ADD_TICKET": "Add New Ticket",
+    "PROPERTY": "Property",
+    "STATUS": "Status",
+    "SEARCH_TICKET": "Search for ticket",
+    "SELECT_DATE": "Select Date"
   },
   "FOOTER_COPYRIGHT": "All Rights Reserved for CODZIE © "
 }

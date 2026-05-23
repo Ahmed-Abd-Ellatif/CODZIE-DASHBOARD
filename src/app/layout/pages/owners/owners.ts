@@ -10,28 +10,16 @@ import {
 import { Table } from '../../../shared/components/table/table';
 import { Router } from '@angular/router';
 import { PaymentDialog } from '../../../shared/components/payment-dialog/payment-dialog';
-import { DatepickerDirective } from '../../../shared/directives/datepicker/datepicker.directive';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { NgSelectModule } from '@ng-select/ng-select';
+import { Filter, FilterField } from '../../../shared/components/filter/filter';
 
 @Component({
   selector: 'app-owners',
-  imports: [
-    CommonModule,
-    Breadcrumb,
-    TranslatePipe,
-    Table,
-    PaymentDialog,
-    DatepickerDirective,
-    ReactiveFormsModule,
-    NgSelectModule,
-  ],
+  imports: [CommonModule, Breadcrumb, TranslatePipe, Table, PaymentDialog, Filter],
   templateUrl: './owners.html',
   styleUrl: './owners.css',
 })
 export class Owners {
   _router = inject(Router);
-  _fb = inject(FormBuilder);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // SWEET ALERTS
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,7 +96,7 @@ export class Owners {
         switch (val) {
           case 'Pay':
             return {
-              colorClass: 'tbl-badge--success',
+              colorClass: 'tbl-badge--info',
               label: 'OWNERS.PAY',
               onClick: (r) => {
                 this.selectOwner = r;
@@ -118,7 +106,7 @@ export class Owners {
 
           case 'Not Pay':
             return {
-              colorClass: 'tbl-badge--danger',
+              colorClass: 'tbl-badge--warning',
               label: 'OWNERS.NOT_PAY',
               onClick: (r) => {
                 this.selectOwner = r;
@@ -213,36 +201,46 @@ export class Owners {
     {
       label: 'OWNERS.ADD_OWNER',
       icon: 'plus',
-      colorClass: 'tbl-primary',
+      colorClass: 'btn-primary',
       action: () => this._router.navigate(['/owners/add']),
     },
   ];
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // FORM
+  // FILTER
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  payOptions = [
-    { value: '1', labelKey: 'Pay' },
-    { value: '2', labelKey: 'Not Pay' },
+  filterFields: FilterField[] = [
+    {
+      key: 'Search',
+      type: 'text',
+      placeholder: 'OWNERS.SEARCH_OF_OWNERS',
+    },
+
+    {
+      key: 'date',
+      type: 'date',
+      placeholder: 'OWNERS.JOIN_DATE_PLACEHOLDER',
+      dateMode: 'range',
+    },
+    {
+      key: 'typePay',
+      type: 'select',
+      placeholder: 'OWNERS.PAY_OPTIONS_PLACEHOLDER',
+      items: [
+        { value: '1', label: 'Pay' },
+        { value: '2', label: 'Not Pay' },
+      ],
+      bindValue: 'value',
+      bindLabel: 'label',
+      multiple: true,
+    },
   ];
 
-  filterForm = this._fb.group({
-    code: [null],
-    name: [null],
-    date: [null as { from: string; to: string } | null],
-    typePay: [null],
-  });
+  onFilterSubmit(values: Record<string, any>): void {
+    console.log('Filter values:', values);
+  }
 
-  applyFilters() {
-    const { code, name, date, typePay } = this.filterForm.value;
-    const filters = {
-      code,
-      name,
-      typePay,
-      from: date?.from ?? null,
-      to: date?.to ?? null,
-    };
-    console.log(this.filterForm.value);
-    console.log(filters);
+  onFilterReset(): void {
+    console.log('Filter reset');
   }
 }

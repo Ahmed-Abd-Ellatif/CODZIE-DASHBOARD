@@ -5,54 +5,11 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- * FILTERS -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<div class="card">
-  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
-    <div class="row">
-      <div class="col-12 col-md-3">
-        <input formControlName="code" class="input" placeholder="Owner Code" />
-      </div>
-      <div class="col-12 col-md-3">
-        <input formControlName="name" class="input" placeholder="Owner Name" />
-      </div>
-      <!-- ~~~~~~~~~~~~~~~~~~~ -->
-      <!-- * DATE -->
-      <!-- ~~~~~~~~~~~~~~~~~~~ -->
-      <div class="col-12 col-md-3">
-        <div class="datepicker-wrapper">
-          <i class="fas fa-calendar-days datepicker-icon"></i>
-          <input
-            formControlName="date"
-            appDatepicker
-            class="input datepicker-input"
-            [placeholder]="'OWNERS.JOIN_DATE_PLACEHOLDER' | translate"
-            [mode]="'range'"
-          />
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <ng-select
-          formControlName="typePay"
-          [items]="payOptions"
-          bindValue="value"
-          bindLabel="labelKey"
-          [placeholder]="'OWNERS.PAY_OPTIONS_PLACEHOLDER' | translate"
-          [clearable]="true"
-          [searchable]="false"
-          [multiple]="true"
-        >
-        </ng-select>
-      </div>
-    </div>
-    <div class="text-end">
-      <button type="button" class="btn btn-dark-outline">
-        <i class="fas fa-undo fa-xs me-1"></i> {{ 'GENERAL.RESET' | translate }}
-      </button>
-      <button type="submit" class="btn btn-dark">
-        <i class="fas fa-filter fa-xs me-1"></i> {{ 'GENERAL.FILTER' | translate }}
-      </button>
-    </div>
-  </form>
-</div>
+<app-filter
+  [fields]="filterFields"
+  (filterSubmit)="onFilterSubmit($event)"
+  (filterReset)="onFilterReset()"
+/>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- TABLE -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

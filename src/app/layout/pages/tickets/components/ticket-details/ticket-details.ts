@@ -34,7 +34,7 @@ const SAMPLE_DATA: TicketData[] = [
     id: 'TCKT-001',
     name: 'أحمد محمد',
     subject: 'مشكلة في تسجيل الدخول',
-    status: 'open',
+    status: 'new',
     priority: 'high',
     createdDate: new Date('2024-02-20'),
     description:
@@ -70,7 +70,7 @@ const SAMPLE_DATA: TicketData[] = [
     id: 'TCKT-002',
     name: 'خالد أحمد',
     subject: 'مشكلة في تسجيل الدخول',
-    status: 'closed',
+    status: 'complete',
     priority: 'low',
     createdDate: new Date('2024-02-20'),
     description:
@@ -88,7 +88,7 @@ const SAMPLE_DATA: TicketData[] = [
     id: 'TCKT-003',
     name: 'خالد أحمد',
     subject: 'مشكلة في  تسجيل الدخول',
-    status: 'pending',
+    status: 'in-progress',
     priority: 'medium',
     createdDate: new Date('2024-02-20'),
     description:
@@ -121,14 +121,14 @@ export class TicketDetails {
     SAMPLE_DATA.find((t) => t.id === this.route.snapshot.paramMap.get('id')) ?? null;
 
   // ── Dropdown state ──────────────────────────────
-  selectedStatus: string = this.ticket?.status ?? 'open';
+  selectedStatus: string = this.ticket?.status ?? 'new';
   selectedPriority: string = this.ticket?.priority ?? 'high';
   selectedEmployee: string | null = null;
 
   statusOptions = [
-    { value: 'open', label: 'مفتوح', colorClass: 'tbl-badge--danger' },
-    { value: 'pending', label: 'قيد المعالجة', colorClass: 'tbl-badge--warning' },
-    { value: 'closed', label: 'مغلق', colorClass: 'tbl-badge--success' },
+    { value: 'new', label: 'جديد', colorClass: 'tbl-badge--danger' },
+    { value: 'in-progress', label: 'قيد التنفيذ', colorClass: 'tbl-badge--warning' },
+    { value: 'complete', label: 'مكتمل', colorClass: 'tbl-badge--success' },
   ];
 
   priorityOptions = [
@@ -173,11 +173,11 @@ export class TicketDetails {
 
   statusClass(status: string): string {
     switch (status) {
-      case 'open':
+      case 'new':
         return 'tbl-badge--danger';
-      case 'pending':
+      case 'in-progress':
         return 'tbl-badge--warning';
-      case 'closed':
+      case 'complete':
         return 'tbl-badge--success';
       default:
         return 'tbl-badge--neutral';
@@ -186,12 +186,12 @@ export class TicketDetails {
 
   statusLabel(status: string): string {
     switch (status) {
-      case 'open':
-        return 'مفتوح';
-      case 'pending':
-        return 'قيد المعالجة';
-      case 'closed':
-        return 'مغلق';
+      case 'new':
+        return 'جديد';
+      case 'in-progress':
+        return 'قيد التنفيذ';
+      case 'complete':
+        return 'مكتمل';
       default:
         return status;
     }
