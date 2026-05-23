@@ -232,7 +232,7 @@ export class Owners {
       ],
       bindValue: 'value',
       bindLabel: 'label',
-      multiple: true,
+      // multiple: true,
     },
   ];
 
