@@ -32,7 +32,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: none;
   background: none;
   cursor: pointer;
@@ -81,7 +81,7 @@
   align-items: center;
   gap: var(--spacing-2);
   padding: var(--spacing-1) var(--spacing-2);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: none;
   background: none;
   cursor: pointer;
@@ -153,7 +153,7 @@
   min-width: 210px;
   background: #ffffff;
   border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   z-index: 100;
   animation: dropdownIn 0.15s var(--ease-out);

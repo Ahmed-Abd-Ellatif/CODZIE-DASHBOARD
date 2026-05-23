@@ -27,13 +27,15 @@
     </div>
     <div class="col-12 col-md-6">
       <label class="required input-label">{{ 'OWNERS.SYSTEM' | translate }}</label>
-      <div class="select-wrapper">
-        <select class="select">
-          <option value="" selected disabled>{{ 'OWNERS.SYSTEM_OPTIONS' | translate }}</option>
-          <option value="1">{{ 'OWNERS.TEACHER' | translate }}</option>
-          <option value="2">{{ 'OWNERS.CENTER' | translate }}</option>
-        </select>
-      </div>
+      <ng-select
+        [(ngModel)]="selectedSystem"
+        [items]="systemOptions"
+        bindValue="value"
+        bindLabel="label"
+        [searchable]="false"
+        [clearable]="false"
+        placeholder="{{ 'OWNERS.SYSTEM_OPTIONS' | translate }}"
+      />
     </div>
     <div class="col-12 col-md-6">
       <label class="required input-label">{{ 'OWNERS.COST' | translate }}</label>

@@ -262,7 +262,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: none;
   background: none;
   cursor: pointer;
@@ -283,7 +283,7 @@
   min-width: 160px;
   background: #ffffff;
   border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   box-shadow: var(--shadow-lg);
   z-index: 9999;
   overflow: hidden;
@@ -440,25 +440,41 @@
   margin-inline-end: var(--spacing-2);
 }
 
-.page-size-select {
-  padding: 5px var(--spacing-6) 5px var(--spacing-3);
+/* ng-select overrides for page-size */
+:host ::ng-deep .tbl-page-size-select {
+  min-width: 110px;
+}
+:host ::ng-deep .tbl-page-size-select .ng-select-container {
+  min-height: 32px;
+  height: 32px;
   border: 1px solid var(--neutral-300);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   background: #ffffff;
   font-size: 0.8125rem;
-  font-family: inherit;
-  color: var(--neutral-700);
   cursor: pointer;
-  outline: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  transition: border-color var(--duration-fast);
 }
-
-.page-size-select:focus {
+:host ::ng-deep .tbl-page-size-select .ng-value-container {
+  padding-right: 8px;
+}
+:host ::ng-deep .tbl-page-size-select .ng-arrow-wrapper {
+  padding-right: 6px;
+}
+:host ::ng-deep .tbl-page-size-select.ng-select-focused .ng-select-container {
   border-color: var(--primary-400);
+  box-shadow: none;
+}
+:host ::ng-deep .tbl-page-size-select .ng-dropdown-panel {
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  font-size: 0.8125rem;
+}
+:host ::ng-deep .tbl-page-size-select .ng-dropdown-panel .ng-option {
+  padding: 6px 12px;
+}
+:host ::ng-deep .tbl-page-size-select .ng-dropdown-panel .ng-option.ng-option-marked {
+  background: var(--primary-50);
+  color: var(--primary-700);
 }
 
 /* Page buttons */
@@ -469,7 +485,7 @@
   min-width: 32px;
   height: 32px;
   padding: 0 var(--spacing-2);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--neutral-200);
   background: #ffffff;
   font-size: 0.8125rem;

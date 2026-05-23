@@ -36,7 +36,7 @@
   gap: 0;
   background: var(--color-neutral-50);
   border: 1px solid var(--color-neutral-200);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-sm);
   padding: var(--spacing-1) var(--spacing-2);
   box-shadow: var(--shadow-sm);
 }
@@ -55,7 +55,7 @@
   font-weight: 700;
   font-family: var(--font-main);
   color: var(--color-neutral-600);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   transition:
     color var(--duration-base) var(--ease-out),
     background var(--duration-base) var(--ease-out);
@@ -83,7 +83,7 @@
   max-width: 420px;
   background: var(--color-neutral-50);
   border: 1px solid var(--color-neutral-200);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
   padding: var(--spacing-10) var(--spacing-10);
   box-shadow: var(--shadow-xl);
 }
@@ -105,12 +105,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: var(--radius-lg);
-  background: var(--color-primary-200);
   color: #fff;
   font-size: 1.1rem;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
 }
 
 .brand-name {
@@ -184,7 +181,7 @@
   padding: 0.72rem var(--spacing-4);
   padding-inline-start: calc(var(--spacing-4) + 1.25rem + var(--spacing-3));
   border: 1.5px solid var(--color-neutral-200);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-family: var(--font-main);
   color: var(--color-neutral-800);
@@ -251,7 +248,7 @@
   background: var(--color-primary-600);
   color: #fff;
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   font-size: 0.95rem;
   font-weight: 700;
   font-family: var(--font-main);
@@ -365,12 +362,13 @@
   height: 88px;
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.25);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-sm);
   font-size: 2.2rem;
   color: #fff;
   margin-bottom: var(--spacing-8);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: var(--spacing-2);
 }
 
 .platform-app-badge {

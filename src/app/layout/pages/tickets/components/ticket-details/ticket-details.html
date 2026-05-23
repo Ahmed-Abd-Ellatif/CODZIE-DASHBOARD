@@ -1,0 +1,249 @@
+<app-breadcrumb [pageTitle]="'تفاصيل التذكرة'" />
+
+@if (ticket) {
+  <div class="tkt-details-page" dir="rtl">
+    <!-- ===== ACTIONS CARD ===== -->
+    <div class="card tkt-actions-card">
+      <!-- ── Status ── -->
+      <div class="tkt-select-wrap">
+        <span class="tkt-select-label"> <i class="fas fa-arrows-rotate"></i> الحالة </span>
+        <ng-select
+          class="tkt-ng-select"
+          [(ngModel)]="selectedStatus"
+          [items]="statusOptions"
+          bindValue="value"
+          [searchable]="false"
+          [clearable]="false"
+          placeholder="اختر الحالة"
+        >
+          <ng-template ng-label-tmp let-item="item">
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+          </ng-template>
+          <ng-template ng-option-tmp let-item="item">
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+          </ng-template>
+        </ng-select>
+      </div>
+
+      <!-- ── Priority ── -->
+      <div class="tkt-select-wrap">
+        <span class="tkt-select-label"> <i class="fas fa-flag"></i> الأولوية </span>
+        <ng-select
+          class="tkt-ng-select"
+          [(ngModel)]="selectedPriority"
+          [items]="priorityOptions"
+          bindValue="value"
+          [searchable]="false"
+          [clearable]="false"
+          placeholder="اختر الأولوية"
+        >
+          <ng-template ng-label-tmp let-item="item">
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+          </ng-template>
+          <ng-template ng-option-tmp let-item="item">
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+          </ng-template>
+        </ng-select>
+      </div>
+
+      <!-- ── Employee ── -->
+      <div class="tkt-select-wrap">
+        <span class="tkt-select-label"> <i class="fas fa-user-plus"></i> تعيين موظف </span>
+        <ng-select
+          class="tkt-ng-select"
+          [(ngModel)]="selectedEmployee"
+          [items]="employeeOptions"
+          bindValue="value"
+          [searchable]="true"
+          [clearable]="true"
+          placeholder="اختر موظفاً"
+        >
+          <ng-template ng-label-tmp let-item="item">
+            <div class="tkt-emp-selected">
+              <span class="tkt-emp-avatar">{{ item.initials }}</span>
+              <span>{{ item.label }}</span>
+            </div>
+          </ng-template>
+          <ng-template ng-option-tmp let-item="item">
+            <div class="tkt-emp-option">
+              <span class="tkt-emp-avatar">{{ item.initials }}</span>
+              <span>{{ item.label }}</span>
+            </div>
+          </ng-template>
+        </ng-select>
+      </div>
+
+      <div class="tkt-actions-divider"></div>
+
+      <button class="tkt-action-btn tkt-action-btn--primary" type="button">
+        <i class="fas fa-note-sticky"></i>
+        <span>إضافة ملاحظة</span>
+      </button>
+      <button class="tkt-action-btn tkt-action-btn--success" type="button">
+        <i class="fas fa-circle-check"></i>
+        <span>إغلاق التذكرة</span>
+      </button>
+      <button class="tkt-action-btn tkt-action-btn--warning" type="button">
+        <i class="fas fa-folder-open"></i>
+        <span>إعادة الفتح</span>
+      </button>
+      <button class="tkt-action-btn tkt-action-btn--danger" type="button">
+        <i class="fas fa-trash-can"></i>
+        <span>حذف</span>
+      </button>
+    </div>
+
+    <!-- ===== INFO GRID ===== -->
+    <div class="card">
+      <div class="tkt-details-info-grid">
+        <div class="tkt-details-info-item">
+          <span class="tkt-details-info-label">
+            <i class="fas fa-hashtag tkt-details-info-icon"></i>رقم التذكرة
+          </span>
+          <span class="tkt-details-info-value">{{ ticket.id }}</span>
+        </div>
+
+        <div class="tkt-details-info-item">
+          <span class="tkt-details-info-label">
+            <i class="fas fa-user tkt-details-info-icon"></i>اسم صاحب التذكرة
+          </span>
+          <span class="tkt-details-info-value">{{ ticket.name }}</span>
+        </div>
+
+        <div class="tkt-details-info-item">
+          <span class="tkt-details-info-label">
+            <i class="fas fa-tag tkt-details-info-icon"></i>الموضوع
+          </span>
+          <span class="tkt-details-info-value">{{ ticket.subject }}</span>
+        </div>
+
+        <div class="tkt-details-info-item">
+          <span class="tkt-details-info-label">
+            <i class="fas fa-calendar-days tkt-details-info-icon"></i>تاريخ الإنشاء
+          </span>
+          <span class="tkt-details-info-value">{{ ticket.createdDate | date: 'dd/MM/yyyy' }}</span>
+        </div>
+
+        <div class="tkt-details-info-item">
+          <p class="tkt-details-info-label">
+            <i class="fas fa-circle-info tkt-details-info-icon"></i>الحالة
+            <span class="tbl-badge" [ngClass]="statusClass(ticket.status)">
+              {{ statusLabel(ticket.status) }}
+            </span>
+          </p>
+        </div>
+
+        <div class="tkt-details-info-item">
+          <p class="tkt-details-info-label">
+            <i class="fas fa-flag tkt-details-info-icon"></i>الأولوية
+
+            <span class="tbl-badge" [ngClass]="priorityClass(ticket.priority)">
+              {{ priorityLabel(ticket.priority) }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== DESCRIPTION ===== -->
+    <div class="card tkt-details-section">
+      <h3 class="tkt-details-section-title">
+        <i class="fas fa-align-right tkt-details-section-icon"></i>الوصف
+      </h3>
+      <p class="tkt-details-description">{{ ticket.description }}</p>
+    </div>
+
+    <!-- ===== ATTACHMENTS ===== -->
+    <div class="card tkt-details-section">
+      <h3 class="tkt-details-section-title">
+        <i class="fas fa-paperclip tkt-details-section-icon"></i>المرفقات
+      </h3>
+
+      @if (ticket.attachments && ticket.attachments.length > 0) {
+        <div class="tkt-details-attachments">
+          <!-- ── Images row ── -->
+          @if (imageAttachments.length > 0) {
+            <div class="tkt-details-attachments-images">
+              @for (file of imageAttachments; track file.name) {
+                <button
+                  class="tkt-details-attachment-img-wrap"
+                  type="button"
+                  (click)="openLightbox(file)"
+                >
+                  <img [src]="file.url" [alt]="file.name" class="tkt-details-attachment-img" />
+                  <span class="tkt-details-attachment-name">{{ file.name }}</span>
+                </button>
+              }
+            </div>
+          }
+
+          <!-- ── Files row ── -->
+          @if (fileAttachments.length > 0) {
+            <div class="tkt-details-attachments-files">
+              @for (file of fileAttachments; track file.name) {
+                <a
+                  class="tkt-details-attachment-file"
+                  [href]="file.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fas fa-file-pdf tkt-details-attachment-icon"></i>
+                  <span class="tkt-details-attachment-file-name">{{ file.name }}</span>
+                  <i class="fas fa-arrow-up-right-from-square tkt-details-attachment-open-icon"></i>
+                </a>
+              }
+            </div>
+          }
+        </div>
+      } @else {
+        <p class="tkt-details-empty"><i class="fas fa-folder-open me-1"></i> لا توجد مرفقات</p>
+      }
+    </div>
+
+    <!-- ===== NOTES ===== -->
+    <div class="card tkt-details-section">
+      <h3 class="tkt-details-section-title">
+        <i class="fas fa-notes-medical tkt-details-section-icon"></i>الملاحظات
+      </h3>
+
+      @if (ticket.notes && ticket.notes.length > 0) {
+        <ul class="tkt-details-notes">
+          @for (note of ticket.notes; track note.date) {
+            <li class="tkt-details-note-item">
+              <div class="tkt-details-note-meta">
+                <span class="tkt-details-note-author">
+                  <i class="fas fa-user-circle me-1"></i>{{ note.author }}
+                </span>
+                <span class="tkt-details-note-date">{{ note.date | date: 'dd/MM/yyyy' }}</span>
+              </div>
+              <p class="tkt-details-note-text">{{ note.text }}</p>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p class="tkt-details-empty"><i class="fas fa-comment-slash me-1"></i> لا توجد ملاحظات</p>
+      }
+    </div>
+
+    <!-- ===== IMAGE LIGHTBOX ===== -->
+    @if (lightboxImage) {
+      <div class="tkt-lightbox-backdrop" (click)="closeLightbox()">
+        <div class="tkt-lightbox-container" (click)="$event.stopPropagation()">
+          <button class="tkt-lightbox-close" type="button" (click)="closeLightbox()">
+            <i class="fas fa-xmark"></i>
+          </button>
+          <img [src]="lightboxImage.url" [alt]="lightboxImage.name" class="tkt-lightbox-img" />
+          <span class="tkt-lightbox-name">{{ lightboxImage.name }}</span>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="tkt-details-not-found card" dir="rtl">
+    <i class="fas fa-ticket-slash tkt-details-not-found-icon"></i>
+    <p>لم يتم العثور على التذكرة</p>
+    <button class="btn btn-dark" (click)="goBack()">
+      <i class="fas fa-arrow-right me-1"></i> العودة إلى القائمة
+    </button>
+  </div>
+}

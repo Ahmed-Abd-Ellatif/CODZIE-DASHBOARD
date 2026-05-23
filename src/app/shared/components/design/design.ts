@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Alerts } from '../alerts/alerts';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Breadcrumb } from '../breadcrumb/breadcrumb';
 import { Translation } from '../../../core/services/translation';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -9,15 +10,38 @@ import { Toast } from '../toast/toast';
 import { ToastService } from '../toast/services/toast';
 import { Table } from '../table/table';
 import { HeaderButton, TableAction, TableColumn } from '../table/models/table.interface';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-design',
-  imports: [CommonModule, Alerts, Breadcrumb, TranslatePipe, SweetAlerts, Toast, Table],
+  imports: [
+    CommonModule,
+    Alerts,
+    Breadcrumb,
+    TranslatePipe,
+    SweetAlerts,
+    Toast,
+    Table,
+    FormsModule,
+    NgSelectModule,
+  ],
   templateUrl: './design.html',
   styleUrl: './design.css',
 })
 export class Design {
   translation = inject(Translation);
+
+  // ng-select demo values
+  designCategory: string | null = null;
+  designCategoryOptions = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+  ];
+  designStatus: string | null = null;
+  designStatusOptions = [{ value: '1', label: 'Option 1' }];
+  designDisabled: string = '1';
+  designDisabledOptions = [{ value: '1', label: 'Cannot change this' }];
 
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // ALERTS

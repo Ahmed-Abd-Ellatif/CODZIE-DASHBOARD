@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Breadcrumb } from '../../../shared/components/breadcrumb/breadcrumb';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -11,10 +12,7 @@ import {
   TableAction,
   TableColumn,
 } from '../../../shared/components/table/models/table.interface';
-import {
-  TicketDetailsDialog,
-  TicketData,
-} from './components/ticket-details-dialog/ticket-details-dialog';
+import { TicketData, AttachmentItem } from './components/ticket-details/ticket-details';
 
 @Component({
   selector: 'app-tickets',
@@ -26,25 +24,16 @@ import {
     ReactiveFormsModule,
     NgSelectModule,
     Table,
-    TicketDetailsDialog,
   ],
   templateUrl: './tickets.html',
   styleUrl: './tickets.css',
 })
 export class Tickets {
   _fb = inject(FormBuilder);
-
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // TICKET DETAILS DIALOG
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  selectedTicket: TicketData | null = null;
+  private readonly router = inject(Router);
 
   openTicketDetails(row: TicketData) {
-    this.selectedTicket = row;
-  }
-
-  closeTicketDetails() {
-    this.selectedTicket = null;
+    this.router.navigate(['/tickets', row.id]);
   }
   filterForm = this._fb.group({
     ticketNumber: [''],
@@ -87,7 +76,10 @@ export class Tickets {
       createdDate: new Date('2024-02-20'),
       description:
         'عند محاولة تسجيل الدخول، تظهر رسالة خطأ تفيد بأن بيانات الاعتماد غير صحيحة، رغم أنها صحيحة.',
-      attachments: ['screenshot-error.png', 'log-file.txt'],
+      attachments: [
+        { name: 'screenshot-login.jpg', url: 'https://picsum.photos/seed/tkt001a/800/600' },
+        { name: 'error-report.pdf', url: 'https://www.africau.edu/images/default/sample.pdf' },
+      ],
       notes: [
         {
           author: 'سارة خالد',
@@ -128,7 +120,9 @@ export class Tickets {
       createdDate: new Date('2024-02-20'),
       description:
         'عند محاولة تسجيل الدخول، تظهر رسالة خطأ تفيد بأن بيانات الاعتماد غير صحيحة، رغم أنها صحيحة.',
-      attachments: ['report.pdf'],
+      attachments: [
+        { name: 'report.pdf', url: 'https://www.africau.edu/images/default/sample.pdf' },
+      ],
       notes: [],
     },
   ];
@@ -240,12 +234,12 @@ export class Tickets {
     {
       label: 'تعيين موظف',
       icon: 'user-plus',
-      callback: (row) => this.openTicketDetails(row),
+      callback: (row) => {},
     },
     {
       label: 'تغير الحالة',
       icon: 'arrows-rotate',
-      callback: (row) => this.openTicketDetails(row),
+      callback: (row) => {},
     },
     {
       label: 'تغير الأولوية',

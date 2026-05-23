@@ -7,12 +7,14 @@ import {
   TableConfig,
 } from './models/table.interface';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 import { computePosition, flip, shift, offset } from '@floating-ui/dom';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-table',
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, FormsModule, NgSelectModule],
   templateUrl: './table.html',
   styleUrl: './table.css',
 })
@@ -32,6 +34,7 @@ export class Table {
   pageSize = signal(10);
   activeRowIndex = signal<number | null>(null);
   dropdownPos = signal<{ top: number; left: number } | null>(null);
+  pageSizeValue = 10;
 
   // ── Computed ─────────────────────────────────────────
   resolvedConfig = computed<Required<TableConfig>>(() => ({
@@ -117,8 +120,9 @@ export class Table {
     }
   }
 
-  setPageSize(event: Event) {
-    this.pageSize.set(+(event.target as HTMLSelectElement).value);
+  setPageSize(size: number) {
+    this.pageSize.set(size);
+    this.pageSizeValue = size;
     this.currentPage.set(1);
   }
 

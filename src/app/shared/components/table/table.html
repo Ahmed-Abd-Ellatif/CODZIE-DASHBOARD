@@ -217,11 +217,17 @@
         <div class="pagination-controls">
           <!-- Page size select -->
           <div class="page-size-wrapper">
-            <select class="page-size-select" (change)="setPageSize($event)">
-              @for (size of resolvedConfig().pageSizeOptions; track size) {
-                <option [value]="size" [selected]="size === pageSize()">{{ size }} / page</option>
-              }
-            </select>
+            <ng-select
+              class="tbl-page-size-select"
+              [(ngModel)]="pageSizeValue"
+              [items]="resolvedConfig().pageSizeOptions"
+              [searchable]="false"
+              [clearable]="false"
+              (ngModelChange)="setPageSize($event)"
+            >
+              <ng-template ng-label-tmp let-item="item">{{ item }} / page</ng-template>
+              <ng-template ng-option-tmp let-item="item">{{ item }} / page</ng-template>
+            </ng-select>
           </div>
 
           <!-- Prev -->

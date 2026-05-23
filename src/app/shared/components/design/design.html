@@ -92,29 +92,38 @@
     <input type="date" class="input date-input" />
   </div>
   <label class="input-label">Category</label>
-  <div class="select-wrapper">
-    <select class="select">
-      <option value="" selected disabled>Select an option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-  </div>
+  <ng-select
+    [(ngModel)]="designCategory"
+    [items]="designCategoryOptions"
+    bindValue="value"
+    bindLabel="label"
+    [searchable]="false"
+    [clearable]="false"
+    placeholder="Select an option"
+  />
 
   <label class="input-label">Status (Error)</label>
-  <div class="select-wrapper">
-    <select class="select select-error">
-      <option value="" selected disabled>Select an option</option>
-      <option value="1">Option 1</option>
-    </select>
-  </div>
+  <ng-select
+    [(ngModel)]="designStatus"
+    [items]="designStatusOptions"
+    bindValue="value"
+    bindLabel="label"
+    [searchable]="false"
+    [clearable]="false"
+    placeholder="Select an option"
+    class="ng-select--error"
+  />
 
   <label class="input-label">Disabled</label>
-  <div class="select-wrapper">
-    <select class="select" disabled>
-      <option value="1">Cannot change this</option>
-    </select>
-  </div>
+  <ng-select
+    [(ngModel)]="designDisabled"
+    [items]="designDisabledOptions"
+    bindValue="value"
+    bindLabel="label"
+    [disabled]="true"
+    [searchable]="false"
+    [clearable]="false"
+  />
 </div>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

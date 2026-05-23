@@ -33,6 +33,13 @@ export const routes: Routes = [
         loadComponent: () => import('./layout/pages/tickets/tickets').then((m) => m.Tickets),
       },
       {
+        path: 'tickets/:id',
+        loadComponent: () =>
+          import('./layout/pages/tickets/components/ticket-details/ticket-details').then(
+            (m) => m.TicketDetails,
+          ),
+      },
+      {
         path: 'design-system',
         loadComponent: () => import('./shared/components/design/design').then((m) => m.Design),
       },
