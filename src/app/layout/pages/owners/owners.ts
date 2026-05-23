@@ -212,7 +212,7 @@ export class Owners {
   topButtons: HeaderButton[] = [
     {
       label: 'OWNERS.ADD_OWNER',
-      icon: 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z',
+      icon: 'plus',
       colorClass: 'tbl-primary',
       action: () => this._router.navigate(['/owners/add']),
     },
