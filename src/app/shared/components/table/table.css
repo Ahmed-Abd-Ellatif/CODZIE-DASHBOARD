@@ -12,7 +12,7 @@
 
 /* ── Container ────────────────────────────────────────────────── */
 .table-container {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-md);
   border: 1px solid var(--neutral-200);
   background: #ffffff;
   overflow: hidden;

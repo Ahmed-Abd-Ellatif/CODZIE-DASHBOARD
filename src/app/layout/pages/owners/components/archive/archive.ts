@@ -1,39 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
-import { Breadcrumb } from '../../../shared/components/breadcrumb/breadcrumb';
+import { Component } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Breadcrumb } from '../../../../../shared/components/breadcrumb/breadcrumb';
+import { Filter, FilterField } from '../../../../../shared/components/filter/filter';
+import { Table } from '../../../../../shared/components/table/table';
 import {
   HeaderButton,
   TableAction,
   TableColumn,
-} from '../../../shared/components/table/models/table.interface';
-import { Table } from '../../../shared/components/table/table';
-import { Router } from '@angular/router';
-import { PaymentDialog } from '../../../shared/components/payment-dialog/payment-dialog';
-import { Filter, FilterField } from '../../../shared/components/filter/filter';
+} from '../../../../../shared/components/table/models/table.interface';
 
 @Component({
-  selector: 'app-owners',
-  imports: [CommonModule, Breadcrumb, TranslatePipe, Table, PaymentDialog, Filter],
-  templateUrl: './owners.html',
-  styleUrl: './owners.css',
+  selector: 'app-archive',
+  imports: [CommonModule, TranslatePipe, Breadcrumb, Filter, Table],
+  templateUrl: './archive.html',
+  styleUrl: './archive.css',
 })
-export class Owners {
-  _router = inject(Router);
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  // SWEET ALERTS
-  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  alertType: 'success' | 'error' | 'warning' | 'confirm' | 'info' | null = null;
-  alertMessage: string = '';
-  showSweetAlert: boolean = false;
+export class Archive {
   selectOwner: any = null;
-  paymentDialogVisible = signal(false);
-  openPaymentDialog() {
-    this.paymentDialogVisible.set(true);
-  }
-  closePaymentDialog() {
-    this.paymentDialogVisible.set(false);
-  }
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TABLE
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,7 +84,7 @@ export class Owners {
               label: 'OWNERS.PAY',
               onClick: (r) => {
                 this.selectOwner = r;
-                this.openPaymentDialog();
+                // this.openPaymentDialog();
               },
             };
 
@@ -110,7 +94,7 @@ export class Owners {
               label: 'OWNERS.NOT_PAY',
               onClick: (r) => {
                 this.selectOwner = r;
-                this.openPaymentDialog();
+                // this.openPaymentDialog();
               },
             };
           default:
@@ -133,7 +117,7 @@ export class Owners {
               label: 'OWNERS.ACTIVE',
               onClick: (r) => {
                 this.selectOwner = r;
-                this.openPaymentDialog();
+                // this.openPaymentDialog();
               },
             };
 
@@ -143,7 +127,7 @@ export class Owners {
               label: 'OWNERS.BLOCKED',
               onClick: (r) => {
                 this.selectOwner = r;
-                this.openPaymentDialog();
+                // this.openPaymentDialog();
               },
             };
           default:
@@ -157,52 +141,26 @@ export class Owners {
   //  Actions Dropdown
   tableActions: TableAction[] = [
     {
-      label: 'OWNERS.EDIT_OWNER',
-      icon: 'edit',
-      callback: (row) => this._router.navigate(['/owners/edit', row.id]),
-    },
-
-    {
       label: 'OWNERS.VIEW_OWNER',
       icon: 'eye',
-      callback: (row) => this._router.navigate(['/owners/profile', row.id]),
+      callback: (row) => {},
       // show: (row) => row.status === 'active',
       // disabled: (row) => row.status === 'active',
     },
     {
-      label: 'OWNERS.RESET_PASSWORD',
-      icon: 'key',
-      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
-    },
-    {
-      label: 'OWNERS.BLOCK_OWNER',
-      icon: 'ban',
-      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
-      show: (row) => row.status === 'active',
-      danger: true,
-    },
-    {
-      label: 'OWNERS.UNBLOCK_OWNER',
-      icon: 'lock-open',
-      callback: (row) => confirm('هل أنت متأكد من إعادة تعيين كلمة المرور ل ' + row.name + '؟'),
-      show: (row) => row.status === 'blocked',
+      label: 'OWNERS.RETURN_OWNER',
+      icon: 'arrow-rotate-left',
+      callback: (row) => {},
       success: true,
+      // show: (row) => row.status === 'active',
+      // disabled: (row) => row.status === 'active',
     },
 
     {
-      label: 'OWNERS.DELETE_OWNER',
+      label: 'OWNERS.PERMANENTLY_DELETE_OWNER',
       icon: 'trash-can',
-      callback: (row) => confirm('هل أنت متأكد من حذف ' + row.name + '؟'),
+      callback: (row) => confirm('هل أنت متأكد من حذف ' + row.name + ' نهائيًا؟'),
       danger: true,
-    },
-  ];
-  // Table header buttons
-  topButtons: HeaderButton[] = [
-    {
-      label: 'OWNERS.ADD_OWNER',
-      icon: 'plus',
-      colorClass: 'btn-primary',
-      action: () => this._router.navigate(['/owners/add']),
     },
   ];
 
@@ -210,8 +168,8 @@ export class Owners {
   // FILTER
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   payList = [
-    { value: 1, label: 'OWNERS.PAY' },
-    { value: 2, label: 'OWNERS.NOT_PAY' },
+    { value: 'Pay', label: 'OWNERS.PAY' },
+    { value: 'Not Pay', label: 'OWNERS.NOT_PAY' },
   ];
   filterFields: FilterField[] = [
     {

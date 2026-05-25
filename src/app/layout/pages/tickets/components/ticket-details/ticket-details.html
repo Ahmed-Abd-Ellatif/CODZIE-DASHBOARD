@@ -8,7 +8,6 @@
       <div class="tkt-select-wrap">
         <span class="tkt-select-label"> <i class="fas fa-arrows-rotate"></i> الحالة </span>
         <ng-select
-          class="tkt-ng-select"
           [(ngModel)]="selectedStatus"
           [items]="statusOptions"
           bindValue="value"
@@ -29,7 +28,6 @@
       <div class="tkt-select-wrap">
         <span class="tkt-select-label"> <i class="fas fa-flag"></i> الأولوية </span>
         <ng-select
-          class="tkt-ng-select"
           [(ngModel)]="selectedPriority"
           [items]="priorityOptions"
           bindValue="value"
@@ -50,7 +48,6 @@
       <div class="tkt-select-wrap">
         <span class="tkt-select-label"> <i class="fas fa-user-plus"></i> تعيين موظف </span>
         <ng-select
-          class="tkt-ng-select"
           [(ngModel)]="selectedEmployee"
           [items]="employeeOptions"
           bindValue="value"

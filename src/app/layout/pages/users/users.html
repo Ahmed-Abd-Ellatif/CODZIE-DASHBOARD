@@ -1,0 +1,24 @@
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * BREADCRUMB -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-breadcrumb [pageTitle]="'USERS.TITLE' | translate" />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * FILTERS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-filter
+  [fields]="filterFields"
+  (filterSubmit)="onFilterSubmit($event)"
+  (filterReset)="onFilterReset()"
+/>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- TABLE -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <app-table
+    [tableName]="'USERS.TITLE' | translate"
+    [data]="SAMPLE_DATA"
+    [columns]="columns"
+    [actions]="tableActions"
+    [headerButtons]="topButtons"
+  />
+</div>

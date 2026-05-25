@@ -49,21 +49,11 @@ export interface FilterField {
 })
 export class Filter implements OnChanges {
   private _fb = inject(FormBuilder);
-
-  /** List of fields to render */
   @Input() fields: FilterField[] = [];
-
-  /** Optional default/initial values keyed by field.key */
   @Input() defaultValues?: Record<string, any>;
-
-  /** Emits the form value object when the user clicks Filter */
   filterSubmit = output<Record<string, any>>();
-
-  /** Emits when the user clicks Reset */
   filterReset = output<void>();
-
   form: FormGroup = this._fb.group({});
-
   // ──────────────────────────────────────────
   // Lifecycle
   // ──────────────────────────────────────────
@@ -91,7 +81,8 @@ export class Filter implements OnChanges {
   private buildForm(): void {
     const controls: Record<string, any> = {};
     for (const field of this.fields) {
-      controls[field.key] = [this.defaultValues?.[field.key] ?? ''];
+      const defaultEmpty = field.type === 'select' ? null : '';
+      controls[field.key] = [this.defaultValues?.[field.key] ?? defaultEmpty];
     }
     this.form = this._fb.group(controls);
   }

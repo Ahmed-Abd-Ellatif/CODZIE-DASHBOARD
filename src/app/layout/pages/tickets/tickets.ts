@@ -36,14 +36,14 @@ export class Tickets {
   });
 
   statusList = [
-    { id: 'new', value: 'New' },
-    { id: 'in-progress', value: 'In Progress' },
-    { id: 'complete', value: 'Complete' },
+    { id: 'new', value: 'TICKETS.STATUS_NEW' },
+    { id: 'in-progress', value: 'TICKETS.STATUS_IN_PROGRESS' },
+    { id: 'complete', value: 'TICKETS.STATUS_COMPLETE' },
   ];
   priorityList = [
-    { id: 1, value: 'High' },
-    { id: 2, value: 'Medium' },
-    { id: 3, value: 'Low' },
+    { id: 1, value: 'TICKETS.PRIORITY_HIGH' },
+    { id: 2, value: 'TICKETS.PRIORITY_MEDIUM' },
+    { id: 3, value: 'TICKETS.PRIORITY_LOW' },
   ];
 
   applyFilters() {

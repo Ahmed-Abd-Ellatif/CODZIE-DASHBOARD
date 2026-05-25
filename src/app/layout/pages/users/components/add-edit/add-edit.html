@@ -1,0 +1,81 @@
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * BREADCRUMB -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-breadcrumb
+  [pageTitle]="isEditMode ? ('USERS.EDIT_USER' | translate) : ('USERS.ADD_USER' | translate)"
+/>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * USER PRIMARY DETAILS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <p class="mb-5 font-bold text-neutral-900 text-lg">
+    {{ 'USERS.BASIC_INFORMATION' | translate }}
+  </p>
+
+  <div class="row">
+    <!-- Full Name -->
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'USERS.NAME' | translate }}</label>
+      <input class="input" placeholder="{{ 'USERS.NAME' | translate }}" />
+    </div>
+
+    <!-- Email -->
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'USERS.EMAIL' | translate }}</label>
+      <input type="email" class="input" placeholder="{{ 'USERS.EMAIL' | translate }}" />
+    </div>
+
+    <!-- Role -->
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'USERS.ROLE' | translate }}</label>
+      <ng-select
+        [(ngModel)]="selectedRole"
+        [items]="roleOptions"
+        bindValue="value"
+        bindLabel="label"
+        [searchable]="false"
+        [clearable]="true"
+        placeholder="{{ 'USERS.ROLE' | translate }}"
+      >
+        <ng-template ng-option-tmp let-item="item">
+          {{ item.label | translate }}
+        </ng-template>
+        <ng-template ng-label-tmp let-item="item">
+          {{ item.label | translate }}
+        </ng-template>
+      </ng-select>
+    </div>
+
+    <!-- Status -->
+    <div class="col-12 col-md-6">
+      <label class="required input-label">{{ 'USERS.STATUS' | translate }}</label>
+      <ng-select
+        [(ngModel)]="selectedStatus"
+        [items]="statusOptions"
+        bindValue="value"
+        bindLabel="label"
+        [searchable]="false"
+        [clearable]="true"
+        placeholder="{{ 'USERS.STATUS' | translate }}"
+      >
+        <ng-template ng-option-tmp let-item="item">
+          {{ item.label | translate }}
+        </ng-template>
+        <ng-template ng-label-tmp let-item="item">
+          {{ item.label | translate }}
+        </ng-template>
+      </ng-select>
+    </div>
+  </div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * ACTION BUTTONS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="text-end">
+  <button class="btn btn-outline me-2" routerLink="/users/list">
+    {{ 'GENERAL.CANCEL' | translate }}
+  </button>
+  <button class="btn btn-primary">{{ 'GENERAL.SAVE' | translate }}</button>
+</div>

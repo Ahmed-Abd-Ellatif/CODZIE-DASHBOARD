@@ -1,0 +1,23 @@
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * BREADCRUMB -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-breadcrumb [pageTitle]="'OWNERS.ARCHIVE_OWNERS' | translate" />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- * FILTERS -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<app-filter
+  [fields]="filterFields"
+  (filterSubmit)="onFilterSubmit($event)"
+  (filterReset)="onFilterReset()"
+/>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- TABLE -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div class="card">
+  <app-table
+    [tableName]="'OWNERS.TITLE' | translate"
+    [data]="SAMPLE_DATA"
+    [columns]="columns"
+    [actions]="tableActions"
+  />
+</div>

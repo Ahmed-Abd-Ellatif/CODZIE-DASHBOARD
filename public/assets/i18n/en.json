@@ -49,6 +49,10 @@
     "OWNERS_LIST": "Owners List",
     "OWNERS_ARCHIVE": "Owners Archive",
     "OWNERS_ADD": "Add Owner",
+    "USERS": "Users",
+    "USERS_LIST": "Users List",
+    "USERS_ARCHIVE": "Users Archive",
+    "USERS_ADD": "Add User",
     "SETTINGS": "Settings",
     "LOGOUT": "Logout",
     "TICKETS": "Tickets"
@@ -77,6 +81,8 @@
     "EDIT_OWNER": "Edit Owner",
     "VIEW_OWNER": "View Owner",
     "DELETE_OWNER": "Delete Owner",
+    "PERMANENTLY_DELETE_OWNER": "Permanently Delete Owner",
+    "RETURN_OWNER": "Return Owner",
     "PAY_COST": "Pay Cost",
     "RESET_PASSWORD": "Reset Password",
     "BLOCK_OWNER": "Block",
@@ -123,7 +129,42 @@
     "PAY_OPTIONS_PLACEHOLDER": "Pay Options",
     "PAY": "Pay",
     "NOT_PAY": "Not Pay",
-    "SEARCH_OF_OWNERS": "Search for owners"
+    "SEARCH_OF_OWNERS": "Search for owners",
+    "ARCHIVE": "Archive",
+    "ARCHIVE_OWNERS": "Owners Archive"
+  },
+  "USERS": {
+    "TITLE": "Users",
+    "BASIC_INFORMATION": "Basic Information",
+    "PROFILE_TITLE": "User Profile",
+    "PROFILE_SUBTITLE": "User main details and activity history",
+    "NAME": "User Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "ROLE": "Role",
+    "STATUS": "Status",
+    "JOIN_DATE": "Join Date",
+    "JOIN_DATE_PLACEHOLDER": "Select join date",
+    "AVAILABLE": "Available",
+    "ABSENT": "Absent",
+    "ON_LEAVE": "On Leave",
+    "RESIGNED": "Resigned",
+    "SEARCH_OF_USERS": "Search for users",
+    "ADD_USER": "Add User",
+    "EDIT_USER": "Edit User",
+    "VIEW_USER": "View User",
+    "DELETE_USER": "Delete User",
+    "PERMANENTLY_DELETE_USER": "Permanently Delete User",
+    "RETURN_USER": "Return User",
+    "ARCHIVE": "Archive",
+    "ARCHIVE_USERS": "Users Archive",
+    "DATE_FILTER": "Filter by Date"
+  },
+  "ROLES": {
+    "ADMIN": "Admin",
+    "DEVELOPER": "Developer",
+    "CUSTOMER_SUPPORT": "Customer Support",
+    "SUPERVISOR": "Supervisor"
   },
 
   "LOGIN": {
@@ -161,6 +202,9 @@
     "OF_TOTAL": "of total",
     "ADD_TICKET": "Add New Ticket",
     "PROPERTY": "Property",
+    "PRIORITY_HIGH": "High",
+    "PRIORITY_MEDIUM": "Medium",
+    "PRIORITY_LOW": "Low",
     "STATUS": "Status",
     "SEARCH_TICKET": "Search for ticket",
     "SELECT_DATE": "Select Date"

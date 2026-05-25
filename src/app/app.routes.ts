@@ -9,6 +9,9 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./layout/pages/dashboard/dashboard').then((m) => m.Dashboard),
       },
+      // ~~~~~~~~~~~~~~~~~~~~~~~~
+      // OWNERS PAGES
+      // ~~~~~~~~~~~~~~~~~~~~~~~~
       {
         path: 'owners/list',
         loadComponent: () => import('./layout/pages/owners/owners').then((m) => m.Owners),
@@ -24,10 +27,40 @@ export const routes: Routes = [
           import('./layout/pages/owners/components/add-edit/add-edit').then((m) => m.AddEdit),
       },
       {
+        path: 'owners/archive',
+        loadComponent: () =>
+          import('./layout/pages/owners/components/archive/archive').then((m) => m.Archive),
+      },
+      {
         path: 'owners/profile/:id',
         loadComponent: () =>
           import('./layout/pages/owners/components/profile/profile').then((m) => m.Profile),
       },
+      // ~~~~~~~~~~~~~~~~~~~~~~~~
+      // USERS PAGES
+      // ~~~~~~~~~~~~~~~~~~~~~~~~
+      {
+        path: 'users/list',
+        loadComponent: () => import('./layout/pages/users/users').then((m) => m.Users),
+      },
+      {
+        path: 'users/add',
+        loadComponent: () =>
+          import('./layout/pages/users/components/add-edit/add-edit').then((m) => m.AddEdit),
+      },
+      {
+        path: 'users/edit/:id',
+        loadComponent: () =>
+          import('./layout/pages/users/components/add-edit/add-edit').then((m) => m.AddEdit),
+      },
+      {
+        path: 'users/archive',
+        loadComponent: () =>
+          import('./layout/pages/users/components/archive/archive').then((m) => m.Archive),
+      },
+      // ~~~~~~~~~~~~~~~~~~~~~~~~
+      // TICKETS PAGES
+      // ~~~~~~~~~~~~~~~~~~~~~~~~
       {
         path: 'tickets/list',
         loadComponent: () => import('./layout/pages/tickets/tickets').then((m) => m.Tickets),
@@ -45,8 +78,9 @@ export const routes: Routes = [
       },
     ],
   },
-
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
   //   LOGIN PAGE
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
   {
     path: 'login',
     loadComponent: () => import('./layout/auth/login/login').then((m) => m.Login),

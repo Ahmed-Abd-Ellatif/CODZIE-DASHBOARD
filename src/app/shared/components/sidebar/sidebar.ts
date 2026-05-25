@@ -13,19 +13,22 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
+  // * PROPERTIES
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
   layout = inject(LayoutService);
   private router = inject(Router);
-
   openSection = signal<string | null>(null);
+  private readonly sectionRoutes: Record<string, string> = {
+    owners: '/owners',
+    users: '/users',
+  };
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
+  // * CONSTRUCTOR
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
 
   constructor() {
-    // Initialize dropdown state based on current URL (e.g. on page refresh)
-    const initialUrl = this.router.url;
-    if (initialUrl.startsWith('/owners')) {
-      this.openSection.set('owners');
-    }
-
-    // React to every navigation: auto-open/close dropdowns based on active route
+    this.syncOpenSection(this.router.url);
     this.router.events
       .pipe(
         filter((e) => e instanceof NavigationEnd),
@@ -33,33 +36,34 @@ export class Sidebar {
       )
       .subscribe((e) => {
         const url = (e as NavigationEnd).urlAfterRedirects;
+        this.syncOpenSection(url);
 
-        if (url.startsWith('/owners')) {
-          this.openSection.set('owners');
-        } else {
-          this.openSection.set(null);
-        }
-
-        // Close sidebar on mobile after every navigation
         if (typeof window !== 'undefined' && window.innerWidth < 1024) {
           this.layout.closeSidebar();
         }
       });
   }
 
+  private syncOpenSection(url: string) {
+    const matched = Object.entries(this.sectionRoutes).find(([, prefix]) => url.startsWith(prefix));
+    this.openSection.set(matched ? matched[0] : null);
+  }
+
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
+  // * UI ACTIONS
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
   toggleSection(name: string) {
-    const activeRoutes: Record<string, string> = {
-      projects: '/owners',
-    };
-    // Don't allow closing if a child route is currently active
-    const childPath = activeRoutes[name];
+    const childPath = this.sectionRoutes[name];
     if (childPath && this.router.url.startsWith(childPath)) {
       return;
     }
     this.openSection.update((v) => (v === name ? null : name));
   }
-
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
+  // * LOGOUT
+  // ~~~~~~~~~~~~~~~~~~~~~~~~
   logout() {
     // TODO: implement logout
+    this.router.navigate(['/login']);
   }
 }

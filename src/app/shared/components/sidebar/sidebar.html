@@ -20,13 +20,14 @@
       <i class="fa-solid fa-gauge-high"></i>
       <span class="flex-1 text-start">{{ 'SIDEBAR.DASHBOARD' | translate }}</span>
     </button>
-    <!-- My Projects (dropdown) -->
+    <!-- OWNERS (dropdown) -->
     <div>
       <button
         class="sidebar-link"
         [class.active]="openSection() === 'owners'"
         (click)="toggleSection('owners')"
         type="button"
+        routerLink="/owners/list"
       >
         <i class="fa-solid fa-users-gear"></i>
         <span class="flex-1 text-start" routerLinkActive="active">{{
@@ -48,6 +49,39 @@
           }}</a>
           <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/owners/archive">{{
             'SIDEBAR.OWNERS_ARCHIVE' | translate
+          }}</a>
+        </div>
+      }
+    </div>
+    <!-- USERS (dropdown) -->
+    <div>
+      <button
+        class="sidebar-link"
+        [class.active]="openSection() === 'users'"
+        (click)="toggleSection('users')"
+        type="button"
+        routerLink="/users/list"
+      >
+        <i class="fa-solid fa-users"></i>
+        <span class="flex-1 text-start" routerLinkActive="active">{{
+          'SIDEBAR.USERS' | translate
+        }}</span>
+        <i
+          class="fa-solid fa-chevron-down sidebar-chevron"
+          [class.open]="openSection() === 'users'"
+        ></i>
+      </button>
+
+      @if (openSection() === 'users') {
+        <div class="sidebar-submenu">
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/users/list">{{
+            'SIDEBAR.USERS_LIST' | translate
+          }}</a>
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/users/add">{{
+            'SIDEBAR.USERS_ADD' | translate
+          }}</a>
+          <a class="sidebar-sub-link" routerLinkActive="active" routerLink="/users/archive">{{
+            'SIDEBAR.USERS_ARCHIVE' | translate
           }}</a>
         </div>
       }
@@ -83,7 +117,7 @@
 
   <!-- ── Logout ── -->
   <div class="sidebar-footer">
-    <button class="sidebar-logout-btn" (click)="logout()" type="button" routerLink="login">
+    <button class="sidebar-logout-btn" (click)="logout()" type="button">
       <i class="fa-solid fa-arrow-right-from-bracket"></i>
       <span>{{ 'SIDEBAR.LOGOUT' | translate }}</span>
     </button>
