@@ -11,15 +11,16 @@
           [(ngModel)]="selectedStatus"
           [items]="statusOptions"
           bindValue="value"
+          bindLabel="label"
           [searchable]="false"
           [clearable]="false"
           placeholder="اختر الحالة"
         >
           <ng-template ng-label-tmp let-item="item">
-            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label | translate }}</span>
           </ng-template>
           <ng-template ng-option-tmp let-item="item">
-            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label | translate }}</span>
           </ng-template>
         </ng-select>
       </div>
@@ -31,15 +32,16 @@
           [(ngModel)]="selectedPriority"
           [items]="priorityOptions"
           bindValue="value"
+          bindLabel="label"
           [searchable]="false"
           [clearable]="false"
           placeholder="اختر الأولوية"
         >
           <ng-template ng-label-tmp let-item="item">
-            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label | translate }}</span>
           </ng-template>
           <ng-template ng-option-tmp let-item="item">
-            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label }}</span>
+            <span class="tbl-badge" [ngClass]="item.colorClass">{{ item.label | translate }}</span>
           </ng-template>
         </ng-select>
       </div>
@@ -55,15 +57,8 @@
           [clearable]="true"
           placeholder="اختر موظفاً"
         >
-          <ng-template ng-label-tmp let-item="item">
-            <div class="tkt-emp-selected">
-              <span class="tkt-emp-avatar">{{ item.initials }}</span>
-              <span>{{ item.label }}</span>
-            </div>
-          </ng-template>
           <ng-template ng-option-tmp let-item="item">
             <div class="tkt-emp-option">
-              <span class="tkt-emp-avatar">{{ item.initials }}</span>
               <span>{{ item.label }}</span>
             </div>
           </ng-template>
@@ -125,7 +120,7 @@
           <p class="tkt-details-info-label">
             <i class="fas fa-circle-info tkt-details-info-icon"></i>الحالة
             <span class="tbl-badge" [ngClass]="statusClass(ticket.status)">
-              {{ statusLabel(ticket.status) }}
+              {{ statusLabel(ticket.status) | translate }}
             </span>
           </p>
         </div>
@@ -135,7 +130,7 @@
             <i class="fas fa-flag tkt-details-info-icon"></i>الأولوية
 
             <span class="tbl-badge" [ngClass]="priorityClass(ticket.priority)">
-              {{ priorityLabel(ticket.priority) }}
+              {{ priorityLabel(ticket.priority) | translate }}
             </span>
           </p>
         </div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Breadcrumb } from '../../../../../shared/components/breadcrumb/breadcrumb';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export interface AttachmentItem {
   name: string;
@@ -109,7 +110,7 @@ const SAMPLE_DATA: TicketData[] = [
 
 @Component({
   selector: 'app-ticket-details',
-  imports: [CommonModule, Breadcrumb, FormsModule, NgSelectModule],
+  imports: [CommonModule, Breadcrumb, FormsModule, NgSelectModule, TranslatePipe],
   templateUrl: './ticket-details.html',
   styleUrl: './ticket-details.css',
 })
@@ -126,22 +127,22 @@ export class TicketDetails {
   selectedEmployee: string | null = null;
 
   statusOptions = [
-    { value: 'new', label: 'جديد', colorClass: 'tbl-badge--danger' },
-    { value: 'in-progress', label: 'قيد التنفيذ', colorClass: 'tbl-badge--warning' },
-    { value: 'complete', label: 'مكتمل', colorClass: 'tbl-badge--success' },
+    { value: 'new', label: 'TICKETS.STATUS_NEW', colorClass: 'tbl-badge--danger' },
+    { value: 'in-progress', label: 'TICKETS.STATUS_IN_PROGRESS', colorClass: 'tbl-badge--warning' },
+    { value: 'complete', label: 'TICKETS.STATUS_COMPLETE', colorClass: 'tbl-badge--success' },
   ];
 
   priorityOptions = [
-    { value: 'high', label: 'عالية', colorClass: 'tbl-badge--danger' },
-    { value: 'medium', label: 'متوسطة', colorClass: 'tbl-badge--warning' },
-    { value: 'low', label: 'منخفضة', colorClass: 'tbl-badge--success' },
+    { value: 'high', label: 'TICKETS.PRIORITY_HIGH', colorClass: 'tbl-badge--danger' },
+    { value: 'medium', label: 'TICKETS.PRIORITY_MEDIUM', colorClass: 'tbl-badge--warning' },
+    { value: 'low', label: 'TICKETS.PRIORITY_LOW', colorClass: 'tbl-badge--success' },
   ];
 
   employeeOptions = [
-    { value: 'emp1', label: 'أحمد الدعم', initials: 'أد' },
-    { value: 'emp2', label: 'سارة خالد', initials: 'سخ' },
-    { value: 'emp3', label: 'محمد علي', initials: 'مع' },
-    { value: 'emp4', label: 'فريق الدعم', initials: 'فد' },
+    { value: 1, label: 'أحمد الدعم' },
+    { value: 2, label: 'سارة خالد' },
+    { value: 3, label: 'محمد علي' },
+    { value: 4, label: 'فريق الدعم' },
   ];
 
   lightboxImage: AttachmentItem | null = null;
@@ -185,16 +186,7 @@ export class TicketDetails {
   }
 
   statusLabel(status: string): string {
-    switch (status) {
-      case 'new':
-        return 'جديد';
-      case 'in-progress':
-        return 'قيد التنفيذ';
-      case 'complete':
-        return 'مكتمل';
-      default:
-        return status;
-    }
+    return this.statusOptions.find((o) => o.value === status)?.label ?? status;
   }
 
   priorityClass(priority: string): string {
@@ -211,16 +203,7 @@ export class TicketDetails {
   }
 
   priorityLabel(priority: string): string {
-    switch (priority) {
-      case 'high':
-        return 'عالية';
-      case 'medium':
-        return 'متوسطة';
-      case 'low':
-        return 'منخفضة';
-      default:
-        return priority;
-    }
+    return this.priorityOptions.find((o) => o.value === priority)?.label ?? priority;
   }
 
   isImage(item: AttachmentItem): boolean {
